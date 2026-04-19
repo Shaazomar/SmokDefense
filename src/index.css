@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+:root {
+  --primary-orange: #E8761A;
+  --accent-orange: #D16510;
+  --deep-dark: #1A1A1A;
+  --body-grey: #555555;
+  --light-bg: #F5F5F5;
+  --white: #FFFFFF;
+  --mid-grey: #CCCCCC;
+  
+  --font-primary: 'Inter', sans-serif;
+  
+  --border-radius-sm: 8px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 24px;
+  --border-radius-pill: 9999px;
+  
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--deep-dark);
+  background-color: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* Utility Classes */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.section-padding {
+  padding: 100px 0;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 60px 0;
+  }
+}
+
+/* Colors */
+.bg-dark { background-color: var(--deep-dark); color: var(--white); }
+.bg-light { background-color: var(--light-bg); }
+.bg-white { background-color: var(--white); }
+.text-orange { color: var(--primary-orange); }
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: var(--border-radius-pill);
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  background-color: var(--primary-orange);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-orange);
+}
+
+.btn-outline-white {
+  background-color: transparent;
+  color: var(--white);
+  border-color: var(--white);
+}
+
+.btn-outline-white:hover {
+  background-color: var(--white);
+  color: var(--deep-dark);
+}
+
+/* Glassmorphism elements for Hero and special components */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius-md);
+}
