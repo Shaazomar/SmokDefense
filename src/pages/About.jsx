@@ -21,7 +21,7 @@ const About = () => {
             transition={{ delay: 0.1 }}
             style={{ fontSize: '20px', maxWidth: '800px', margin: '0 auto', color: 'rgba(255,255,255,0.8)' }}
           >
-            SmokDefense is a fire and smoke management systems company based in Mangalore, Karnataka, providing end-to-end solutions across Pan India.
+            SmokDefense is a fire and smoke management systems company based in Bengaluru, Karnataka, providing end-to-end solutions across Pan India.
           </motion.p>
         </div>
       </section>
@@ -92,7 +92,7 @@ const About = () => {
                   <Globe size={32} color="var(--primary-orange)" style={{ flexShrink: 0 }} />
                   <div>
                     <h5 style={{ fontSize: '18px', fontWeight: 700 }}>Head Office</h5>
-                    <p style={{ color: 'var(--body-grey)' }}>Mangalore, Karnataka, India</p>
+                    <p style={{ color: 'var(--body-grey)' }}>163 C, Technologics Global, 3rd Cross Rd, near Mantralaya Apartments, 3rd Phase, J. P. Nagar, Bengaluru, Karnataka 560078</p>
                   </div>
                 </div>
                 <div style={{ display: 'flex', gap: '16px' }}>

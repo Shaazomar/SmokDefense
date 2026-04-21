@@ -4,33 +4,6 @@ import { motion } from 'framer-motion';
 const Services = () => {
   const categories = [
     {
-      id: 'active',
-      title: 'Active Fire Protection',
-      desc: 'Live, operational fire-fighting and suppression systems that activate during a fire event.',
-      img: '/images/image_active_fire_1776602431065.png',
-      items: [
-        { name: 'Fire Extinguishers', desc: 'Portable and fixed suppression devices for immediate fire response.' },
-        { name: 'Fire Alarms', desc: 'Detection and early-warning alert systems (conventional, addressable).' },
-        { name: 'Sprinkler Systems', desc: 'Automatic water-based fire suppression systems.' },
-        { name: 'Suppression Systems', desc: 'Gaseous or chemical suppression for server rooms, data centres.' },
-        { name: 'Emergency Lighting', desc: 'Maintained and non-maintained luminaires for safe evacuation.' },
-        { name: 'Smoke Ventilation', desc: 'Mechanical and natural systems to extract smoke.' }
-      ]
-    },
-    {
-      id: 'passive',
-      title: 'Passive Fire Protection',
-      desc: 'Structural and architectural fire barriers that require no mechanical action.',
-      img: '/images/image_passive_fire_1776602447129.png',
-      items: [
-        { name: 'Fire Doors', desc: 'Fire-rated doors that compartmentalise fire and smoke spread.' },
-        { name: 'Wayfinding', desc: 'Photoluminescent and illuminated signage.' },
-        { name: 'Dampers', desc: 'Mechanical barriers installed in ductwork to prevent smoke spread.' },
-        { name: 'Fire Stopping', desc: 'Sealing of all service penetrations to maintain compartmentation.' },
-        { name: 'Fire Rated Glass', desc: 'Specialist glazing that resists fire and smoke spread.' }
-      ]
-    },
-    {
       id: 'smoke',
       title: 'Smoke Control Systems',
       desc: "SmokDefense's core technical specialisation. We design, commission and install.",
@@ -64,6 +37,33 @@ const Services = () => {
         { name: 'Data Logging', desc: '21 CFR Part 11 compliant software with real-time trends.' },
         { name: 'Wireless Systems', desc: 'Ultra-low power wireless transmitters with SCADA integration.' },
         { name: 'Door Interlocking', desc: 'Personnel access control systems for classified areas.' }
+      ]
+    },
+    {
+      id: 'active',
+      title: 'Active Fire Protection',
+      desc: 'Live, operational fire-fighting and suppression systems that activate during a fire event.',
+      img: '/images/image_active_fire_1776602431065.png',
+      items: [
+        { name: 'Fire Extinguishers', desc: 'Portable and fixed suppression devices for immediate fire response.' },
+        { name: 'Fire Alarms', desc: 'Detection and early-warning alert systems (conventional, addressable).' },
+        { name: 'Sprinkler Systems', desc: 'Automatic water-based fire suppression systems.' },
+        { name: 'Suppression Systems', desc: 'Gaseous or chemical suppression for server rooms, data centres.' },
+        { name: 'Emergency Lighting', desc: 'Maintained and non-maintained luminaires for safe evacuation.' },
+        { name: 'Smoke Ventilation', desc: 'Mechanical and natural systems to extract smoke.' }
+      ]
+    },
+    {
+      id: 'passive',
+      title: 'Passive Fire Protection',
+      desc: 'Structural and architectural fire barriers that require no mechanical action.',
+      img: '/images/image_passive_fire_1776602447129.png',
+      items: [
+        { name: 'Fire Doors', desc: 'Fire-rated doors that compartmentalise fire and smoke spread.' },
+        { name: 'Wayfinding', desc: 'Photoluminescent and illuminated signage.' },
+        { name: 'Dampers', desc: 'Mechanical barriers installed in ductwork to prevent smoke spread.' },
+        { name: 'Fire Stopping', desc: 'Sealing of all service penetrations to maintain compartmentation.' },
+        { name: 'Fire Rated Glass', desc: 'Specialist glazing that resists fire and smoke spread.' }
       ]
     }
   ];

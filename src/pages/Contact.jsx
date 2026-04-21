@@ -36,14 +36,14 @@ const Contact = () => {
                 <MapPin size={28} />
                 <div>
                   <h5 style={{ fontSize: '18px', fontWeight: 600, marginBottom: '4px' }}>Location</h5>
-                  <p style={{ opacity: 0.9 }}>Mangalore, Karnataka, India<br/>Service Coverage: Pan India</p>
+                  <p style={{ opacity: 0.9 }}>163 C, Technologics Global, 3rd Cross Rd, near Mantralaya Apartments,<br/>3rd Phase, J. P. Nagar, Bengaluru, Karnataka 560078<br/>Service Coverage: Pan India</p>
                 </div>
               </li>
               <li style={{ display: 'flex', gap: '20px' }}>
                 <Phone size={28} />
                 <div>
                   <h5 style={{ fontSize: '18px', fontWeight: 600, marginBottom: '4px' }}>Phone</h5>
-                  <p style={{ opacity: 0.9 }}>+91 99999 99999</p>
+                  <p style={{ opacity: 0.9 }}>+91 9035544406</p>
                 </div>
               </li>
               <li style={{ display: 'flex', gap: '20px' }}>
@@ -90,11 +90,11 @@ const Contact = () => {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 <label style={{ fontSize: '14px', fontWeight: 600, color: 'var(--body-grey)' }}>Service Required</label>
                 <select style={{ padding: '12px 16px', borderRadius: '8px', border: '1px solid var(--mid-grey)', backgroundColor: 'var(--white)' }}>
-                  <option>Active Fire Protection</option>
-                  <option>Passive Fire Protection</option>
                   <option>Smoke Control Systems</option>
                   <option>CFD Modelling</option>
                   <option>Clean Room Systems</option>
+                  <option>Active Fire Protection</option>
+                  <option>Passive Fire Protection</option>
                   <option>Maintenance / Other</option>
                 </select>
               </div>

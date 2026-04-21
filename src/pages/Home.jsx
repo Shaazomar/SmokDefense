@@ -67,13 +67,13 @@ const Home = () => {
             letterSpacing: '-2px',
             textShadow: '0 10px 30px rgba(0,0,0,0.5)'
           }}>
-             Protecting Lives. <br/>
+             Controlling Smoke. <br/>
             <span style={{ 
               background: 'linear-gradient(135deg, var(--primary-orange) 0%, #FFB075 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               display: 'inline-block'
-            }}>Controlling Smoke.</span>
+            }}>Protecting Lives.</span>
           </motion.h1>
           
           <motion.p variants={fadeInUp} style={{ 
@@ -145,11 +145,11 @@ const Home = () => {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px' }}>
             {[
-              { icon: <Shield size={40} />, title: 'Active Fire', desc: 'Extinguishers, alarms, sprinklers and suppression running 24/7.', img: '/images/image_active_fire_1776602431065.png' },
-              { icon: <Settings size={40} />, title: 'Passive Protection', desc: 'Fire doors, dampers, and fire stopping acting as silent barriers.', img: '/images/image_passive_fire_1776602447129.png' },
               { icon: <Wind size={40} />, title: 'Smoke Control', desc: 'FSCS panels and fan/damper management for critical extraction.', img: '/images/image_smoke_panel_1776602463560.png' },
               { icon: <FileBarChart size={40} />, title: 'CFD Modelling', desc: 'Advanced smoke tracking simulation before a brick is laid.', img: '/images/image_cfd_model_1776602481280.png' },
               { icon: <Microscope size={40} />, title: 'Clean Room Systems', desc: 'EMS monitoring for pharma and precision laboratories.', img: '/images/image_clean_room_1776602497882.png' },
+              { icon: <Shield size={40} />, title: 'Active Fire', desc: 'Extinguishers, alarms, sprinklers and suppression running 24/7.', img: '/images/image_active_fire_1776602431065.png' },
+              { icon: <Settings size={40} />, title: 'Passive Protection', desc: 'Fire doors, dampers, and fire stopping acting as silent barriers.', img: '/images/image_passive_fire_1776602447129.png' },
               { icon: <Wrench size={40} />, title: 'Maintenance', desc: 'Inspections, testing, balancing, and regulatory sign-offs.', img: '/images/image_maintenance_1776602512508.png' }
             ].map((service, i) => (
               <motion.div 

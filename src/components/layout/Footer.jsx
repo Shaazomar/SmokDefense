@@ -33,11 +33,11 @@ const Footer = () => {
         <div>
           <h4 style={{ fontSize: '18px', marginBottom: '24px' }}>Our Services</h4>
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <li style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px' }}>Active Fire Protection</li>
-            <li style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px' }}>Passive Fire Protection</li>
             <li style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px' }}>Smoke Control Systems</li>
             <li style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px' }}>CFD & Modelling</li>
             <li style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px' }}>Clean Room Systems</li>
+            <li style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px' }}>Active Fire Protection</li>
+            <li style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px' }}>Passive Fire Protection</li>
           </ul>
         </div>
 
@@ -47,11 +47,11 @@ const Footer = () => {
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             <li style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
               <MapPin size={20} color="#E8761A" style={{ flexShrink: 0 }} />
-              <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px' }}>Mangalore, Karnataka, India<br/>Pan India Services</span>
+              <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px' }}>163 C, Technologics Global, 3rd Cross Rd, near Mantralaya Apartments,<br/>3rd Phase, J. P. Nagar, Bengaluru, Karnataka 560078<br/>Pan India Services</span>
             </li>
             <li style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <Phone size={20} color="#E8761A" style={{ flexShrink: 0 }} />
-              <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px' }}>+91 99999 99999</span>
+              <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px' }}>+91 9035544406</span>
             </li>
             <li style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <Mail size={20} color="#E8761A" style={{ flexShrink: 0 }} />
