@@ -1,7 +1,9 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Services = () => {
+  const [activeVideo, setActiveVideo] = useState(null);
+
   const categories = [
     {
       id: 'smoke',
@@ -148,12 +150,90 @@ const Services = () => {
                     </div>
                   ))}
                 </div>
+
+                {cat.id === 'smoke' && (
+                  <div style={{ marginTop: '32px' }}>
+                    <button 
+                      onClick={() => setActiveVideo('/videos/demo.mp4')}
+                      style={{
+                        padding: '12px 24px',
+                        backgroundColor: 'var(--primary-orange)',
+                        color: 'var(--white)',
+                        border: 'none',
+                        borderRadius: 'var(--border-radius-pill)',
+                        cursor: 'pointer',
+                        fontWeight: 600,
+                        fontSize: '16px',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '10px',
+                        boxShadow: '0 4px 14px rgba(232, 118, 26, 0.4)',
+                        transition: 'transform 0.2s',
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+                      onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                      </svg>
+                      Video Demo
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </section>
       ))}
       
+      <AnimatePresence>
+        {activeVideo && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{
+              position: 'fixed', inset: 0, zIndex: 100,
+              backgroundColor: 'rgba(0,0,0,0.85)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              padding: '20px', backdropFilter: 'blur(5px)'
+            }}
+            onClick={() => setActiveVideo(null)}
+          >
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              style={{ position: 'relative', width: '100%', maxWidth: '1000px', backgroundColor: '#000', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)' }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button 
+                onClick={() => setActiveVideo(null)}
+                style={{ 
+                  position: 'absolute', top: '16px', right: '16px', 
+                  background: 'rgba(255,255,255,0.2)', color: 'white', 
+                  border: 'none', borderRadius: '50%', width: '40px', height: '40px', 
+                  cursor: 'pointer', zIndex: 10, display: 'flex', alignItems: 'center', 
+                  justifyContent: 'center', fontSize: '20px', backdropFilter: 'blur(4px)'
+                }}
+              >
+                ✕
+              </button>
+              {/* Added a 16:9 aspect ratio container */}
+              <div style={{ position: 'relative', paddingTop: '56.25%' }}>
+                <video 
+                  src={activeVideo} 
+                  controls 
+                  autoPlay 
+                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <style>{`
         @media (max-width: 900px) {
           .service-layout > div {
