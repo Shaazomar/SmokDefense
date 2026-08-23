@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import { SmoothScrollProvider } from "@/components/layout/SmoothScrollProvider";
 import { Nav } from "@/components/layout/Nav";
+import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -22,21 +23,22 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SmokDefense — Intelligent Smoke Management",
+  title: "SmokDefense — Intelligent Smoke Management & Life-Safety Infrastructure",
   description:
-    "A centralized digital layer for complex building life-safety systems.",
+    "The digital intelligence layer for complex building life-safety systems. Connecting professional smoke-control hardware, building networks and centralized software into one operational platform.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-canvas text-ink">
+      <body className="min-h-full bg-canvas text-ink flex flex-col justify-between">
         <SmoothScrollProvider>
           <Nav />
-          {children}
+          <div className="flex-1">{children}</div>
+          <Footer />
         </SmoothScrollProvider>
       </body>
     </html>

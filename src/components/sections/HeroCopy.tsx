@@ -11,15 +11,9 @@ type Phase = "system" | "headline0" | "headline1" | "main";
 const layerClass = "col-start-1 row-start-1";
 const headlineClass = cn(
   layerClass,
-  "font-display text-[clamp(3rem,10vw,8rem)] font-semibold uppercase leading-[0.95] tracking-tight text-ink",
+  "font-display text-[clamp(3.2rem,11vw,9rem)] font-semibold uppercase leading-[0.92] tracking-tight text-ink",
 );
 
-/**
- * All phases stay mounted, stacked in one CSS grid cell, and cross-fade via
- * opacity/y driven directly by `phase` state — no AnimatePresence mount/
- * unmount cycling, which made this fragile to the intro's own timing (an
- * exiting element's animation could collide with the next phase's enter).
- */
 export function HeroCopy() {
   const reducedMotion = useReducedMotion();
   const [phase, setPhase] = useState<Phase>("system");
@@ -35,19 +29,35 @@ export function HeroCopy() {
     return () => timers.forEach(clearTimeout);
   }, [reducedMotion]);
 
-  // Reduced-motion visitors skip straight to the final content, no timers involved.
   const effectivePhase: Phase = reducedMotion ? "main" : phase;
   const isVisible = (target: Phase) => effectivePhase === target;
 
   return (
-    <div className="pointer-events-none absolute inset-0 grid place-items-center px-6 text-center">
+    <div className="pointer-events-none absolute inset-0 grid place-items-center px-6 text-center z-10">
+      {/* Technical Status Indicator Badge in Top Left */}
+      <div className="pointer-events-auto absolute left-6 top-24 hidden flex-col items-start gap-1 font-mono text-[10px] uppercase tracking-widest text-ink-soft md:flex md:left-10 md:top-28">
+        <div className="flex items-center gap-2 border-b border-line pb-1">
+          <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+          <span className="font-semibold text-ink">SYSTEM</span>
+          <span className="text-accent font-mono">READY</span>
+        </div>
+        <div className="flex items-center gap-2 border-b border-line pb-1">
+          <span className="font-semibold text-ink">ARCHITECTURE</span>
+          <span className="text-ink-soft">CONNECTED</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="font-semibold text-ink">MONITORING</span>
+          <span className="text-accent font-mono">ACTIVE</span>
+        </div>
+      </div>
+
       <motion.p
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: isVisible("system") ? 1 : 0, y: isVisible("system") ? 0 : -16 }}
         transition={{ duration: 0.6 }}
         className={cn(layerClass, "font-mono text-xs uppercase tracking-[0.3em] text-ink-faint")}
       >
-        System / Initializing
+        System / Initializing...
       </motion.p>
 
       <motion.h1
@@ -72,19 +82,25 @@ export function HeroCopy() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: isVisible("main") ? 1 : 0, y: isVisible("main") ? 0 : 16 }}
         transition={{ duration: 0.7 }}
-        className={cn(layerClass, "flex flex-col items-center gap-6")}
+        className={cn(layerClass, "flex flex-col items-center gap-6 max-w-4xl")}
       >
-        <h1 className="font-display text-[clamp(2.5rem,7vw,6rem)] font-semibold uppercase leading-[0.95] tracking-tight text-ink">
-          Intelligent Smoke Management
+        <span className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-accent">
+          Intelligent Smoke Management & Life-Safety Infrastructure
+        </span>
+        
+        <h1 className="font-display text-[clamp(2.5rem,7vw,5.5rem)] font-semibold uppercase leading-[0.95] tracking-tight text-ink">
+          The digital intelligence layer for complex building life-safety systems.
         </h1>
-        <p className="text-balance max-w-xl font-sans text-base text-ink-soft md:text-lg">
-          A centralized digital layer for complex building life-safety systems.
+
+        <p className="text-balance max-w-2xl font-sans text-sm text-ink-soft md:text-base">
+          Connecting professional smoke-control hardware, building networks and centralized software into one operational platform.
         </p>
-        <div className="flex flex-col items-center gap-4 pt-2 sm:flex-row">
+
+        <div className="flex flex-col items-center gap-4 pt-4 sm:flex-row">
           <a
-            href="#platform"
+            href="#problem"
             className={cn(
-              "rounded-full bg-ink px-6 py-3 font-mono text-xs uppercase tracking-widest text-white transition-colors hover:bg-accent",
+              "rounded-full bg-ink px-8 py-3.5 font-mono text-xs uppercase tracking-widest text-white transition-all hover:bg-accent hover:shadow-lg",
               isVisible("main") ? "pointer-events-auto" : "pointer-events-none",
             )}
           >
@@ -93,7 +109,7 @@ export function HeroCopy() {
           <a
             href="/contact"
             className={cn(
-              "font-mono text-xs uppercase tracking-widest text-ink-soft transition-colors hover:text-ink",
+              "rounded-full border border-line bg-canvas/80 px-8 py-3.5 font-mono text-xs uppercase tracking-widest text-ink transition-colors hover:border-ink hover:bg-canvas",
               isVisible("main") ? "pointer-events-auto" : "pointer-events-none",
             )}
           >

@@ -1,11 +1,17 @@
-import { StubPage } from "@/components/sections/StubPage";
+import { IndustriesSection } from "@/components/sections/IndustriesSection";
+import { CaseStudiesSection } from "@/components/sections/CaseStudiesSection";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Building Vertical Industries | High-Rise, Hospitals, Hotels | SmokDefense",
+  description: "Discover smoke control and life-safety infrastructure solutions tailored for high-rise towers, hospitals, hotels, logistics, and transit hubs.",
+};
 
 export default function IndustriesPage() {
   return (
-    <StubPage
-      eyebrow="Industries"
-      title="Different Buildings. One Digital Layer."
-      description="High-rises, hotels, hospitals, commercial buildings, and industrial facilities — each with its own smoke-control demands."
-    />
+    <main className="pt-20 bg-canvas">
+      <IndustriesSection />
+      <CaseStudiesSection />
+    </main>
   );
 }
