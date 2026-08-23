@@ -23,7 +23,7 @@ export function useStageOrchestrator(pinRef: RefObject<HTMLElement | null>) {
         scrollTrigger: {
           trigger: pinRef.current,
           start: "top top",
-          end: `+=${STAGES.length * 100}%`,
+          end: "+=250%",
           scrub: 1,
           pin: true,
         },
