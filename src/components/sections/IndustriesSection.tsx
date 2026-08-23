@@ -1,112 +1,101 @@
 "use client";
 
 import React, { useState } from "react";
-import { INDUSTRY_VERTICALS } from "@/lib/data/homepageData";
-import { Building2, Hospital, Hotel, Factory, Train, Briefcase } from "lucide-react";
+import { DemoTag } from "@/components/ui/DemoTag";
 
-const ICONS = [Building2, Hospital, Hotel, Briefcase, Factory, Train];
+const INDUSTRIES = [
+  { id: "high-rise", title: "HIGH-RISE", desc: "Stairwell pressurization and multi-zone vertical shaft isolation for towers exceeding 50 meters." },
+  { id: "residential", title: "RESIDENTIAL", desc: "Corridor smoke ventilation and compartmentation protecting multi-family egress paths." },
+  { id: "hotels", title: "HOTELS", desc: "Acoustically insulated smoke dampers and automated atrium exhaust for high occupancy hospitality buildings." },
+  { id: "hospitals", title: "HOSPITALS", desc: "Cleanroom pressurization and progressive horizontal zone evacuation for non-ambulatory patient care." },
+  { id: "commercial", title: "COMMERCIAL", desc: "Integrated BMS life-safety gateways and automated damper stroke testing for corporate campuses." },
+  { id: "industrial", title: "INDUSTRIAL", desc: "Heavy-duty NEMA 4X control enclosures and high-volume smoke extraction for manufacturing facilities." },
+  { id: "car-parks", title: "CAR PARKS", desc: "CO gas monitoring and impulse jet fan extraction for enclosed underground parking structures." },
+  { id: "atriums", title: "ATRIUMS", desc: "Natural buoyancy roof ventilators and automatic drop smoke curtains for large open volume spaces." },
+  { id: "infrastructure", title: "INFRASTRUCTURE", desc: "Subway tunnel ventilation, transit hubs, and subterranean passenger terminal life-safety systems." },
+];
 
 export function IndustriesSection() {
-  const [selectedIdx, setSelectedIdx] = useState(0);
-  const current = INDUSTRY_VERTICALS[selectedIdx];
-  const Icon = ICONS[selectedIdx];
+  const [activeIdx, setActiveIdx] = useState(0);
+  const current = INDUSTRIES[activeIdx];
 
   return (
     <section id="industries" className="relative min-h-screen w-full bg-canvas px-6 py-28 md:px-12 lg:px-20 border-t border-line">
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
-        <div className="flex flex-col items-start gap-3 border-b border-line pb-8">
-          <span className="font-mono text-xs font-semibold uppercase tracking-widest text-accent">14 / INDUSTRIES</span>
-          <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-semibold uppercase leading-[0.95] tracking-tight text-ink">
+        <div className="flex flex-col items-start gap-4 border-b border-line pb-8">
+          <div className="flex items-center gap-3">
+            <span className="font-mono text-xs font-bold uppercase tracking-widest text-accent">13 / INDUSTRIES</span>
+            <DemoTag label="SECTOR EXPERTISE" />
+          </div>
+
+          <h2 className="font-display text-[clamp(2.5rem,6.5vw,5.5rem)] font-bold uppercase leading-[0.92] tracking-tight text-ink">
             TAILORED FOR CRITICAL<br />
-            <span className="text-ink-soft">BUILDING ENVIRONMENTS.</span>
+            <span className="text-accent font-display">BUILDING ENVIRONMENTS.</span>
           </h2>
-          <p className="max-w-2xl font-sans text-sm text-ink-soft">
-            From 50-story commercial towers and sterile surgical suites to airport terminals and chemical processing plants.
+
+          <p className="max-w-3xl font-sans text-sm text-ink-soft leading-relaxed md:text-base">
+            SmokeDefence engineers smoke management solutions across diverse building typologies—addressing unique architectural geometries, occupancy risks, and regional life-safety requirements.
           </p>
         </div>
 
-        {/* 6 Industry Vertical Tab Bar */}
-        <div className="my-8 flex flex-wrap gap-2 border-b border-line pb-4">
-          {INDUSTRY_VERTICALS.map((ind, idx) => {
-            const isSelected = selectedIdx === idx;
-            return (
-              <button
-                key={ind.id}
-                onClick={() => setSelectedIdx(idx)}
-                className={`flex items-center gap-2 border px-4 py-2.5 font-mono text-xs uppercase transition-all ${
-                  isSelected
-                    ? "border-ink bg-ink text-white"
-                    : "border-line bg-canvas text-ink-soft hover:border-ink"
-                }`}
-              >
-                <span>{ind.title}</span>
-              </button>
-            );
-          })}
+        {/* 9 Industry Buttons Grid */}
+        <div className="my-8 flex flex-wrap gap-2 border-b border-line pb-4 font-mono text-xs font-bold">
+          {INDUSTRIES.map((ind, idx) => (
+            <button
+              key={ind.id}
+              onClick={() => setActiveIdx(idx)}
+              className={`border px-4 py-2 uppercase transition-all ${
+                activeIdx === idx
+                  ? "border-accent bg-accent text-white"
+                  : "border-line bg-canvas text-ink-soft hover:border-ink hover:text-ink"
+              }`}
+            >
+              {ind.title}
+            </button>
+          ))}
         </div>
 
-        {/* Selected Industry Detail Card */}
-        <div className="mt-8 border border-line bg-white p-8 md:p-12">
+        {/* Selected Industry Card */}
+        <div className="border border-line bg-white p-8 md:p-10">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center">
-            <div className="flex flex-col items-start gap-6 lg:col-span-7">
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-line bg-canvas text-accent">
-                  <Icon className="h-6 w-6" />
-                </div>
-                <span className="font-mono text-xs font-semibold uppercase tracking-widest text-accent">
-                  VERTICAL [{selectedIdx + 1} OF 6]
-                </span>
-              </div>
+            <div className="flex flex-col items-start gap-4 lg:col-span-7">
+              <span className="font-mono text-xs font-bold uppercase tracking-widest text-accent">
+                SECTOR [{activeIdx + 1} OF 9] // {current.title}
+              </span>
 
-              <h3 className="font-display text-3xl font-semibold uppercase text-ink md:text-4xl">
-                {current.title}
+              <h3 className="font-display text-3xl font-bold uppercase text-ink md:text-4xl">
+                {current.title} LIFE-SAFETY SYSTEMS
               </h3>
 
               <p className="font-sans text-base text-ink-soft leading-relaxed">
-                {current.description}
+                {current.desc}
               </p>
 
-              <div className="w-full space-y-4 border-t border-line pt-6">
-                <div>
-                  <h4 className="font-mono text-xs font-semibold uppercase tracking-wider text-ink">PRIMARY ENGINEERING CHALLENGE</h4>
-                  <p className="mt-1 font-sans text-xs text-ink-soft leading-relaxed">{current.challenges}</p>
-                </div>
-                <div>
-                  <h4 className="font-mono text-xs font-semibold uppercase tracking-wider text-accent">SMOKDEFENSE SOLUTION MATRIX</h4>
-                  <p className="mt-1 font-sans text-xs text-ink-soft leading-relaxed">{current.solution}</p>
-                </div>
+              <div className="pt-2">
+                <a
+                  href="/contact"
+                  className="rounded-full bg-ink px-6 py-2.5 font-mono text-xs uppercase tracking-widest text-white transition-all hover:bg-accent"
+                >
+                  Consult an Industry Engineer →
+                </a>
               </div>
             </div>
 
-            {/* Right Industry Visual Spec Box */}
-            <div className="rounded border border-line bg-canvas p-8 font-mono text-xs lg:col-span-5 flex flex-col justify-between min-h-[300px]">
-              <div className="flex justify-between text-ink-faint">
-                <span>VERTICAL CODE: {current.id.toUpperCase()}</span>
-                <span>DEPLOYMENT READY</span>
+            <div className="border border-line bg-canvas p-6 font-mono text-xs lg:col-span-5 space-y-3">
+              <span className="font-bold text-ink block mb-2">ENGINEERING HIGHLIGHTS:</span>
+              <div className="flex justify-between border-b border-line/40 pb-2">
+                <span>OCCUPANCY TYPE:</span>
+                <span className="font-bold text-ink uppercase">{current.title}</span>
               </div>
-
-              <div className="my-6 space-y-3">
-                <div className="flex justify-between border-b border-line/60 pb-2">
-                  <span className="text-ink-soft">RISK PROFILE:</span>
-                  <span className="font-bold text-accent">HIGH CAPACITY / CRITICAL</span>
-                </div>
-                <div className="flex justify-between border-b border-line/60 pb-2">
-                  <span className="text-ink-soft">RECOMMENDED NETWORK:</span>
-                  <span className="font-bold text-ink">IP500 DUAL-BAND MESH</span>
-                </div>
-                <div className="flex justify-between border-b border-line/60 pb-2">
-                  <span className="text-ink-soft">HARDWARE SPEC:</span>
-                  <span className="font-bold text-ink">NEMA 4X / UUKL PANELS</span>
-                </div>
+              <div className="flex justify-between border-b border-line/40 pb-2">
+                <span>CONTROL ARCHITECTURE:</span>
+                <span className="font-bold text-accent">INTEGRATED UUKL & IP500</span>
               </div>
-
-              <a
-                href="/industries"
-                className="inline-flex items-center gap-2 font-mono text-xs uppercase text-accent hover:underline"
-              >
-                View Full Industry Case Studies →
-              </a>
+              <div className="flex justify-between">
+                <span>COMPLIANCE BOUNDARY:</span>
+                <span className="font-bold text-emerald-600">APPLICABLE REGIONAL CODES</span>
+              </div>
             </div>
           </div>
         </div>

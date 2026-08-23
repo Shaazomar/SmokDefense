@@ -1,60 +1,101 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowDown, CheckCircle2 } from "lucide-react";
+import { DemoTag } from "@/components/ui/DemoTag";
 
-const DEPLOYMENT_STEPS = [
-  { step: "01", name: "ENGINEERING", desc: "System architecture design, airflow calculations, and UUKL panel sequence specifications." },
-  { step: "02", name: "FACTORY", desc: "Assembly of NEMA 4X control enclosures, LiFePO4 battery reserves, and edge gateway programming." },
-  { step: "03", name: "CONFIGURATION", desc: "Pre-flashing IP500 wireless network keys and local building zone mapping matrices." },
-  { step: "04", name: "SHIPMENT", desc: "International freight logistics for hardware enclosures and field sensor modules." },
-  { step: "05", name: "SITE INSTALLATION", desc: "Local electrical contractor mounting of panels, sensor wiring loops, and gateway connection." },
-  { step: "06", name: "COMMISSIONING", desc: "Automated device discovery scan, zone binding, and stairwell pressure differential balancing." },
-  { step: "07", name: "TESTING", desc: "Closed-loop damper stroke verification, fan current testing, and initial inspection PDF export." },
-  { step: "08", name: "HANDOVER", desc: "Client digital key transfer, operator login credentials, and facility staff training." },
-  { step: "09", name: "REMOTE SUPPORT", desc: "Continuous 24/7 telemetry monitoring, gateway security updates, and engineering helpdesk." },
-  { step: "10", name: "MAINTENANCE", desc: "Long-term diagnostic health surveillance, automated off-peak damper cycling, and battery checks." },
-];
+const LIFECYCLE_STAGES = [
+  "DESIGN",
+  "ENGINEERING",
+  "MANUFACTURING",
+  "INSTALLATION",
+  "COMMISSIONING",
+  "HANDOVER",
+  "MONITORING",
+  "MAINTENANCE",
+  "UPGRADE",
+] as const;
 
 export function DeploymentSection() {
-  const [activeIdx, setActiveIdx] = useState(5);
+  const [activeStage, setActiveStage] = useState<number>(4);
 
   return (
-    <section className="relative min-h-screen w-full bg-canvas px-6 py-28 md:px-12 lg:px-20 border-t border-line">
+    <section id="project-lifecycle" className="relative min-h-screen w-full bg-canvas px-6 py-28 md:px-12 lg:px-20 border-t border-line">
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
-        <div className="flex flex-col items-start gap-3 border-b border-line pb-8">
-          <span className="font-mono text-xs font-semibold uppercase tracking-widest text-accent">17 / DEPLOYMENT</span>
-          <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-semibold uppercase leading-[0.95] tracking-tight text-ink">
-            END-TO-END DEPLOYMENT<br />
-            <span className="text-ink-soft">LIFECYCLE.</span>
+        <div className="flex flex-col items-start gap-4 border-b border-line pb-8">
+          <div className="flex items-center gap-3">
+            <span className="font-mono text-xs font-bold uppercase tracking-widest text-accent">17 / PROJECT LIFECYCLE</span>
+            <DemoTag label="END-TO-END METHODOLOGY" />
+          </div>
+
+          <h2 className="font-display text-[clamp(2.5rem,6.5vw,5.5rem)] font-bold uppercase leading-[0.92] tracking-tight text-ink">
+            PROJECT LIFECYCLE PIPELINE.
           </h2>
-          <p className="max-w-2xl font-sans text-sm text-ink-soft">
-            SmokDefense supports every phase of international project execution—from initial engineering design to factory pre-assembly, site commissioning, and 24/7 remote diagnostic support.
+
+          <p className="max-w-3xl font-sans text-sm text-ink-soft leading-relaxed md:text-base">
+            SmokeDefence manages the complete project lifecycle from initial architectural design through engineering submittals, panel manufacturing, installation, specialist commissioning, handover documentation, monitoring, long-term maintenance, and system upgrades.
           </p>
         </div>
 
-        {/* Visual Deployment Timeline Chain */}
-        <div className="my-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-5">
-          {DEPLOYMENT_STEPS.map((step, idx) => {
-            const isActive = activeIdx === idx;
-            return (
-              <div
-                key={step.step}
-                onClick={() => setActiveIdx(idx)}
-                className={`cursor-pointer border p-5 transition-all font-mono text-xs ${
-                  isActive ? "border-accent bg-accent/5 font-bold text-ink shadow-sm" : "border-line bg-canvas text-ink-soft hover:border-ink"
-                }`}
-              >
-                <div className="flex items-center justify-between text-accent">
-                  <span>[{step.step}]</span>
-                  {idx < 9 && <span className="text-[10px] text-ink-faint">↓</span>}
-                </div>
-                <h3 className="mt-2 font-display text-base font-semibold uppercase text-ink">{step.name}</h3>
-                <p className="mt-2 font-sans text-[11px] text-ink-soft leading-relaxed">{step.desc}</p>
+        {/* Animated Lifecycle Pipeline Bar */}
+        <div className="my-8 flex flex-wrap gap-2 font-mono text-xs font-bold border-b border-line pb-4">
+          {LIFECYCLE_STAGES.map((stage, idx) => (
+            <button
+              key={stage}
+              onClick={() => setActiveStage(idx)}
+              className={`border px-4 py-2 uppercase transition-all ${
+                activeStage === idx
+                  ? "border-accent bg-accent text-white"
+                  : "border-line bg-canvas text-ink-soft hover:border-ink hover:text-ink"
+              }`}
+            >
+              0{idx + 1}. {stage}
+            </button>
+          ))}
+        </div>
+
+        {/* Selected Stage Detail Display */}
+        <div className="border border-line bg-white p-8">
+          <div className="flex justify-between items-center border-b border-line pb-4 font-mono text-xs">
+            <span className="font-bold text-accent">[LIFECYCLE PIPELINE // STAGE 0{activeStage + 1}]</span>
+            <span className="text-ink-soft">STAGE: {LIFECYCLE_STAGES[activeStage]}</span>
+          </div>
+
+          <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-12">
+            <div className="flex flex-col items-start gap-4 lg:col-span-6">
+              <span className="font-mono text-xs font-bold text-accent">STAGE OVERVIEW</span>
+              <h3 className="font-display text-3xl font-bold uppercase text-ink">
+                {LIFECYCLE_STAGES[activeStage]} STAGE EXECUTION
+              </h3>
+              <p className="font-sans text-sm text-ink-soft leading-relaxed">
+                {activeStage === 5 ? (
+                  "Handover documentation includes full component location schedules, commissioning certificates, operating instructions, logic matrices, and defined maintenance responsibilities."
+                ) : (
+                  `Structured ${LIFECYCLE_STAGES[activeStage].toLowerCase()} workflow ensuring compliance with engineering specifications and local building regulations.`
+                )}
+              </p>
+            </div>
+
+            <div className="border border-line bg-canvas p-6 lg:col-span-6 space-y-3 font-mono text-xs">
+              <span className="font-bold text-ink block mb-2">HANDOVER & MILESTONE DELIVERABLES:</span>
+              <div className="flex justify-between border-b border-line/40 pb-2">
+                <span>COMPONENT SCHEDULES:</span>
+                <span className="font-bold text-ink">MAPPED & LOGGED</span>
               </div>
-            );
-          })}
+              <div className="flex justify-between border-b border-line/40 pb-2">
+                <span>COMMISSIONING CERTIFICATES:</span>
+                <span className="font-bold text-emerald-600">DIGITAL PDF VERIFIED</span>
+              </div>
+              <div className="flex justify-between border-b border-line/40 pb-2">
+                <span>OPERATING INSTRUCTIONS:</span>
+                <span className="font-bold text-ink">FACILITY MANUALS SUPPLIED</span>
+              </div>
+              <div className="flex justify-between">
+                <span>MAINTENANCE RESPONSIBILITIES:</span>
+                <span className="font-bold text-accent">DEFINED IN CONTRACT</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

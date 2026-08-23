@@ -3,198 +3,204 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { DemoTag } from "@/components/ui/DemoTag";
-import { Layers, ShieldAlert, Wind, Activity, CheckCircle2, Cpu } from "lucide-react";
+import { AlertTriangle, ShieldAlert, Wind, Layers, ArrowUpRight, Flame } from "lucide-react";
 
-const LAYERS = [
+const PROPAGATION_PATHS = [
   {
-    id: "smoke-zones",
-    label: "Smoke Zones",
-    icon: ShieldAlert,
-    status: "Containment Active",
-    desc: "Compartmentalized fire barriers and smoke containment zones prevent toxic smoke from spreading horizontally across floorplates.",
-    metric: "12 Zones Monitored",
+    id: "corridors",
+    name: "Corridors & Egress Routes",
+    hazard: "Rapid horizontal smoke travel impairing occupant exit visibility.",
+    impact: "Visibility reduction under 2 meters in less than 90 seconds.",
+    controlStrategy: "Cross-corridor smoke barriers and high-level exhaust dampers.",
   },
   {
-    id: "stairwells",
-    label: "Stairwells",
-    icon: Wind,
-    status: "Pressurized (+50 Pa)",
-    desc: "Dedicated injection fans maintain positive air pressure in egress stairwells, creating an invisible air barrier against smoke ingress.",
-    metric: "2 Shafts Active",
+    id: "lobbies",
+    name: "Elevator Lobbies",
+    hazard: "Vertical chimney draw pulling smoke into upper level lobbies.",
+    impact: "Contamination of primary refuge floors and elevator shafts.",
+    controlStrategy: "Lobby pressure differentiation and motorized shaft isolation.",
   },
   {
-    id: "fans",
-    label: "Exhaust Fans",
-    icon: Activity,
-    status: "Standby / Ready",
-    desc: "High-capacity roof-mounted mechanical fans draw smoke out of atrium spaces and discharge it safely into the external atmosphere.",
-    metric: "36 Fans Connected",
+    id: "staircases",
+    name: "Protected Staircases",
+    hazard: "Smoke ingress making primary emergency exit routes impassable.",
+    impact: "Trapping occupants above the fire floor during evacuation.",
+    controlStrategy: "Positive air pressure (+50 Pa) injection preventing smoke entry.",
   },
   {
-    id: "dampers",
-    label: "Fire Dampers",
-    icon: CheckCircle2,
-    status: "End-Switch Verified",
-    desc: "Motorized smoke dampers automatically open or close based on hardwired UUKL safety matrices to control mechanical ventilation paths.",
-    metric: "128 Dampers Synced",
+    id: "shafts",
+    name: "Vertical Utility Shafts",
+    hazard: "Stack effect accelerating hot gases up the height of the tower.",
+    impact: "Uncontrolled thermal spread to distant non-fire floors.",
+    controlStrategy: "Automated UUKL fire damper closure on non-affected levels.",
   },
   {
-    id: "pressure",
-    label: "Pressure Zones",
-    icon: Layers,
-    status: "Differential Normal",
-    desc: "Precision differential pressure transmitters continuously monitor air pressure gradients across stairwell doors and elevator shafts.",
-    metric: "48 Transmitters",
+    id: "hvac",
+    name: "HVAC Duct Network",
+    hazard: "Recirculation fans distributing toxic fumes building-wide.",
+    impact: "Exposure to hazardous carbon monoxide and toxic combustion gases.",
+    controlStrategy: "Instant fan shutdown and motorized duct smoke damper isolation.",
   },
   {
-    id: "sensors",
-    label: "Optical Sensors",
-    icon: Cpu,
-    status: "Supervised Loop",
-    desc: "Dual-ray optical smoke sensors detect micro-particles in ductwork and return air plenums before thermal escalation occurs.",
-    metric: "240 Detectors",
+    id: "open-spaces",
+    name: "Atriums & Open Spaces",
+    hazard: "Thermal smoke plume expansion filling large volume spaces.",
+    impact: "Smoke layer descent obscuring all floor levels simultaneously.",
+    controlStrategy: "High-level natural or mechanical smoke exhaust ventilation.",
+  },
+  {
+    id: "multiple-floors",
+    name: "Multi-Floor Vertical Risk",
+    hazard: "Simultaneous smoke exposure across complex floorplate geometry.",
+    impact: "Systemic risk to occupants, first responders, and property.",
+    controlStrategy: "Zoned floorplate smoke management matrix with live telemetry.",
   },
 ];
 
 export function ProblemSection() {
-  const [selectedLayer, setSelectedLayer] = useState(LAYERS[0]);
+  const [activePath, setActivePath] = useState(PROPAGATION_PATHS[0]);
 
   return (
-    <section id="problem" className="relative min-h-screen w-full bg-canvas px-6 py-28 md:px-12 lg:px-20">
+    <section id="problem" className="relative min-h-screen w-full bg-canvas px-6 py-28 md:px-12 lg:px-20 border-t border-line">
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
-        <div className="flex flex-col items-start gap-3 border-b border-line pb-8">
+        <div className="flex flex-col items-start gap-4 border-b border-line pb-8">
           <div className="flex items-center gap-3">
-            <span className="font-mono text-xs font-semibold uppercase tracking-widest text-accent">02 / THE PROBLEM</span>
-            <DemoTag />
+            <span className="font-mono text-xs font-bold uppercase tracking-widest text-accent">02 / THE PROBLEM</span>
+            <DemoTag label="PHYSICS & HAZARD MODEL" />
           </div>
-          <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-semibold uppercase leading-[0.95] tracking-tight text-ink">
-            A FIRE IS AN EVENT.<br />
-            <span className="text-ink-soft">SMOKE IS A SYSTEM PROBLEM.</span>
+          
+          <h2 className="font-display text-[clamp(2.5rem,6.5vw,5.5rem)] font-bold uppercase leading-[0.92] tracking-tight text-ink">
+            FIRE IS THE EVENT.<br />
+            <span className="text-accent font-display">SMOKE IS THE MOVING SYSTEM.</span>
           </h2>
+
+          <p className="max-w-3xl font-sans text-sm text-ink-soft leading-relaxed md:text-base">
+            In modern complex buildings, smoke is not a static byproduct—it is a fluid system driven by buoyancy, thermal expansion, stack effect, and pressure differences. Without engineered smoke control, smoke rapidly impairs visibility, exposes occupants to hazardous toxic gases, and obstructs vital escape and rescue routes.
+          </p>
         </div>
 
-        {/* 6 Concise Problem Blocks Grid */}
-        <div className="grid grid-cols-1 gap-6 py-12 md:grid-cols-2 lg:grid-cols-3">
-          <div className="border border-line bg-canvas p-6 transition-all hover:border-ink">
-            <span className="font-mono text-xs text-accent">01.</span>
-            <h3 className="mt-2 font-display text-lg font-semibold uppercase text-ink">Complex Propagation</h3>
+        {/* 3 Core Hazard Indicators */}
+        <div className="grid grid-cols-1 gap-6 py-10 md:grid-cols-3">
+          <div className="border border-line bg-canvas p-6 transition-all hover:border-red-500/50">
+            <div className="flex items-center justify-between text-red-600">
+              <AlertTriangle className="h-5 w-5" />
+              <span className="font-mono text-xs uppercase font-bold">HAZARD 01</span>
+            </div>
+            <h3 className="mt-3 font-display text-lg font-bold uppercase text-ink">Visibility Impairment</h3>
             <p className="mt-2 font-sans text-xs text-ink-soft leading-relaxed">
-              Smoke can move rapidly through interconnected building spaces, elevator shafts, stairwells, and utility service risers via buoyancy and stack effect.
+              Dense soot and particulate matter degrade optical clarity within seconds, obscuring exit signage and disorienting evacuating occupants.
             </p>
           </div>
-          <div className="border border-line bg-canvas p-6 transition-all hover:border-ink">
-            <span className="font-mono text-xs text-accent">02.</span>
-            <h3 className="mt-2 font-display text-lg font-semibold uppercase text-ink">HVAC Dynamics</h3>
+
+          <div className="border border-line bg-canvas p-6 transition-all hover:border-red-500/50">
+            <div className="flex items-center justify-between text-red-600">
+              <Flame className="h-5 w-5" />
+              <span className="font-mono text-xs uppercase font-bold">HAZARD 02</span>
+            </div>
+            <h3 className="mt-3 font-display text-lg font-bold uppercase text-ink">Toxic Gas Exposure</h3>
             <p className="mt-2 font-sans text-xs text-ink-soft leading-relaxed">
-              HVAC ventilation systems can inadvertently distribute smoke across floors unless controlled by engineered smoke management sequences.
+              Hot combustion gases containing carbon monoxide and hydrogen cyanide migrate through utility shafts faster than occupants can descend stairs.
             </p>
           </div>
-          <div className="border border-line bg-canvas p-6 transition-all hover:border-ink">
-            <span className="font-mono text-xs text-accent">03.</span>
-            <h3 className="mt-2 font-display text-lg font-semibold uppercase text-ink">Distributed Components</h3>
+
+          <div className="border border-line bg-canvas p-6 transition-all hover:border-red-500/50">
+            <div className="flex items-center justify-between text-red-600">
+              <ShieldAlert className="h-5 w-5" />
+              <span className="font-mono text-xs uppercase font-bold">HAZARD 03</span>
+            </div>
+            <h3 className="mt-3 font-display text-lg font-bold uppercase text-ink">Egress & Rescue Obstruction</h3>
             <p className="mt-2 font-sans text-xs text-ink-soft leading-relaxed">
-              Large modern buildings contain hundreds of independent dampers, fans, sensors, and controllers that must act in precise synchrony.
-            </p>
-          </div>
-          <div className="border border-line bg-canvas p-6 transition-all hover:border-ink">
-            <span className="font-mono text-xs text-accent">04.</span>
-            <h3 className="mt-2 font-display text-lg font-semibold uppercase text-ink">Multi-Zone Visibility</h3>
-            <p className="mt-2 font-sans text-xs text-ink-soft leading-relaxed">
-              Facility teams need instant, real-time spatial visibility across all floors and zones to evaluate structural smoke status during alarms.
-            </p>
-          </div>
-          <div className="border border-line bg-canvas p-6 transition-all hover:border-ink">
-            <span className="font-mono text-xs text-accent">05.</span>
-            <h3 className="mt-2 font-display text-lg font-semibold uppercase text-ink">Equipment Feedback</h3>
-            <p className="mt-2 font-sans text-xs text-ink-soft leading-relaxed">
-              Commanding a fan or damper is insufficient; systems must continuously verify physical position switches and airflow velocity feedback.
-            </p>
-          </div>
-          <div className="border border-line bg-canvas p-6 transition-all hover:border-ink">
-            <span className="font-mono text-xs text-accent">06.</span>
-            <h3 className="mt-2 font-display text-lg font-semibold uppercase text-ink">Maintenance Readiness</h3>
-            <p className="mt-2 font-sans text-xs text-ink-soft leading-relaxed">
-              Continuous diagnostic testing and battery monitoring ensure equipment operates flawlessly when critical life-safety emergencies occur.
+              Uncontrolled smoke accumulation in stairwells blocks emergency exit routes and prevents fire service personnel from reaching the fire floor.
             </p>
           </div>
         </div>
 
-        {/* Interactive Building Cross-Section Inspector */}
-        <div className="mt-8 border border-line bg-white p-6 md:p-8">
+        {/* Visual Smoke Movement Pathway Explorer */}
+        <div className="mt-6 border border-line bg-white p-6 md:p-8">
           <div className="flex flex-col justify-between gap-4 border-b border-line pb-6 md:flex-row md:items-center">
             <div>
-              <span className="font-mono text-xs uppercase tracking-widest text-accent">[INTERACTIVE CROSS-SECTION]</span>
-              <h3 className="font-display text-2xl font-semibold uppercase text-ink">Building Life-Safety Layer Inspector</h3>
+              <span className="font-mono text-xs font-bold uppercase tracking-widest text-accent">[SPATIAL PROPAGATION EXPLORER]</span>
+              <h3 className="font-display text-2xl font-bold uppercase text-ink">Smoke Movement Across Building Geometries</h3>
             </div>
-            <div className="flex flex-wrap gap-2">
-              {LAYERS.map((layer) => {
-                const Icon = layer.icon;
-                const active = selectedLayer.id === layer.id;
-                return (
-                  <button
-                    key={layer.id}
-                    onClick={() => setSelectedLayer(layer)}
-                    className={`flex items-center gap-2 border px-3 py-1.5 font-mono text-xs uppercase transition-all ${
-                      active ? "border-ink bg-ink text-white" : "border-line bg-canvas text-ink-soft hover:border-ink"
-                    }`}
-                  >
-                    <Icon className="h-3.5 w-3.5" />
-                    {layer.label}
-                  </button>
-                );
-              })}
-            </div>
+            <span className="font-mono text-xs text-ink-soft">SELECT PATHWAY BELOW:</span>
           </div>
 
-          {/* Active Layer Inspector Display */}
-          <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center">
-            {/* Visual Cross-Section Diagram Graphic */}
-            <div className="relative flex min-h-[300px] flex-col justify-between rounded border border-line bg-canvas/60 p-6 lg:col-span-7">
-              <div className="flex justify-between font-mono text-xs text-ink-faint">
-                <span>STRUCTURAL ROOF LEVEL (+120m)</span>
-                <span>EXHAUST PLENUM</span>
+          {/* Interactive Pathway Selector Tabs */}
+          <div className="my-6 flex flex-wrap gap-2">
+            {PROPAGATION_PATHS.map((path) => (
+              <button
+                key={path.id}
+                onClick={() => setActivePath(path)}
+                className={`border px-4 py-2 font-mono text-xs uppercase tracking-wider transition-all ${
+                  activePath.id === path.id
+                    ? "border-accent bg-accent text-white font-bold"
+                    : "border-line bg-canvas text-ink-soft hover:border-ink hover:text-ink"
+                }`}
+              >
+                {path.name}
+              </button>
+            ))}
+          </div>
+
+          {/* Detailed Movement Visualizer */}
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center pt-4">
+            <div className="relative flex min-h-[260px] flex-col justify-between rounded border border-line bg-canvas/80 p-6 lg:col-span-7">
+              <div className="flex items-center justify-between font-mono text-xs text-ink-faint border-b border-line/60 pb-3">
+                <span className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-red-500 animate-ping" />
+                  SIMULATED SMOKE VECTOR
+                </span>
+                <span className="font-bold text-ink uppercase">{activePath.name}</span>
               </div>
 
-              {/* Floor Layers Wireframe Simulation */}
-              <div className="my-6 space-y-3 font-mono text-xs">
-                <div className={`flex items-center justify-between border p-3 transition-colors ${selectedLayer.id === "stairwells" || selectedLayer.id === "pressure" ? "border-accent bg-accent/5 text-ink" : "border-line text-ink-soft"}`}>
-                  <span>STAIRWELL B SHAFT</span>
-                  <span className="font-bold text-accent">+50 Pa PRESSURIZED</span>
+              <div className="my-4 font-mono text-xs space-y-3">
+                <div className="flex justify-between border-b border-line/40 pb-2">
+                  <span className="text-ink-soft">FLUID DRIVER:</span>
+                  <span className="font-bold text-ink">Thermal Buoyancy & Stack Effect</span>
                 </div>
-                <div className={`flex items-center justify-between border p-3 transition-colors ${selectedLayer.id === "smoke-zones" ? "border-accent bg-accent/5 text-ink" : "border-line text-ink-soft"}`}>
-                  <span>FLOOR 18 SMOKE ZONE 03</span>
-                  <span className="font-bold text-ink">CONTAINMENT ACTIVE</span>
+                <div className="flex justify-between border-b border-line/40 pb-2">
+                  <span className="text-ink-soft">RISK PROFILE:</span>
+                  <span className="font-bold text-red-600">CRITICAL VISIBILITY IMPAIRMENT</span>
                 </div>
-                <div className={`flex items-center justify-between border p-3 transition-colors ${selectedLayer.id === "dampers" || selectedLayer.id === "fans" ? "border-accent bg-accent/5 text-ink" : "border-line text-ink-soft"}`}>
-                  <span>EXHAUST DAMPER DMP-18</span>
-                  <span className="font-bold text-accent">POSITION: OPEN (VERIFIED)</span>
+                <div className="flex justify-between border-b border-line/40 pb-2">
+                  <span className="text-ink-soft">SMOKEDEFENCE ACTION:</span>
+                  <span className="font-bold text-accent">ENGINEERED CONFINEMENT & EXHAUST</span>
                 </div>
               </div>
 
-              <div className="flex justify-between font-mono text-xs text-ink-faint">
-                <span>FOUNDATION BASEMENT (-10m)</span>
-                <span>IP500 GATEWAY ONLINE</span>
+              <div className="flex justify-between font-mono text-[10px] text-ink-faint border-t border-line/60 pt-3">
+                <span>ANALYSIS: DYNAMIC AIRFLOW MODELING</span>
+                <span>BUILDING SPECIFIC ENGINE</span>
               </div>
             </div>
 
-            {/* Selected Layer Info Panel */}
+            {/* Path Detail Breakdown */}
             <div className="flex flex-col gap-4 lg:col-span-5">
               <div className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-accent" />
-                <span className="font-mono text-xs font-semibold uppercase tracking-widest text-accent">
-                  LAYER STATUS: {selectedLayer.status}
+                <span className="h-2 w-2 rounded-full bg-red-500" />
+                <span className="font-mono text-xs font-bold uppercase tracking-widest text-red-600">
+                  HAZARD ANALYSIS
                 </span>
               </div>
-              <h4 className="font-display text-3xl font-semibold uppercase text-ink">
-                {selectedLayer.label}
+              
+              <h4 className="font-display text-2xl font-bold uppercase text-ink">
+                {activePath.name}
               </h4>
-              <p className="font-sans text-sm text-ink-soft leading-relaxed">
-                {selectedLayer.desc}
-              </p>
-              <div className="mt-4 border-t border-line pt-4 flex items-center justify-between font-mono text-xs">
-                <span className="text-ink-faint">ESTIMATED SCALE:</span>
-                <span className="font-semibold text-ink">{selectedLayer.metric}</span>
+
+              <div className="space-y-3 font-sans text-xs">
+                <div className="border-l-2 border-red-500 pl-3 py-1 bg-red-50/50">
+                  <span className="font-mono font-bold text-red-700 block">HAZARD MECHANISM:</span>
+                  <span className="text-ink-soft">{activePath.hazard}</span>
+                </div>
+                <div className="border-l-2 border-line pl-3 py-1">
+                  <span className="font-mono font-bold text-ink block">OCCUPANT IMPACT:</span>
+                  <span className="text-ink-soft">{activePath.impact}</span>
+                </div>
+                <div className="border-l-2 border-accent pl-3 py-1 bg-accent/5">
+                  <span className="font-mono font-bold text-accent block">ENGINEERED MITIGATION:</span>
+                  <span className="text-ink">{activePath.controlStrategy}</span>
+                </div>
               </div>
             </div>
           </div>
