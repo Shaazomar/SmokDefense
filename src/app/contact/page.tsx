@@ -1,97 +1,154 @@
-"use client";
+import type { Metadata } from "next";
+import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { PageHeader } from "@/components/ui/PageHeader";
+import { ClosingCTA } from "@/components/home/ClosingCTA";
+import { CallForDemo } from "@/components/demo/CallForDemo";
+import { CONTACT } from "@/lib/data/site";
+import { SERVICES } from "@/lib/data/services";
+import { SYSTEMS } from "@/lib/data/systems";
 
-import React, { useState } from "react";
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Talk to the SmokDefense engineering team about ventilation, pressurization, fire & smoke control and building automation projects.",
+};
 
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
-
   return (
-    <main className="min-h-screen bg-canvas px-6 pb-24 pt-32 md:px-12 lg:px-20">
-      <div className="mx-auto max-w-4xl">
-        <span className="font-mono text-xs font-semibold uppercase tracking-widest text-accent">
-          // TALK TO AN ENGINEER
-        </span>
-        <h1 className="mt-3 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-semibold uppercase leading-[0.95] tracking-tight text-ink">
-          DISCUSS YOUR BUILDING LIFE-SAFETY INFRASTRUCTURE.
-        </h1>
-        <p className="mt-6 font-sans text-base text-ink-soft leading-relaxed max-w-2xl">
-          Connect directly with a SmokDefense systems engineer to review building CAD blueprints, UUKL panel integration, IP500 wireless network sizing, or platform demonstration.
-        </p>
+    <main className="bg-canvas">
+      <PageHeader
+        eyebrow="Contact"
+        title="Talk to our team."
+        lead="Design reviews, device schedules, integration scope or an existing system that needs attention — reach the engineering team directly."
+        crumbs={[{ label: "Contact" }]}
+        actions={<CallForDemo source="Contact Page" />}
+      />
 
-        {submitted ? (
-          <div className="mt-12 rounded border border-emerald-500 bg-emerald-50 p-8 font-mono text-xs text-emerald-900">
-            <span className="font-bold text-emerald-700 uppercase">[INQUIRY RECEIVED]</span>
-            <p className="mt-2 text-sm">Thank you. A life-safety systems engineer will contact you within 1 business day.</p>
+      <section className="px-6 py-16 md:px-12 lg:px-20">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <div className="border border-line bg-white">
+              <div className="border-b border-line px-6 py-4 font-mono text-[11px] font-bold uppercase tracking-widest text-ink-faint">
+                Direct Contact
+              </div>
+              <ul className="divide-y divide-line">
+                <li className="flex items-start gap-4 px-6 py-5">
+                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                  <div>
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-ink-faint">
+                      Phone
+                    </span>
+                    <a
+                      href={CONTACT.phoneHref}
+                      className="mt-1 block font-sans text-sm text-ink transition-colors hover:text-accent"
+                    >
+                      {CONTACT.phone}
+                    </a>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4 px-6 py-5">
+                  <Mail className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                  <div>
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-ink-faint">
+                      Email
+                    </span>
+                    <a
+                      href={CONTACT.emailHref}
+                      className="mt-1 block font-sans text-sm text-ink transition-colors hover:text-accent"
+                    >
+                      {CONTACT.email}
+                    </a>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4 px-6 py-5">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                  <div>
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-ink-faint">
+                      Address
+                    </span>
+                    <address className="mt-1 font-sans text-sm not-italic leading-relaxed text-ink">
+                      {CONTACT.address.map((line) => (
+                        <span key={line} className="block">
+                          {line}
+                        </span>
+                      ))}
+                    </address>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4 px-6 py-5">
+                  <Clock className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                  <div>
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-ink-faint">
+                      Hours
+                    </span>
+                    <p className="mt-1 font-sans text-sm text-ink">{CONTACT.hours}</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="mt-12 border border-line bg-white p-8 space-y-6 font-mono text-xs">
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+
+          <div className="lg:col-span-7">
+            <div className="flex h-full flex-col justify-between gap-8 border border-line bg-ink p-8 md:p-10">
               <div>
-                <label className="block text-ink font-semibold uppercase mb-2">FULL NAME *</label>
-                <input
-                  required
-                  type="text"
-                  placeholder="e.g. Marcus Vance"
-                  className="w-full border border-line bg-canvas p-3 text-ink focus:border-accent focus:outline-none"
-                />
+                <span className="font-mono text-[11px] font-bold uppercase tracking-widest text-accent">
+                  {"// "}Call for Demo
+                </span>
+                <h2 className="mt-3 font-display text-2xl font-bold uppercase leading-tight tracking-tight text-white md:text-3xl">
+                  Book a system demonstration.
+                </h2>
+                <p className="mt-4 max-w-xl font-sans text-sm leading-relaxed text-white/70">
+                  The fastest way to assess whether these systems suit your project is to see them
+                  running. Tell us the building type and the requirement, and we will set up a
+                  demonstration against a comparable configuration.
+                </p>
+
+                <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+                  <div>
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-white">
+                      Systems
+                    </span>
+                    <ul className="mt-3 space-y-1.5">
+                      {SYSTEMS.map((system) => (
+                        <li
+                          key={system.slug}
+                          className="font-mono text-[10px] uppercase tracking-wider text-white/50"
+                        >
+                          {system.short}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-white">
+                      Services
+                    </span>
+                    <ul className="mt-3 space-y-1.5">
+                      {SERVICES.map((service) => (
+                        <li
+                          key={service.slug}
+                          className="font-mono text-[10px] uppercase tracking-wider text-white/50"
+                        >
+                          {service.title}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
-              <div>
-                <label className="block text-ink font-semibold uppercase mb-2">PROFESSIONAL EMAIL *</label>
-                <input
-                  required
-                  type="email"
-                  placeholder="e.g. m.vance@engineering.com"
-                  className="w-full border border-line bg-canvas p-3 text-ink focus:border-accent focus:outline-none"
-                />
+
+              <div className="flex flex-col gap-3 border-t border-white/10 pt-6 sm:flex-row">
+                <CallForDemo source="Contact Page Panel" variant="accent" />
+                <a href={CONTACT.phoneHref} className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-8 py-3.5 font-mono text-xs uppercase tracking-widest text-white transition-colors hover:border-white hover:bg-white hover:text-ink">
+                  <Phone className="h-3.5 w-3.5" /> {CONTACT.phone}
+                </a>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              <div>
-                <label className="block text-ink font-semibold uppercase mb-2">COMPANY / ORGANIZATION *</label>
-                <input
-                  required
-                  type="text"
-                  placeholder="e.g. Apex Engineering Consultants"
-                  className="w-full border border-line bg-canvas p-3 text-ink focus:border-accent focus:outline-none"
-                />
-              </div>
-              <div>
-                <label className="block text-ink font-semibold uppercase mb-2">BUILDING TYPE / APPLICATION</label>
-                <select className="w-full border border-line bg-canvas p-3 text-ink focus:border-accent focus:outline-none uppercase">
-                  <option>High-Rise Commercial Tower</option>
-                  <option>Hospital & Healthcare Facility</option>
-                  <option>Hotel & Hospitality Campus</option>
-                  <option>Industrial & Logistics Center</option>
-                  <option>Underground Transit Hub</option>
-                  <option>Other Enterprise Infrastructure</option>
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-ink font-semibold uppercase mb-2">PROJECT SCOPE & SYSTEM REQUIREMENTS</label>
-              <textarea
-                rows={5}
-                placeholder="Describe your building specifications, number of floors, existing UUKL panels, or IP500 network requirements..."
-                className="w-full border border-line bg-canvas p-3 text-ink focus:border-accent focus:outline-none"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="rounded-full bg-ink px-8 py-4 font-mono text-xs uppercase tracking-widest text-white transition-colors hover:bg-accent"
-            >
-              Submit Engineering Inquiry →
-            </button>
-          </form>
-        )}
-      </div>
+      <ClosingCTA source="Contact Page" secondary={{ href: "/services", label: "Our Services" }} />
     </main>
   );
 }

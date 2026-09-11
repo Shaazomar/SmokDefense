@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import { SmoothScrollProvider } from "@/components/layout/SmoothScrollProvider";
+import { DemoProvider } from "@/components/demo/DemoProvider";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
@@ -23,9 +24,12 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SmokDefense — Intelligent Smoke Management & Life-Safety Infrastructure",
+  title: {
+    default: "SmokDefense — Intelligent Building Systems & Ventilation Technology",
+    template: "%s — SmokDefense",
+  },
   description:
-    "The digital intelligence layer for complex building life-safety systems. Connecting professional smoke-control hardware, building networks and centralized software into one operational platform.",
+    "Intelligent ventilation, car park ventilation, CO₂ monitoring, pressurization, fire & smoke dampers, actuators, controllers and building automation systems.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -34,11 +38,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-canvas text-ink flex flex-col justify-between">
+      <body className="flex min-h-full flex-col justify-between bg-canvas text-ink">
         <SmoothScrollProvider>
-          <Nav />
-          <div className="flex-1">{children}</div>
-          <Footer />
+          <DemoProvider>
+            <Nav />
+            <div className="flex-1">{children}</div>
+            <Footer />
+          </DemoProvider>
         </SmoothScrollProvider>
       </body>
     </html>
