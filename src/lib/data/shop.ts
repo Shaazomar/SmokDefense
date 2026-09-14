@@ -28,6 +28,8 @@ export interface Product {
   specs: { label: string; value: string }[];
   applications: string[];
   systems: string[];
+  /** Optional primary product image path (populated from DB / imported assets) */
+  image?: string;
 }
 
 export const SHOP_CATEGORIES: ShopCategory[] = [
@@ -439,10 +441,10 @@ export const PRODUCTS: Product[] = [
   },
 ];
 
-export function getProduct(slug: string) {
+export function getProduct(slug: string): Product | undefined {
   return PRODUCTS.find((product) => product.slug === slug);
 }
 
-export function getCategory(slug: string) {
+export function getCategory(slug: string): ShopCategory | undefined {
   return SHOP_CATEGORIES.find((category) => category.slug === slug);
 }

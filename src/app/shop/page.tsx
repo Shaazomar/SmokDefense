@@ -3,7 +3,8 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { ShopCatalog } from "@/components/shop/ShopCatalog";
 import { ClosingCTA } from "@/components/home/ClosingCTA";
 import { CallForDemo } from "@/components/demo/CallForDemo";
-import { PRODUCTS, SHOP_CATEGORIES } from "@/lib/data/shop";
+import { db } from "@/lib/db/store";
+import { PRODUCTS, SHOP_CATEGORIES, Product, ShopCategory } from "@/lib/data/shop";
 
 export const metadata: Metadata = {
   title: "Shop",
@@ -17,6 +18,38 @@ interface ShopPageProps {
 
 export default async function ShopPage({ searchParams }: ShopPageProps) {
   const { category } = await searchParams;
+
+  let productsList: Product[] = PRODUCTS;
+  let categoriesList: ShopCategory[] = SHOP_CATEGORIES;
+
+  try {
+    const dbProds = db.getProducts({ onlyActive: true });
+    if (dbProds && dbProds.length > 0) {
+      productsList = dbProds.map((p) => ({
+        slug: p.slug,
+        name: p.name,
+        category: p.category,
+        glyph: p.glyph || "sensor",
+        short: p.short || "",
+        description: p.description || "",
+        specs: p.specs || [],
+        applications: p.applications || [],
+        systems: p.systems || [],
+        image: p.mainImage || (p.images && p.images.length > 0 ? p.images[0] : undefined),
+      }));
+    }
+
+    const dbCats = db.getCategories().filter((c) => c.status === "active");
+    if (dbCats && dbCats.length > 0) {
+      categoriesList = dbCats.map((c) => ({
+        slug: c.slug,
+        label: c.label,
+        description: c.description || "",
+      }));
+    }
+  } catch (err) {
+    console.error("Using static fallback for shop page:", err);
+  }
 
   return (
     <main className="bg-canvas">
@@ -33,14 +66,18 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
         }
         meta={
           <span className="font-mono text-[11px] uppercase tracking-widest text-ink-faint lg:text-right">
-            {PRODUCTS.length} products / {SHOP_CATEGORIES.length} categories
+            {productsList.length} products / {categoriesList.length} categories
           </span>
         }
       />
 
       <section className="px-6 py-16 md:px-12 lg:px-20">
         <div className="mx-auto max-w-7xl">
-          <ShopCatalog initialCategory={category} />
+          <ShopCatalog
+            initialCategory={category}
+            productsList={productsList}
+            categoriesList={categoriesList}
+          />
         </div>
       </section>
 

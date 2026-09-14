@@ -6,7 +6,8 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { DeviceGlyph } from "@/components/ui/DeviceGlyph";
 import { ClosingCTA } from "@/components/home/ClosingCTA";
 import { CallForDemo } from "@/components/demo/CallForDemo";
-import { PRODUCTS, getCategory, getProduct } from "@/lib/data/shop";
+import { PRODUCTS, SHOP_CATEGORIES, Product, ShopCategory } from "@/lib/data/shop";
+import { db } from "@/lib/db/store";
 import { getSystem } from "@/lib/data/systems";
 
 interface ProductPageProps {
@@ -14,24 +15,92 @@ interface ProductPageProps {
 }
 
 export function generateStaticParams() {
+  try {
+    const dbProds = db.getProducts({ onlyActive: true });
+    if (dbProds && dbProds.length > 0) {
+      return dbProds.map((p) => ({ slug: p.slug }));
+    }
+  } catch {
+    // fallback
+  }
   return PRODUCTS.map((product) => ({ slug: product.slug }));
+}
+
+function fetchProductBySlug(slug: string): Product | undefined {
+  try {
+    const dbProd = db.getProductBySlug(slug);
+    if (dbProd && dbProd.status === "active") {
+      return {
+        slug: dbProd.slug,
+        name: dbProd.name,
+        category: dbProd.category,
+        glyph: dbProd.glyph || "sensor",
+        short: dbProd.short || "",
+        description: dbProd.description || "",
+        specs: dbProd.specs || [],
+        applications: dbProd.applications || [],
+        systems: dbProd.systems || [],
+        image: dbProd.mainImage || (dbProd.images && dbProd.images.length > 0 ? dbProd.images[0] : undefined),
+      };
+    }
+  } catch {
+    // fallback
+  }
+  return PRODUCTS.find((p) => p.slug === slug);
+}
+
+function fetchCategoryBySlug(slug: string): ShopCategory | undefined {
+  try {
+    const dbCat = db.getCategoryById(slug);
+    if (dbCat && dbCat.status === "active") {
+      return {
+        slug: dbCat.slug,
+        label: dbCat.label,
+        description: dbCat.description || "",
+      };
+    }
+  } catch {
+    // fallback
+  }
+  return SHOP_CATEGORIES.find((c) => c.slug === slug);
 }
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const product = fetchProductBySlug(slug);
   if (!product) return {};
   return { title: product.name, description: product.short };
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const product = fetchProductBySlug(slug);
   if (!product) notFound();
 
-  const category = getCategory(product.category);
+  const category = fetchCategoryBySlug(product.category);
+
+  let allProducts: Product[] = PRODUCTS;
+  try {
+    const dbProds = db.getProducts({ onlyActive: true });
+    if (dbProds && dbProds.length > 0) {
+      allProducts = dbProds.map((p) => ({
+        slug: p.slug,
+        name: p.name,
+        category: p.category,
+        glyph: p.glyph || "sensor",
+        short: p.short || "",
+        description: p.description || "",
+        specs: p.specs || [],
+        applications: p.applications || [],
+        systems: p.systems || [],
+      }));
+    }
+  } catch {
+    // fallback
+  }
+
   const relatedSystems = product.systems.map(getSystem).filter((system) => system !== undefined);
-  const relatedProducts = PRODUCTS.filter(
+  const relatedProducts = allProducts.filter(
     (entry) => entry.category === product.category && entry.slug !== product.slug,
   ).slice(0, 3);
 
@@ -57,11 +126,20 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <section className="px-6 py-16 md:px-12 lg:px-20">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <div className="flex aspect-square items-center justify-center border border-line bg-white">
-              <DeviceGlyph kind={product.glyph} className="h-40 w-40" />
+            <div className="flex aspect-square items-center justify-center border border-line bg-white overflow-hidden">
+              {product.image ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="h-full w-full object-contain p-6"
+                />
+              ) : (
+                <DeviceGlyph kind={product.glyph} className="h-40 w-40" />
+              )}
             </div>
             <p className="mt-3 font-mono text-[10px] uppercase tracking-wider text-ink-faint">
-              Schematic representation — product photography available on request.
+              {product.image ? "Official product image." : "Schematic representation — product photography available on request."}
             </p>
 
             <div className="mt-6 flex flex-col gap-3 border border-line bg-white p-5">

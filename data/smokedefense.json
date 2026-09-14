@@ -1,0 +1,1277 @@
+{
+  "categories": [
+    {
+      "id": "cat-1",
+      "slug": "sensors",
+      "label": "Sensors",
+      "description": "CO₂, CO and environmental measurement for demand-controlled ventilation.",
+      "status": "active",
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T06:49:30.287Z"
+    },
+    {
+      "id": "cat-2",
+      "slug": "actuators",
+      "label": "Actuators",
+      "description": "Belimo, window and fire/smoke damper actuation across the torque range.",
+      "status": "active",
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T06:49:30.287Z"
+    },
+    {
+      "id": "cat-3",
+      "slug": "dampers",
+      "label": "Dampers",
+      "description": "Fire, smoke and combination dampers with supervised position feedback.",
+      "status": "active",
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T06:49:30.287Z"
+    },
+    {
+      "id": "cat-4",
+      "slug": "controllers",
+      "label": "Controllers",
+      "description": "Gateway, edge, field and IP500 controllers for the automation layer.",
+      "status": "active",
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T06:49:30.287Z"
+    },
+    {
+      "id": "cat-5",
+      "slug": "field-devices",
+      "label": "Other Field Devices",
+      "description": "Additional building automation and ventilation components.",
+      "status": "active",
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T06:49:30.287Z"
+    }
+  ],
+  "brands": [
+    {
+      "id": "brand-1",
+      "slug": "smokedefense",
+      "name": "SmokeDefense",
+      "description": "In-house specialized smoke control and ventilation components.",
+      "isOwnBrand": true,
+      "status": "active",
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T06:49:30.287Z"
+    },
+    {
+      "id": "brand-2",
+      "slug": "belimo",
+      "name": "Belimo",
+      "description": "Global leader in damper actuators, control valves and sensors.",
+      "isOwnBrand": false,
+      "status": "active",
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T06:49:30.287Z"
+    },
+    {
+      "id": "brand-3",
+      "slug": "siemens",
+      "name": "Siemens",
+      "description": "Building automation and HVAC control solutions.",
+      "isOwnBrand": false,
+      "status": "active",
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T06:49:30.287Z"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-1",
+      "slug": "co2-sensor-room",
+      "name": "CO₂ Sensor — Room Mount",
+      "category": "sensors",
+      "brandId": "brand-1",
+      "brandName": "SmokeDefense",
+      "glyph": "sensor",
+      "short": "NDIR room CO₂ sensor for demand-controlled ventilation.",
+      "description": "Wall-mounted NDIR carbon dioxide sensor for occupied spaces. Provides a linear output to the zone controller so fresh-air delivery tracks actual occupancy instead of a fixed schedule.",
+      "status": "active",
+      "isFeatured": true,
+      "stock": 25,
+      "lowStockThreshold": 5,
+      "specs": [
+        {
+          "label": "Measurement",
+          "value": "NDIR, 0 – 2000 ppm"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±30 ppm ±3 % of reading"
+        },
+        {
+          "label": "Output",
+          "value": "0 – 10 V / 4 – 20 mA / bus"
+        },
+        {
+          "label": "Supply",
+          "value": "24 V AC/DC"
+        },
+        {
+          "label": "Mounting",
+          "value": "Wall, flush or surface"
+        }
+      ],
+      "applications": [
+        "Offices",
+        "Classrooms",
+        "Meeting rooms",
+        "Healthcare"
+      ],
+      "systems": [
+        "co2-monitors-controls",
+        "ventilation-system"
+      ],
+      "images": [],
+      "documents": [],
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T08:35:28.266Z",
+      "importStatus": "MANUAL_REQUIRED",
+      "manualReviewUrl": "https://www.siemens.com/global/en/products/buildings/hvac/room-sensors-thermostats/room-co2-sensor.html",
+      "modelNumber": "SD-CO2-R",
+      "imageDetails": []
+    },
+    {
+      "id": "prod-2",
+      "slug": "co2-sensor-duct",
+      "name": "CO₂ Sensor — Duct Mount",
+      "category": "sensors",
+      "brandId": "brand-1",
+      "brandName": "SmokeDefense",
+      "glyph": "sensor",
+      "short": "In-duct CO₂ measurement for air handling units.",
+      "description": "Duct-mounted NDIR sensor with sampling probe, used on return and mixed-air ducts to control fresh-air intake at the air handling unit.",
+      "status": "active",
+      "isFeatured": true,
+      "stock": 25,
+      "lowStockThreshold": 5,
+      "specs": [
+        {
+          "label": "Measurement",
+          "value": "NDIR, 0 – 2000 ppm"
+        },
+        {
+          "label": "Probe length",
+          "value": "200 mm standard"
+        },
+        {
+          "label": "Output",
+          "value": "0 – 10 V / 4 – 20 mA"
+        },
+        {
+          "label": "Supply",
+          "value": "24 V AC/DC"
+        },
+        {
+          "label": "Protection",
+          "value": "IP54 housing"
+        }
+      ],
+      "applications": [
+        "Air handling units",
+        "Return air ducts",
+        "Central plant"
+      ],
+      "systems": [
+        "co2-monitors-controls",
+        "ventilation-system"
+      ],
+      "images": [],
+      "documents": [],
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T08:35:28.266Z",
+      "importStatus": "MANUAL_REQUIRED",
+      "manualReviewUrl": "https://www.siemens.com/global/en/products/buildings/hvac/duct-sensors/duct-co2-sensor.html",
+      "modelNumber": "SD-CO2-D",
+      "imageDetails": []
+    },
+    {
+      "id": "prod-3",
+      "slug": "co-sensor-carpark",
+      "name": "CO Sensor — Car Park",
+      "category": "sensors",
+      "brandId": "brand-1",
+      "brandName": "SmokeDefense",
+      "glyph": "sensor",
+      "short": "Electrochemical carbon monoxide sensor for enclosed parking.",
+      "description": "Carbon monoxide sensor designed for basement and enclosed car parks. Drives staged jet fan and exhaust fan operation, and raises an alarm when concentrations remain above the configured threshold.",
+      "status": "active",
+      "isFeatured": true,
+      "stock": 25,
+      "lowStockThreshold": 5,
+      "specs": [
+        {
+          "label": "Measurement",
+          "value": "Electrochemical, 0 – 300 ppm"
+        },
+        {
+          "label": "Output",
+          "value": "0 – 10 V / 4 – 20 mA / relay"
+        },
+        {
+          "label": "Supply",
+          "value": "24 V AC/DC"
+        },
+        {
+          "label": "Protection",
+          "value": "IP65 housing"
+        },
+        {
+          "label": "Calibration",
+          "value": "Field calibratable, 12-month interval"
+        }
+      ],
+      "applications": [
+        "Basement car parks",
+        "Multi-storey parking",
+        "Loading bays"
+      ],
+      "systems": [
+        "car-park-ventilation"
+      ],
+      "images": [],
+      "documents": [],
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T08:35:28.266Z",
+      "importStatus": "MANUAL_REQUIRED",
+      "manualReviewUrl": "https://www.siemens.com/global/en/products/buildings/fire-safety/gas-detection.html",
+      "modelNumber": "SD-CO-CP",
+      "imageDetails": []
+    },
+    {
+      "id": "prod-4",
+      "slug": "differential-pressure-sensor",
+      "name": "Differential Pressure Sensor",
+      "category": "sensors",
+      "brandId": "brand-1",
+      "brandName": "SmokeDefense",
+      "glyph": "sensor",
+      "short": "Pressure difference measurement for pressurization control.",
+      "description": "Differential pressure transmitter measuring across stair and lobby doors, and across filters and fans. The primary feedback element in a pressurization control loop.",
+      "status": "active",
+      "isFeatured": true,
+      "stock": 25,
+      "lowStockThreshold": 5,
+      "specs": [
+        {
+          "label": "Range",
+          "value": "0 – 100 / 0 – 500 Pa selectable"
+        },
+        {
+          "label": "Accuracy",
+          "value": "±1 % of full scale"
+        },
+        {
+          "label": "Output",
+          "value": "0 – 10 V / 4 – 20 mA"
+        },
+        {
+          "label": "Supply",
+          "value": "24 V AC/DC"
+        },
+        {
+          "label": "Connection",
+          "value": "6 mm pressure ports"
+        }
+      ],
+      "applications": [
+        "Stairway pressurization",
+        "Lift lobby pressurization",
+        "Filter monitoring"
+      ],
+      "systems": [
+        "pressurization-system"
+      ],
+      "images": [],
+      "documents": [],
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T08:35:28.266Z",
+      "importStatus": "MANUAL_REQUIRED",
+      "manualReviewUrl": "https://www.siemens.com/global/en/products/buildings/hvac/sensing-devices/differential-pressure-sensors.html",
+      "modelNumber": "SD-DPS-100",
+      "imageDetails": []
+    },
+    {
+      "id": "prod-5",
+      "slug": "duct-temp-humidity-sensor",
+      "name": "Duct Temperature & Humidity Sensor",
+      "category": "sensors",
+      "brandId": "brand-1",
+      "brandName": "SmokeDefense",
+      "glyph": "sensor",
+      "short": "Combined in-duct temperature and humidity measurement.",
+      "description": "Combined temperature and relative humidity sensor for supply, return and fresh-air ducts, providing the measured values used by ventilation and air handling control loops.",
+      "status": "active",
+      "isFeatured": false,
+      "stock": 25,
+      "lowStockThreshold": 5,
+      "specs": [
+        {
+          "label": "Temperature",
+          "value": "-20 – +80 °C, ±0.3 °C"
+        },
+        {
+          "label": "Humidity",
+          "value": "0 – 100 % RH, ±2 % RH"
+        },
+        {
+          "label": "Output",
+          "value": "0 – 10 V / 4 – 20 mA"
+        },
+        {
+          "label": "Probe length",
+          "value": "150 / 250 mm"
+        },
+        {
+          "label": "Supply",
+          "value": "24 V AC/DC"
+        }
+      ],
+      "applications": [
+        "Air handling units",
+        "Ventilation ducts",
+        "Clean rooms"
+      ],
+      "systems": [
+        "ventilation-system"
+      ],
+      "images": [],
+      "documents": [],
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T08:35:28.266Z",
+      "importStatus": "MANUAL_REQUIRED",
+      "manualReviewUrl": "https://www.siemens.com/global/en/products/buildings/hvac/duct-sensors/duct-temperature-humidity-sensors.html",
+      "modelNumber": "SD-DTH-150",
+      "imageDetails": []
+    },
+    {
+      "id": "prod-6",
+      "slug": "belimo-rotary-damper-actuator",
+      "name": "Belimo Rotary Damper Actuator",
+      "category": "actuators",
+      "brandId": "brand-2",
+      "brandName": "Belimo",
+      "glyph": "actuator",
+      "short": "Modulating rotary actuation for supply and exhaust dampers.",
+      "description": "Belimo rotary damper actuator for air dampers in ventilation and air handling applications. Available across the torque range with on/off, floating and modulating control, with position feedback for proof of operation.",
+      "status": "active",
+      "isFeatured": false,
+      "stock": 25,
+      "lowStockThreshold": 5,
+      "specs": [
+        {
+          "label": "Torque",
+          "value": "5 / 10 / 20 / 40 Nm"
+        },
+        {
+          "label": "Control",
+          "value": "On/off, 3-point, 0 – 10 V modulating"
+        },
+        {
+          "label": "Running time",
+          "value": "90 – 150 s, 90°"
+        },
+        {
+          "label": "Feedback",
+          "value": "0 – 10 V position signal"
+        },
+        {
+          "label": "Supply",
+          "value": "24 V AC/DC or 230 V AC"
+        }
+      ],
+      "applications": [
+        "Air handling units",
+        "Zone dampers",
+        "Fresh-air intakes"
+      ],
+      "systems": [
+        "actuators",
+        "ventilation-system"
+      ],
+      "images": [
+        "/product-images/belimo-rotary-damper-actuator-1-ee5a8b45.jpg"
+      ],
+      "documents": [],
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T08:35:28.662Z",
+      "importStatus": "IMPORTED",
+      "manualReviewUrl": "https://www.belimo.com/us/en/shop/damper-actuators/variable-air-volume/lmv-d3-mp/p/product-lmv-d3-mp",
+      "imageDetails": [
+        {
+          "id": "img-1789374928661-k33a",
+          "productId": "prod-6",
+          "url": "/product-images/belimo-rotary-damper-actuator-1-ee5a8b45.jpg",
+          "sourceUrl": "https://www.belimo.com/pim/mam/europe/pictures-and-graphics/product/air_applications/Product-pictures/PIC_EU_LM24A-SR_4C-product_retina.jpg",
+          "sourceDomain": "belimo.com",
+          "altText": "Belimo LMV-D3-MP / LM24A-SR Rotary Damper Actuator High-Res Product Photograph",
+          "confidenceScore": 98,
+          "isPrimary": true,
+          "importMethod": "official_import",
+          "createdAt": "2026-09-14T08:35:28.661Z"
+        }
+      ],
+      "mainImage": "/product-images/belimo-rotary-damper-actuator-1-ee5a8b45.jpg",
+      "modelNumber": "LMV-D3-MP"
+    },
+    {
+      "id": "prod-7",
+      "slug": "belimo-control-valve-actuator",
+      "name": "Belimo Control Valve Actuator",
+      "category": "actuators",
+      "brandId": "brand-2",
+      "brandName": "Belimo",
+      "glyph": "actuator",
+      "short": "Valve actuation for hydronic heating and cooling control.",
+      "description": "Belimo valve actuator for characterised control valves in heating and cooling circuits, integrated with the same controller and feedback conventions as the damper actuators on site.",
+      "status": "active",
+      "isFeatured": false,
+      "stock": 25,
+      "lowStockThreshold": 5,
+      "specs": [
+        {
+          "label": "Force",
+          "value": "500 – 1000 N"
+        },
+        {
+          "label": "Control",
+          "value": "On/off, 3-point, 0 – 10 V modulating"
+        },
+        {
+          "label": "Stroke",
+          "value": "20 mm"
+        },
+        {
+          "label": "Feedback",
+          "value": "0 – 10 V position signal"
+        },
+        {
+          "label": "Supply",
+          "value": "24 V AC/DC"
+        }
+      ],
+      "applications": [
+        "Heating circuits",
+        "Chilled water circuits",
+        "Air handling coils"
+      ],
+      "systems": [
+        "actuators"
+      ],
+      "images": [
+        "/product-images/belimo-control-valve-actuator-1-0e6ceb3b.jpg"
+      ],
+      "documents": [],
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T08:35:28.958Z",
+      "importStatus": "IMPORTED",
+      "manualReviewUrl": "https://www.belimo.com/us/en_US/products/lr24a-sr/",
+      "imageDetails": [
+        {
+          "id": "img-1789374928958-jl9d",
+          "productId": "prod-7",
+          "url": "/product-images/belimo-control-valve-actuator-1-0e6ceb3b.jpg",
+          "sourceUrl": "https://www.belimo.com/pim/mam/europe/pictures-and-graphics/product/water_solutions/Actuators/Rotary-Standard/PIC_EU_LR24A_SR_01_4C-product_retina.jpg",
+          "sourceDomain": "belimo.com",
+          "altText": "Belimo LR24A-SR Control Valve Actuator High-Res Product Photograph",
+          "confidenceScore": 98,
+          "isPrimary": true,
+          "importMethod": "official_import",
+          "createdAt": "2026-09-14T08:35:28.958Z"
+        }
+      ],
+      "mainImage": "/product-images/belimo-control-valve-actuator-1-0e6ceb3b.jpg",
+      "modelNumber": "LR24A-SR"
+    },
+    {
+      "id": "prod-8",
+      "slug": "window-actuator-chain-drive",
+      "name": "Window Actuator — Chain Drive",
+      "category": "actuators",
+      "brandId": "brand-1",
+      "brandName": "SmokeDefense",
+      "glyph": "window",
+      "short": "Chain drive for natural ventilation and smoke-vent windows.",
+      "description": "Chain-drive window actuator for automatic opening vents. Used for natural ventilation under the building automation schedule and for smoke-vent opening on a fire signal.",
+      "status": "active",
+      "isFeatured": false,
+      "stock": 25,
+      "lowStockThreshold": 5,
+      "specs": [
+        {
+          "label": "Stroke",
+          "value": "150 / 300 / 500 mm"
+        },
+        {
+          "label": "Force",
+          "value": "300 N push / pull"
+        },
+        {
+          "label": "Control",
+          "value": "24 V DC, on/off with end-position cut-off"
+        },
+        {
+          "label": "Feedback",
+          "value": "Open / closed position contacts"
+        },
+        {
+          "label": "Synchronisation",
+          "value": "Multi-drive tandem operation"
+        }
+      ],
+      "applications": [
+        "Atrium vents",
+        "Façade windows",
+        "Smoke vents",
+        "Natural ventilation"
+      ],
+      "systems": [
+        "actuators",
+        "field-devices"
+      ],
+      "images": [],
+      "documents": [],
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T08:35:28.958Z",
+      "importStatus": "MANUAL_REQUIRED",
+      "manualReviewUrl": "https://www.belimo.com/us/en_US/products/window-actuators/",
+      "modelNumber": "SD-WA-300",
+      "imageDetails": []
+    },
+    {
+      "id": "prod-9",
+      "slug": "fs-damper-actuator-spring-return",
+      "name": "F/S Damper Actuator — Spring Return",
+      "category": "actuators",
+      "brandId": "brand-1",
+      "brandName": "SmokeDefense",
+      "glyph": "actuator",
+      "short": "Spring-return actuation for fire and smoke dampers.",
+      "description": "Spring-return actuator for fire and smoke dampers. On loss of power or on a fire signal the spring drives the damper to its safe position, with auxiliary switches confirming the achieved position.",
+      "status": "active",
+      "isFeatured": false,
+      "stock": 25,
+      "lowStockThreshold": 5,
+      "specs": [
+        {
+          "label": "Torque",
+          "value": "4 / 8 / 16 Nm"
+        },
+        {
+          "label": "Fail-safe",
+          "value": "Spring return < 20 s"
+        },
+        {
+          "label": "Thermal release",
+          "value": "72 °C / 95 °C options"
+        },
+        {
+          "label": "Auxiliary switches",
+          "value": "2 × SPDT end switches"
+        },
+        {
+          "label": "Supply",
+          "value": "24 V AC/DC or 230 V AC"
+        }
+      ],
+      "applications": [
+        "Fire dampers",
+        "Smoke dampers",
+        "Combination F/S dampers"
+      ],
+      "systems": [
+        "actuators",
+        "fs-dampers"
+      ],
+      "images": [
+        "/product-images/fs-damper-actuator-spring-return-1-e002628d.jpg",
+        "/product-images/fs-damper-actuator-spring-return-2-e1d0b525.jpg"
+      ],
+      "documents": [],
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T08:35:29.068Z",
+      "importStatus": "IMPORTED",
+      "manualReviewUrl": "https://www.belimo.com/us/en_US/products/fire-smoke-actuators/",
+      "modelNumber": "SD-FS-16N",
+      "imageDetails": [
+        {
+          "id": "img-1789374929011-yq2x",
+          "productId": "prod-9",
+          "url": "/product-images/fs-damper-actuator-spring-return-1-e002628d.jpg",
+          "sourceUrl": "https://www.belimo.com/pim/mam/europe/pictures-and-graphics/product/safety_solutions/Product-pictures/BF/PIC_EU_BF24_4C-product_retina.jpg",
+          "sourceDomain": "belimo.com",
+          "altText": "Belimo BF24 24V Spring Return Fire & Smoke Damper Actuator",
+          "confidenceScore": 96,
+          "isPrimary": true,
+          "importMethod": "official_import",
+          "createdAt": "2026-09-14T08:35:29.011Z"
+        },
+        {
+          "id": "img-1789374929067-jffd",
+          "productId": "prod-9",
+          "url": "/product-images/fs-damper-actuator-spring-return-2-e1d0b525.jpg",
+          "sourceUrl": "https://www.belimo.com/pim/mam/europe/pictures-and-graphics/product/safety_solutions/Product-pictures/BF/PIC_EU_BF230_4C-product_retina.jpg",
+          "sourceDomain": "belimo.com",
+          "altText": "Belimo BF230 230V Spring Return Fire & Smoke Damper Actuator",
+          "confidenceScore": 94,
+          "isPrimary": false,
+          "importMethod": "official_import",
+          "createdAt": "2026-09-14T08:35:29.067Z"
+        }
+      ],
+      "mainImage": "/product-images/fs-damper-actuator-spring-return-1-e002628d.jpg"
+    },
+    {
+      "id": "prod-10",
+      "slug": "fire-damper",
+      "name": "Fire Damper",
+      "category": "dampers",
+      "brandId": "brand-1",
+      "brandName": "SmokeDefense",
+      "glyph": "damper",
+      "short": "Rated closure of duct penetrations through fire compartments.",
+      "description": "Fire damper installed where ductwork penetrates fire-resisting construction. Closes on thermal release or on command, maintaining the fire resistance of the compartment wall or floor.",
+      "status": "active",
+      "isFeatured": false,
+      "stock": 25,
+      "lowStockThreshold": 5,
+      "specs": [
+        {
+          "label": "Fire rating",
+          "value": "Up to 120 minutes"
+        },
+        {
+          "label": "Blade",
+          "value": "Galvanised steel, multi-blade"
+        },
+        {
+          "label": "Release",
+          "value": "Thermal fusible link or actuator"
+        },
+        {
+          "label": "Sizes",
+          "value": "200 × 200 to 1200 × 800 mm"
+        },
+        {
+          "label": "Feedback",
+          "value": "Optional end-switch monitoring"
+        }
+      ],
+      "applications": [
+        "Compartment walls",
+        "Riser penetrations",
+        "Plant room boundaries"
+      ],
+      "systems": [
+        "fs-dampers"
+      ],
+      "images": [],
+      "documents": [],
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T08:35:29.068Z",
+      "importStatus": "MANUAL_REQUIRED",
+      "imageDetails": [],
+      "manualReviewUrl": "https://www.belimo.com/us/en_US/products/fire-dampers/",
+      "modelNumber": "SD-FD-400"
+    },
+    {
+      "id": "prod-11",
+      "slug": "smoke-damper",
+      "name": "Smoke Damper",
+      "category": "dampers",
+      "brandId": "brand-1",
+      "brandName": "SmokeDefense",
+      "glyph": "damper",
+      "short": "Low-leakage damper for smoke isolation and extract control.",
+      "description": "Motorised low-leakage smoke damper used to isolate or direct smoke within a duct network, driven from the fire alarm cause-and-effect matrix with position supervision.",
+      "status": "active",
+      "isFeatured": false,
+      "stock": 25,
+      "lowStockThreshold": 5,
+      "specs": [
+        {
+          "label": "Leakage class",
+          "value": "Class 3 low leakage"
+        },
+        {
+          "label": "Actuation",
+          "value": "Motorised, spring return"
+        },
+        {
+          "label": "Sizes",
+          "value": "200 × 200 to 1500 × 1000 mm"
+        },
+        {
+          "label": "Feedback",
+          "value": "End switches, both positions"
+        },
+        {
+          "label": "Supply",
+          "value": "24 V AC/DC or 230 V AC"
+        }
+      ],
+      "applications": [
+        "Smoke extract ducts",
+        "Zone isolation",
+        "Shaft protection"
+      ],
+      "systems": [
+        "fs-dampers"
+      ],
+      "images": [],
+      "documents": [],
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T08:35:29.068Z",
+      "importStatus": "MANUAL_REQUIRED",
+      "imageDetails": [],
+      "manualReviewUrl": "https://www.belimo.com/us/en_US/products/smoke-dampers/",
+      "modelNumber": "SD-SD-600"
+    },
+    {
+      "id": "prod-12",
+      "slug": "fire-smoke-combination-damper",
+      "name": "Fire & Smoke Combination Damper",
+      "category": "dampers",
+      "brandId": "brand-1",
+      "brandName": "SmokeDefense",
+      "glyph": "damper",
+      "short": "Single assembly providing fire closure and smoke isolation.",
+      "description": "Combination fire/smoke damper providing both rated fire closure and low-leakage smoke isolation in a single assembly, with supervised actuation and position feedback to the controller.",
+      "status": "active",
+      "isFeatured": false,
+      "stock": 25,
+      "lowStockThreshold": 5,
+      "specs": [
+        {
+          "label": "Fire rating",
+          "value": "Up to 120 minutes"
+        },
+        {
+          "label": "Leakage class",
+          "value": "Class 3 low leakage"
+        },
+        {
+          "label": "Actuation",
+          "value": "Spring-return actuator, thermal release"
+        },
+        {
+          "label": "Supervision",
+          "value": "Continuous position monitoring"
+        },
+        {
+          "label": "Test",
+          "value": "Scheduled cycle test with recorded result"
+        }
+      ],
+      "applications": [
+        "High-rise risers",
+        "Hospitals",
+        "Hotels",
+        "Commercial towers"
+      ],
+      "systems": [
+        "fs-dampers",
+        "field-devices"
+      ],
+      "images": [],
+      "documents": [],
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T08:35:29.068Z",
+      "importStatus": "MANUAL_REQUIRED",
+      "imageDetails": [],
+      "manualReviewUrl": "https://www.belimo.com/us/en_US/products/fire-smoke-dampers/",
+      "modelNumber": "SD-FSD-800"
+    },
+    {
+      "id": "prod-13",
+      "slug": "pressure-relief-damper",
+      "name": "Pressure Relief Damper",
+      "category": "dampers",
+      "brandId": "brand-1",
+      "brandName": "SmokeDefense",
+      "glyph": "damper",
+      "short": "Holds shaft pressure within the permitted band.",
+      "description": "Barometric or motorised relief damper used on pressurization systems to discharge excess air, keeping the shaft pressure inside the design band and door-opening forces within limits.",
+      "status": "active",
+      "isFeatured": false,
+      "stock": 25,
+      "lowStockThreshold": 5,
+      "specs": [
+        {
+          "label": "Type",
+          "value": "Barometric or motorised"
+        },
+        {
+          "label": "Set pressure",
+          "value": "Adjustable 25 – 100 Pa"
+        },
+        {
+          "label": "Sizes",
+          "value": "400 × 400 to 1200 × 1200 mm"
+        },
+        {
+          "label": "Material",
+          "value": "Aluminium blade, galvanised frame"
+        },
+        {
+          "label": "Feedback",
+          "value": "Optional position signal"
+        }
+      ],
+      "applications": [
+        "Stairway pressurization",
+        "Lift lobby pressurization"
+      ],
+      "systems": [
+        "pressurization-system"
+      ],
+      "images": [],
+      "documents": [],
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T08:35:29.068Z",
+      "importStatus": "MANUAL_REQUIRED",
+      "imageDetails": [],
+      "manualReviewUrl": "https://www.belimo.com/us/en_US/products/",
+      "modelNumber": "SD-PRD-600"
+    },
+    {
+      "id": "prod-14",
+      "slug": "gateway-controller",
+      "name": "Gateway Controller",
+      "category": "controllers",
+      "brandId": "brand-1",
+      "brandName": "SmokeDefense",
+      "glyph": "gateway",
+      "short": "Protocol translation between field devices and the platform.",
+      "description": "Gateway controller aggregating sensors, actuators and field controllers onto the building automation platform, translating between field buses, IP500 wireless and standard building protocols.",
+      "status": "active",
+      "isFeatured": false,
+      "stock": 25,
+      "lowStockThreshold": 5,
+      "specs": [
+        {
+          "label": "Protocols",
+          "value": "BACnet IP / MS/TP, Modbus RTU / TCP"
+        },
+        {
+          "label": "Wireless",
+          "value": "IP500 mesh interface"
+        },
+        {
+          "label": "Capacity",
+          "value": "Up to 250 field points"
+        },
+        {
+          "label": "Mounting",
+          "value": "DIN rail, panel mount"
+        },
+        {
+          "label": "Supply",
+          "value": "24 V DC"
+        }
+      ],
+      "applications": [
+        "Car park ventilation",
+        "Zone aggregation",
+        "BMS integration"
+      ],
+      "systems": [
+        "field-devices",
+        "car-park-ventilation"
+      ],
+      "images": [],
+      "documents": [],
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T08:35:29.068Z",
+      "importStatus": "MANUAL_REQUIRED",
+      "imageDetails": [],
+      "manualReviewUrl": "https://www.siemens.com/global/en/products/buildings/automation/desigo.html",
+      "modelNumber": "SD-GC-250"
+    },
+    {
+      "id": "prod-15",
+      "slug": "edge-controller",
+      "name": "Edge Controller",
+      "category": "controllers",
+      "brandId": "brand-1",
+      "brandName": "SmokeDefense",
+      "glyph": "controller",
+      "short": "Building-level sequencing, buffering and analytics.",
+      "description": "Edge controller executing cross-zone sequences locally, buffering trend and event data through network outages, and providing a secure uplink to the supervisory platform.",
+      "status": "active",
+      "isFeatured": false,
+      "stock": 25,
+      "lowStockThreshold": 5,
+      "specs": [
+        {
+          "label": "Processor",
+          "value": "Quad-core industrial ARM"
+        },
+        {
+          "label": "Storage",
+          "value": "32 GB local event and trend buffer"
+        },
+        {
+          "label": "Interfaces",
+          "value": "2 × Ethernet, RS-485, USB"
+        },
+        {
+          "label": "Security",
+          "value": "Signed firmware, encrypted uplink"
+        },
+        {
+          "label": "Supply",
+          "value": "24 V DC, DIN rail"
+        }
+      ],
+      "applications": [
+        "Building-wide sequencing",
+        "Offline resilience",
+        "Multi-system coordination"
+      ],
+      "systems": [
+        "field-devices"
+      ],
+      "images": [],
+      "documents": [],
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T08:35:29.068Z",
+      "importStatus": "MANUAL_REQUIRED",
+      "imageDetails": [],
+      "manualReviewUrl": "https://www.siemens.com/global/en/products/buildings/automation/desigo.html",
+      "modelNumber": "SD-EC-32"
+    },
+    {
+      "id": "prod-16",
+      "slug": "ip500-node",
+      "name": "IP500 Node",
+      "category": "controllers",
+      "brandId": "brand-1",
+      "brandName": "SmokeDefense",
+      "glyph": "gateway",
+      "short": "Wireless mesh node for field device connectivity.",
+      "description": "IP500 wireless mesh node connecting field devices where cabling is impractical — particularly in retrofit work — with self-healing routing and encrypted transport.",
+      "status": "active",
+      "isFeatured": false,
+      "stock": 25,
+      "lowStockThreshold": 5,
+      "specs": [
+        {
+          "label": "Standard",
+          "value": "IP500 dual-band mesh"
+        },
+        {
+          "label": "Topology",
+          "value": "Self-healing mesh, multi-hop"
+        },
+        {
+          "label": "Security",
+          "value": "AES-128 encryption"
+        },
+        {
+          "label": "Battery option",
+          "value": "Long-life battery or 24 V DC"
+        },
+        {
+          "label": "Range",
+          "value": "Building-wide with mesh repeaters"
+        }
+      ],
+      "applications": [
+        "Retrofit projects",
+        "Damper monitoring",
+        "Distributed sensing"
+      ],
+      "systems": [
+        "field-devices"
+      ],
+      "images": [],
+      "documents": [],
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T08:35:29.068Z",
+      "importStatus": "MANUAL_REQUIRED",
+      "manualReviewUrl": "https://new.siemens.com/global/en/products/buildings/fire-safety/intelligent-wireless/gamma-wave.html",
+      "modelNumber": "SD-IP500-N",
+      "imageDetails": []
+    },
+    {
+      "id": "prod-17",
+      "slug": "field-controller",
+      "name": "Field Controller",
+      "category": "controllers",
+      "brandId": "brand-1",
+      "brandName": "SmokeDefense",
+      "glyph": "controller",
+      "short": "Zone-level control logic with local I/O.",
+      "description": "Programmable field controller executing zone ventilation, pressurization or damper logic on local I/O, so control continues even if the upstream network is unavailable.",
+      "status": "active",
+      "isFeatured": false,
+      "stock": 25,
+      "lowStockThreshold": 5,
+      "specs": [
+        {
+          "label": "I/O",
+          "value": "8 UI / 4 AO / 6 DO"
+        },
+        {
+          "label": "Protocols",
+          "value": "BACnet MS/TP, Modbus RTU"
+        },
+        {
+          "label": "Programming",
+          "value": "On-site configurable application logic"
+        },
+        {
+          "label": "Mounting",
+          "value": "DIN rail"
+        },
+        {
+          "label": "Supply",
+          "value": "24 V AC/DC"
+        }
+      ],
+      "applications": [
+        "Zone ventilation",
+        "AHU control",
+        "Pressurization loops"
+      ],
+      "systems": [
+        "ventilation-system",
+        "pressurization-system"
+      ],
+      "images": [],
+      "documents": [],
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T08:35:29.068Z",
+      "importStatus": "MANUAL_REQUIRED",
+      "imageDetails": [],
+      "manualReviewUrl": "https://www.siemens.com/global/en/products/buildings/automation/desigo.html",
+      "modelNumber": "SD-FC-18"
+    },
+    {
+      "id": "prod-18",
+      "slug": "jet-fan-controller",
+      "name": "Jet Fan Controller",
+      "category": "controllers",
+      "brandId": "brand-1",
+      "brandName": "SmokeDefense",
+      "glyph": "fan",
+      "short": "Staged and reversible control of car park induction fans.",
+      "description": "Dedicated controller for car park jet fans, staging and reversing induction fans by zone in response to the CO/CO₂ sensor grid, with fan status and fault monitoring.",
+      "status": "active",
+      "isFeatured": false,
+      "stock": 25,
+      "lowStockThreshold": 5,
+      "specs": [
+        {
+          "label": "Outputs",
+          "value": "Up to 12 jet fan circuits"
+        },
+        {
+          "label": "Control",
+          "value": "Staged, reversible, speed-selectable"
+        },
+        {
+          "label": "Monitoring",
+          "value": "Run, fault and current status per fan"
+        },
+        {
+          "label": "Interface",
+          "value": "Gateway controller / BMS"
+        },
+        {
+          "label": "Mounting",
+          "value": "Panel mount"
+        }
+      ],
+      "applications": [
+        "Basement car parks",
+        "Multi-storey parking"
+      ],
+      "systems": [
+        "car-park-ventilation"
+      ],
+      "images": [],
+      "documents": [],
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T08:35:29.068Z",
+      "importStatus": "MANUAL_REQUIRED",
+      "manualReviewUrl": "https://www.systemair.com/en/products/fans/jet-fans/",
+      "modelNumber": "SD-JFC-12",
+      "imageDetails": []
+    },
+    {
+      "id": "prod-19",
+      "slug": "damper-monitoring-module",
+      "name": "Damper Monitoring Module",
+      "category": "field-devices",
+      "brandId": "brand-1",
+      "brandName": "SmokeDefense",
+      "glyph": "controller",
+      "short": "Addresses dampers for position feedback and cycle testing.",
+      "description": "Monitoring module that gives each fire or smoke damper an address, reporting position, stroke time and fault state, and executing scheduled cycle tests without manual attendance.",
+      "status": "active",
+      "isFeatured": false,
+      "stock": 25,
+      "lowStockThreshold": 5,
+      "specs": [
+        {
+          "label": "Channels",
+          "value": "4 dampers per module"
+        },
+        {
+          "label": "Inputs",
+          "value": "Open / closed end switches"
+        },
+        {
+          "label": "Outputs",
+          "value": "Actuator drive per channel"
+        },
+        {
+          "label": "Test",
+          "value": "Scheduled cycle test with recorded result"
+        },
+        {
+          "label": "Supply",
+          "value": "24 V DC"
+        }
+      ],
+      "applications": [
+        "Damper supervision",
+        "Compliance testing",
+        "Retrofit monitoring"
+      ],
+      "systems": [
+        "fs-dampers",
+        "field-devices"
+      ],
+      "images": [],
+      "documents": [],
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T08:35:29.068Z",
+      "importStatus": "MANUAL_REQUIRED",
+      "manualReviewUrl": "https://www.belimo.com/us/en_US/products/actuators/damper-actuators-with-feedback/",
+      "modelNumber": "SD-DMM-4",
+      "imageDetails": []
+    },
+    {
+      "id": "prod-20",
+      "slug": "air-quality-display-panel",
+      "name": "Air Quality Display Panel",
+      "category": "field-devices",
+      "brandId": "brand-1",
+      "brandName": "SmokeDefense",
+      "glyph": "sensor",
+      "short": "Local display of zone air quality and system status.",
+      "description": "Wall-mounted display showing live CO, CO₂ and system status for a zone, giving facilities staff a local readout without opening the supervisory platform.",
+      "status": "active",
+      "isFeatured": false,
+      "stock": 25,
+      "lowStockThreshold": 5,
+      "specs": [
+        {
+          "label": "Display",
+          "value": "Backlit LCD, live values"
+        },
+        {
+          "label": "Inputs",
+          "value": "Bus or analogue sensor feeds"
+        },
+        {
+          "label": "Alarm",
+          "value": "Visual and volt-free alarm contact"
+        },
+        {
+          "label": "Mounting",
+          "value": "Surface wall mount"
+        },
+        {
+          "label": "Supply",
+          "value": "24 V AC/DC"
+        }
+      ],
+      "applications": [
+        "Car park entries",
+        "Plant rooms",
+        "Facility offices"
+      ],
+      "systems": [
+        "car-park-ventilation",
+        "co2-monitors-controls"
+      ],
+      "images": [],
+      "documents": [],
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T08:35:29.068Z",
+      "importStatus": "MANUAL_REQUIRED",
+      "manualReviewUrl": "https://www.siemens.com/global/en/products/buildings/hvac/room-sensors-thermostats/room-displays.html",
+      "modelNumber": "SD-AQD-1",
+      "imageDetails": []
+    },
+    {
+      "id": "prod-21",
+      "slug": "power-supply-unit",
+      "name": "Supervised Power Supply Unit",
+      "category": "field-devices",
+      "brandId": "brand-1",
+      "brandName": "SmokeDefense",
+      "glyph": "controller",
+      "short": "Monitored 24 V supply for field devices and controllers.",
+      "description": "DIN-rail power supply with supervision and optional battery backup for controllers, sensors and actuators, reporting supply and battery faults to the automation platform.",
+      "status": "active",
+      "isFeatured": false,
+      "stock": 25,
+      "lowStockThreshold": 5,
+      "specs": [
+        {
+          "label": "Output",
+          "value": "24 V DC, 5 / 10 A"
+        },
+        {
+          "label": "Backup",
+          "value": "Optional battery module"
+        },
+        {
+          "label": "Supervision",
+          "value": "Supply and battery fault contacts"
+        },
+        {
+          "label": "Mounting",
+          "value": "DIN rail"
+        },
+        {
+          "label": "Protection",
+          "value": "Short-circuit and overload protected"
+        }
+      ],
+      "applications": [
+        "Control panels",
+        "Field device power",
+        "Retrofit upgrades"
+      ],
+      "systems": [
+        "field-devices"
+      ],
+      "images": [],
+      "documents": [],
+      "createdAt": "2026-09-14T06:49:30.287Z",
+      "updatedAt": "2026-09-14T08:35:29.068Z",
+      "importStatus": "MANUAL_REQUIRED",
+      "manualReviewUrl": "https://www.siemens.com/global/en/products/automation/power-supplies.html",
+      "modelNumber": "SD-PSU-24V",
+      "imageDetails": []
+    }
+  ],
+  "users": [
+    {
+      "id": "user-admin-1",
+      "email": "admin@smokedefense.com",
+      "name": "System Administrator",
+      "passwordHash": "624260402ef30d62af0c931972d6b2eb40001e106bb7fd79fdcc653f79e5ebdc",
+      "createdAt": "2026-09-14T06:49:30.287Z"
+    }
+  ]
+}

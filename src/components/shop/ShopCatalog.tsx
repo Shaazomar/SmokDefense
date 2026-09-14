@@ -3,24 +3,30 @@
 import React, { useMemo, useState } from "react";
 import Link from "next/link";
 import { Search, ArrowUpRight } from "lucide-react";
-import { PRODUCTS, SHOP_CATEGORIES } from "@/lib/data/shop";
+import { PRODUCTS, SHOP_CATEGORIES, Product, ShopCategory } from "@/lib/data/shop";
 import { DeviceGlyph } from "@/components/ui/DeviceGlyph";
 import { CallForDemo } from "@/components/demo/CallForDemo";
 import { cn } from "@/lib/utils/cn";
 
 interface ShopCatalogProps {
   initialCategory?: string;
+  productsList?: Product[];
+  categoriesList?: ShopCategory[];
 }
 
-export function ShopCatalog({ initialCategory }: ShopCatalogProps) {
+export function ShopCatalog({
+  initialCategory,
+  productsList = PRODUCTS,
+  categoriesList = SHOP_CATEGORIES,
+}: ShopCatalogProps) {
   const [category, setCategory] = useState(
-    SHOP_CATEGORIES.some((entry) => entry.slug === initialCategory) ? initialCategory! : "all",
+    categoriesList.some((entry) => entry.slug === initialCategory) ? initialCategory! : "all",
   );
   const [query, setQuery] = useState("");
 
   const results = useMemo(() => {
     const needle = query.trim().toLowerCase();
-    return PRODUCTS.filter((product) => {
+    return productsList.filter((product) => {
       if (category !== "all" && product.category !== category) return false;
       if (!needle) return true;
       return (
@@ -29,12 +35,14 @@ export function ShopCatalog({ initialCategory }: ShopCatalogProps) {
         product.applications.some((application) => application.toLowerCase().includes(needle))
       );
     });
-  }, [category, query]);
+  }, [category, query, productsList]);
 
   const countFor = (slug: string) =>
-    slug === "all" ? PRODUCTS.length : PRODUCTS.filter((product) => product.category === slug).length;
+    slug === "all"
+      ? productsList.length
+      : productsList.filter((product) => product.category === slug).length;
 
-  const active = SHOP_CATEGORIES.find((entry) => entry.slug === category);
+  const active = categoriesList.find((entry) => entry.slug === category);
 
   return (
     <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
@@ -57,7 +65,7 @@ export function ShopCatalog({ initialCategory }: ShopCatalogProps) {
               Categories
             </div>
             <ul>
-              {[{ slug: "all", label: "All Products" }, ...SHOP_CATEGORIES].map((entry) => (
+              {[{ slug: "all", label: "All Products" }, ...categoriesList].map((entry) => (
                 <li key={entry.slug}>
                   <button
                     type="button"
@@ -129,7 +137,21 @@ export function ShopCatalog({ initialCategory }: ShopCatalogProps) {
               <article key={product.slug} className="group flex flex-col bg-white p-6">
                 <Link href={`/shop/${product.slug}`} className="flex flex-1 flex-col">
                   <div className="flex items-start justify-between gap-3">
-                    <DeviceGlyph kind={product.glyph} className="h-14 w-14" />
+                    {product.image ? (
+                      /* Real product photo */
+                      <div className="h-14 w-14 shrink-0 overflow-hidden border border-line bg-white">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className="h-full w-full object-contain"
+                          loading="lazy"
+                          onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                        />
+                      </div>
+                    ) : (
+                      <DeviceGlyph kind={product.glyph} className="h-14 w-14" />
+                    )}
                     <ArrowUpRight className="h-4 w-4 text-ink-faint transition-colors group-hover:text-accent" />
                   </div>
 
