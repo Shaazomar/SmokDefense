@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { CallForDemo } from "@/components/demo/CallForDemo";
@@ -19,9 +20,14 @@ export function Footer() {
 
         <div className="mt-12 grid grid-cols-2 gap-10 border-b border-line pb-12 lg:grid-cols-6">
           <div className="col-span-2">
-            <Link href="/" className="font-display text-2xl font-bold tracking-tight text-ink">
-              {SITE.wordmark.lead}
-              <span className="text-accent">{SITE.wordmark.accent}</span>
+            <Link href="/" className="inline-flex items-center">
+              <Image
+                src="/logo.png"
+                alt={SITE.name}
+                width={2172}
+                height={724}
+                className="h-9 w-auto"
+              />
             </Link>
             <p className="mt-4 max-w-sm font-sans text-xs leading-relaxed text-ink-soft">
               {SITE.description}

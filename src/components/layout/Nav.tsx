@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
@@ -29,15 +30,15 @@ export function Nav() {
       )}
     >
       <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-6 px-6 py-4 md:px-10">
-        <Link
-          href="/"
-          className="flex items-center gap-2 font-display text-xl font-bold tracking-tight text-ink"
-        >
-          <span>
-            {SITE.wordmark.lead}
-            <span className="text-accent">{SITE.wordmark.accent}</span>
-          </span>
-          <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo.png"
+            alt={SITE.name}
+            width={2172}
+            height={724}
+            priority
+            className="h-8 w-auto"
+          />
         </Link>
 
         <nav className="hidden items-center gap-7 font-mono text-xs uppercase tracking-wider lg:flex">

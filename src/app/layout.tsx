@@ -30,6 +30,9 @@ export const metadata: Metadata = {
   },
   description:
     "Intelligent ventilation, car park ventilation, CO₂ monitoring, pressurization, fire & smoke dampers, actuators, controllers and building automation systems.",
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
