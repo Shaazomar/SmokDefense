@@ -4,15 +4,15 @@ import { PRODUCTS, SHOP_CATEGORIES } from "@/lib/data/shop";
 import type { DbData, DbProduct, DbCategory, DbBrand, DbUser, DashboardStats, DbProductImage } from "./types";
 
 const DATA_DIR = path.join(process.cwd(), "data");
-const DB_FILE = path.join(DATA_DIR, "smokedefense.json");
+const DB_FILE = path.join(DATA_DIR, "override-r.json");
 
-export const DEFAULT_ADMIN_EMAIL = "admin@smokedefense.com";
+export const DEFAULT_ADMIN_EMAIL = "admin@override-r.com";
 export const DEFAULT_ADMIN_PASS = "admin123";
 
 import crypto from "node:crypto";
 
 export function hashPassword(password: string): string {
-  return crypto.createHash("sha256").update(password + "smokedefense_salt_2026").digest("hex");
+  return crypto.createHash("sha256").update(password + "override_r_salt_2026").digest("hex");
 }
 
 function getInitialSeedData(): DbData {
@@ -37,10 +37,10 @@ function getInitialSeedData(): DbData {
   const brands: DbBrand[] = [
     {
       id: "brand-1",
-      slug: "smokedefense",
-      name: "SmokeDefense",
-      officialDomain: "smokedefense.com",
-      allowedDomains: ["smokedefense.com"],
+      slug: "override-r",
+      name: "Override-R",
+      officialDomain: "override-r.com",
+      allowedDomains: ["override-r.com"],
       description: "In-house specialized smoke control and ventilation components.",
       isOwnBrand: true,
       status: "active",
@@ -235,7 +235,7 @@ export const db = {
       ...input,
       id: `prod-${Date.now()}`,
       slug: finalSlug,
-      brandName: brand?.name || input.brandName || "SmokeDefense",
+      brandName: brand?.name || input.brandName || "Override-R",
       importStatus: input.importStatus || "NOT_SEARCHED",
       imageDetails: input.imageDetails || [],
       createdAt: new Date().toISOString(),

@@ -29,7 +29,7 @@ export function HeroCopy() {
       <div className="absolute left-6 top-24 hidden flex-col items-start gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ink-soft md:flex md:left-10 md:top-28">
         <div className="flex items-center gap-2 border-b border-line/60 pb-1">
           <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-          <span className="font-bold tracking-wider text-ink">SMOKDEFENSE</span>
+          <span className="font-bold tracking-wider text-ink">OVERRIDE-R</span>
         </div>
         <div className="flex items-center gap-2 border-b border-line/60 pb-1">
           <span className="font-semibold text-ink">VENTILATION</span>
@@ -64,7 +64,7 @@ export function HeroCopy() {
         transition={{ duration: 0.5 }}
         className="col-start-1 row-start-1 flex flex-col items-center gap-2 font-mono text-xs uppercase tracking-[0.3em] text-ink-soft"
       >
-        <span className="font-bold text-ink">SMOKDEFENSE</span>
+        <span className="font-bold text-ink">OVERRIDE-R</span>
         <span className="text-accent">SYSTEM / INITIALIZING…</span>
       </motion.div>
 
@@ -93,7 +93,7 @@ export function HeroCopy() {
         </h1>
 
         <p className="text-balance max-w-2xl font-sans text-sm leading-relaxed text-ink-soft md:text-base">
-          SmokDefense engineers intelligent ventilation, pressurization and fire &amp; smoke control
+          Override-R engineers intelligent ventilation, pressurization and fire &amp; smoke control
           systems — combining sensors, actuators, controllers, gateways and building automation into
           one supervised platform.
         </p>

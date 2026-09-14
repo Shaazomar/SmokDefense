@@ -32,7 +32,7 @@ const CATALOG_SPECS: ProductSpec[] = [
   {
     id: "prod-1",
     name: "CO₂ Sensor — Room Mount",
-    brandName: "SmokeDefense",
+    brandName: "Override-R",
     category: "sensors",
     modelNumber: "SD-CO2-R",
     officialPageUrl: "https://www.siemens.com/global/en/products/buildings/hvac/room-sensors-thermostats/room-co2-sensor.html",
@@ -52,7 +52,7 @@ const CATALOG_SPECS: ProductSpec[] = [
   {
     id: "prod-2",
     name: "CO₂ Sensor — Duct Mount",
-    brandName: "SmokeDefense",
+    brandName: "Override-R",
     category: "sensors",
     modelNumber: "SD-CO2-D",
     officialPageUrl: "https://www.siemens.com/global/en/products/buildings/hvac/duct-sensors/duct-co2-sensor.html",
@@ -72,7 +72,7 @@ const CATALOG_SPECS: ProductSpec[] = [
   {
     id: "prod-3",
     name: "CO Sensor — Car Park",
-    brandName: "SmokeDefense",
+    brandName: "Override-R",
     category: "sensors",
     modelNumber: "SD-CO-CP",
     officialPageUrl: "https://www.siemens.com/global/en/products/buildings/fire-safety/gas-detection.html",
@@ -81,7 +81,7 @@ const CATALOG_SPECS: ProductSpec[] = [
   {
     id: "prod-4",
     name: "Differential Pressure Sensor",
-    brandName: "SmokeDefense",
+    brandName: "Override-R",
     category: "sensors",
     modelNumber: "SD-DPS-100",
     officialPageUrl: "https://www.siemens.com/global/en/products/buildings/hvac/sensing-devices/differential-pressure-sensors.html",
@@ -90,7 +90,7 @@ const CATALOG_SPECS: ProductSpec[] = [
   {
     id: "prod-5",
     name: "Duct Temperature & Humidity Sensor",
-    brandName: "SmokeDefense",
+    brandName: "Override-R",
     category: "sensors",
     modelNumber: "SD-DTH-150",
     officialPageUrl: "https://www.siemens.com/global/en/products/buildings/hvac/duct-sensors/duct-temperature-humidity-sensors.html",
@@ -133,7 +133,7 @@ const CATALOG_SPECS: ProductSpec[] = [
   {
     id: "prod-8",
     name: "Window Actuator — Chain Drive",
-    brandName: "SmokeDefense",
+    brandName: "Override-R",
     category: "actuators",
     modelNumber: "SD-WA-300",
     officialPageUrl: "https://www.belimo.com/us/en_US/products/window-actuators/",
@@ -142,7 +142,7 @@ const CATALOG_SPECS: ProductSpec[] = [
   {
     id: "prod-9",
     name: "F/S Damper Actuator — Spring Return",
-    brandName: "SmokeDefense",
+    brandName: "Override-R",
     category: "actuators",
     modelNumber: "SD-FS-16N",
     officialPageUrl: "https://www.belimo.com/us/en_US/products/fire-smoke-actuators/",
@@ -166,7 +166,7 @@ const CATALOG_SPECS: ProductSpec[] = [
   {
     id: "prod-10",
     name: "Fire Damper",
-    brandName: "SmokeDefense",
+    brandName: "Override-R",
     category: "dampers",
     modelNumber: "SD-FD-400",
     officialPageUrl: "https://www.belimo.com/us/en_US/products/fire-dampers/",
@@ -175,7 +175,7 @@ const CATALOG_SPECS: ProductSpec[] = [
   {
     id: "prod-11",
     name: "Smoke Damper",
-    brandName: "SmokeDefense",
+    brandName: "Override-R",
     category: "dampers",
     modelNumber: "SD-SD-600",
     officialPageUrl: "https://www.belimo.com/us/en_US/products/smoke-dampers/",
@@ -184,7 +184,7 @@ const CATALOG_SPECS: ProductSpec[] = [
   {
     id: "prod-12",
     name: "Fire & Smoke Combination Damper",
-    brandName: "SmokeDefense",
+    brandName: "Override-R",
     category: "dampers",
     modelNumber: "SD-FSD-800",
     officialPageUrl: "https://www.belimo.com/us/en_US/products/fire-smoke-dampers/",
@@ -193,7 +193,7 @@ const CATALOG_SPECS: ProductSpec[] = [
   {
     id: "prod-13",
     name: "Pressure Relief Damper",
-    brandName: "SmokeDefense",
+    brandName: "Override-R",
     category: "dampers",
     modelNumber: "SD-PRD-600",
     officialPageUrl: "https://www.belimo.com/us/en_US/products/",
@@ -202,7 +202,7 @@ const CATALOG_SPECS: ProductSpec[] = [
   {
     id: "prod-14",
     name: "Gateway Controller",
-    brandName: "SmokeDefense",
+    brandName: "Override-R",
     category: "controllers",
     modelNumber: "SD-GC-250",
     officialPageUrl: "https://www.siemens.com/global/en/products/buildings/automation/desigo.html",
@@ -211,7 +211,7 @@ const CATALOG_SPECS: ProductSpec[] = [
   {
     id: "prod-15",
     name: "Edge Controller",
-    brandName: "SmokeDefense",
+    brandName: "Override-R",
     category: "controllers",
     modelNumber: "SD-EC-32",
     officialPageUrl: "https://www.siemens.com/global/en/products/buildings/automation/desigo.html",
@@ -220,7 +220,7 @@ const CATALOG_SPECS: ProductSpec[] = [
   {
     id: "prod-16",
     name: "IP500 Node",
-    brandName: "SmokeDefense",
+    brandName: "Override-R",
     category: "controllers",
     modelNumber: "SD-IP500-N",
     officialPageUrl: "https://new.siemens.com/global/en/products/buildings/fire-safety/intelligent-wireless/gamma-wave.html",
@@ -229,7 +229,7 @@ const CATALOG_SPECS: ProductSpec[] = [
   {
     id: "prod-17",
     name: "Field Controller",
-    brandName: "SmokeDefense",
+    brandName: "Override-R",
     category: "controllers",
     modelNumber: "SD-FC-18",
     officialPageUrl: "https://www.siemens.com/global/en/products/buildings/automation/desigo.html",
@@ -238,7 +238,7 @@ const CATALOG_SPECS: ProductSpec[] = [
   {
     id: "prod-18",
     name: "Jet Fan Controller",
-    brandName: "SmokeDefense",
+    brandName: "Override-R",
     category: "controllers",
     modelNumber: "SD-JFC-12",
     officialPageUrl: "https://www.systemair.com/en/products/fans/jet-fans/",
@@ -247,7 +247,7 @@ const CATALOG_SPECS: ProductSpec[] = [
   {
     id: "prod-19",
     name: "Damper Monitoring Module",
-    brandName: "SmokeDefense",
+    brandName: "Override-R",
     category: "field-devices",
     modelNumber: "SD-DMM-4",
     officialPageUrl: "https://www.belimo.com/us/en_US/products/actuators/damper-actuators-with-feedback/",
@@ -256,7 +256,7 @@ const CATALOG_SPECS: ProductSpec[] = [
   {
     id: "prod-20",
     name: "Air Quality Display Panel",
-    brandName: "SmokeDefense",
+    brandName: "Override-R",
     category: "field-devices",
     modelNumber: "SD-AQD-1",
     officialPageUrl: "https://www.siemens.com/global/en/products/buildings/hvac/room-sensors-thermostats/room-displays.html",
@@ -265,7 +265,7 @@ const CATALOG_SPECS: ProductSpec[] = [
   {
     id: "prod-21",
     name: "Supervised Power Supply Unit",
-    brandName: "SmokeDefense",
+    brandName: "Override-R",
     category: "field-devices",
     modelNumber: "SD-PSU-24V",
     officialPageUrl: "https://www.siemens.com/global/en/products/automation/power-supplies.html",
@@ -274,7 +274,7 @@ const CATALOG_SPECS: ProductSpec[] = [
 ];
 
 async function runProcess() {
-  const dbFile = path.join(process.cwd(), "data/smokedefense.json");
+  const dbFile = path.join(process.cwd(), "data/override-r.json");
   const uploadDir = path.join(process.cwd(), "public/product-images");
 
   if (!fs.existsSync(uploadDir)) {

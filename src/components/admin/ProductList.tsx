@@ -274,7 +274,7 @@ export function ProductList({ initialProducts, categories, brands }: ProductList
                     <td className="py-3 px-4 text-slate-400 capitalize">{product.category}</td>
 
                     {/* Brand */}
-                    <td className="py-3 px-4 text-slate-400">{product.brandName || "SmokeDefense"}</td>
+                    <td className="py-3 px-4 text-slate-400">{product.brandName || "Override-R"}</td>
 
                     {/* Stock */}
                     <td className="py-3 px-4">

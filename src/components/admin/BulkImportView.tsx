@@ -180,7 +180,7 @@ export function BulkImportView({ initialProducts, categories, brands }: BulkImpo
                       <div className="font-sans font-semibold text-slate-200">{prod.name}</div>
                       <div className="text-[10px] text-slate-500">{prod.slug}</div>
                     </td>
-                    <td className="py-3 px-4 text-slate-400">{prod.brandName || "SmokeDefense"}</td>
+                    <td className="py-3 px-4 text-slate-400">{prod.brandName || "Override-R"}</td>
                     <td className="py-3 px-4 text-slate-300 font-bold">
                       {prod.modelNumber || "—"}
                     </td>

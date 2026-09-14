@@ -305,7 +305,7 @@ const IMPORT_SPECS: ImageSourceSpec[] = [
 ];
 
 async function executeImport() {
-  const dbPath = path.join(process.cwd(), "data/smokedefense.json");
+  const dbPath = path.join(process.cwd(), "data/override-r.json");
   const uploadDir = path.join(process.cwd(), "public/product-images");
 
   if (!fs.existsSync(uploadDir)) {
@@ -424,7 +424,7 @@ async function executeImport() {
     prod.updatedAt = new Date().toISOString();
   }
 
-  // Write updated DB back to data/smokedefense.json
+  // Write updated DB back to data/override-r.json
   fs.writeFileSync(dbPath, JSON.stringify(dbData, null, 2), "utf-8");
 
   console.log(`\n==================================================`);

@@ -25,8 +25,8 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "SmokDefense — Intelligent Building Systems & Ventilation Technology",
-    template: "%s — SmokDefense",
+    default: "Override-R — Intelligent Building Systems & Ventilation Technology",
+    template: "%s — Override-R",
   },
   description:
     "Intelligent ventilation, car park ventilation, CO₂ monitoring, pressurization, fire & smoke dampers, actuators, controllers and building automation systems.",

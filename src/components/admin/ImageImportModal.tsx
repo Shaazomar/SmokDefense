@@ -140,7 +140,7 @@ export function ImageImportModal({
               </h3>
             </div>
             <p className="text-xs font-mono text-slate-400 mt-1">
-              Product: <strong className="text-amber-400">{product.name}</strong> (Brand: {product.brandName || "SmokeDefense"} | Model: {product.modelNumber || "N/A"})
+              Product: <strong className="text-amber-400">{product.name}</strong> (Brand: {product.brandName || "Override-R"} | Model: {product.modelNumber || "N/A"})
             </p>
           </div>
           <button

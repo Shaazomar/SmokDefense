@@ -10,7 +10,7 @@ import { buttonClass } from "@/components/ui/Button";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "SmokDefense engineers intelligent ventilation, building automation, fire & smoke control, pressurization, sensors, actuators and controllers for real buildings.",
+    "Override-R engineers intelligent ventilation, building automation, fire & smoke control, pressurization, sensors, actuators and controllers for real buildings.",
 };
 
 const WHAT_WE_DO = [
@@ -64,7 +64,7 @@ export default function AboutPage() {
       <PageHeader
         eyebrow="About"
         title="We build the systems buildings depend on."
-        lead="SmokDefense designs, integrates and maintains intelligent ventilation, pressurization and fire & smoke control systems — from the sensor on the wall to the platform that supervises it."
+        lead="Override-R designs, integrates and maintains intelligent ventilation, pressurization and fire & smoke control systems — from the sensor on the wall to the platform that supervises it."
         crumbs={[{ label: "About" }]}
         actions={<CallForDemo source="About Page" />}
       />
@@ -77,7 +77,7 @@ export default function AboutPage() {
           </div>
           <div className="space-y-5 font-sans text-sm leading-relaxed text-ink-soft md:text-base lg:col-span-7">
             <p>
-              SmokDefense is a building systems engineering company working across ventilation,
+              Override-R is a building systems engineering company working across ventilation,
               pressurization, fire &amp; smoke control and building automation. We specify and supply
               the field hardware, write the control logic, commission the installation and maintain it
               afterwards.

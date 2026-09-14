@@ -10,7 +10,7 @@ import { SYSTEMS } from "@/lib/data/systems";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Talk to the SmokDefense engineering team about ventilation, pressurization, fire & smoke control and building automation projects.",
+    "Talk to the Override-R engineering team about ventilation, pressurization, fire & smoke control and building automation projects.",
 };
 
 export default function ContactPage() {

@@ -6,7 +6,7 @@ import { Lock, Mail, ArrowRight, ShieldCheck } from "lucide-react";
 
 export default function AdminLoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState("admin@smokedefense.com");
+  const [email, setEmail] = useState("admin@override-r.com");
   const [password, setPassword] = useState("admin123");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -46,7 +46,7 @@ export default function AdminLoginPage() {
             SD
           </div>
           <h1 className="font-display font-bold uppercase tracking-wider text-xl text-white">
-            SmokeDefense
+            Override-R
           </h1>
           <p className="text-xs font-mono uppercase tracking-widest text-amber-400/80">
             Protected Admin Portal
@@ -73,7 +73,7 @@ export default function AdminLoginPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@smokedefense.com"
+                placeholder="admin@override-r.com"
                 className="w-full bg-slate-900 border border-slate-800 rounded-md pl-10 pr-4 py-2.5 text-xs text-slate-100 font-mono focus:outline-none focus:border-amber-500/50"
               />
             </div>
@@ -112,7 +112,7 @@ export default function AdminLoginPage() {
             <span>Encrypted Session Authentication</span>
           </div>
           <p className="text-[10px] font-mono text-slate-600">
-            Default credentials: <code className="text-slate-400">admin@smokedefense.com</code> / <code className="text-slate-400">admin123</code>
+            Default credentials: <code className="text-slate-400">admin@override-r.com</code> / <code className="text-slate-400">admin123</code>
           </p>
         </div>
       </div>

@@ -4,7 +4,7 @@
       "id": "cat-1",
       "slug": "sensors",
       "label": "Sensors",
-      "description": "CO₂, CO and environmental measurement for demand-controlled ventilation.",
+      "description": "CO\u2082, CO and environmental measurement for demand-controlled ventilation.",
       "status": "active",
       "createdAt": "2026-09-14T06:49:30.287Z",
       "updatedAt": "2026-09-14T06:49:30.287Z"
@@ -49,13 +49,17 @@
   "brands": [
     {
       "id": "brand-1",
-      "slug": "smokedefense",
-      "name": "SmokeDefense",
+      "slug": "override-r",
+      "name": "Override-R",
       "description": "In-house specialized smoke control and ventilation components.",
       "isOwnBrand": true,
       "status": "active",
       "createdAt": "2026-09-14T06:49:30.287Z",
-      "updatedAt": "2026-09-14T06:49:30.287Z"
+      "updatedAt": "2026-09-14T06:49:30.287Z",
+      "officialDomain": "override-r.com",
+      "allowedDomains": [
+        "override-r.com"
+      ]
     },
     {
       "id": "brand-2",
@@ -82,12 +86,12 @@
     {
       "id": "prod-1",
       "slug": "co2-sensor-room",
-      "name": "CO₂ Sensor — Room Mount",
+      "name": "CO\u2082 Sensor \u2014 Room Mount",
       "category": "sensors",
       "brandId": "brand-1",
-      "brandName": "SmokeDefense",
+      "brandName": "Override-R",
       "glyph": "sensor",
-      "short": "NDIR room CO₂ sensor for demand-controlled ventilation.",
+      "short": "NDIR room CO\u2082 sensor for demand-controlled ventilation.",
       "description": "Wall-mounted NDIR carbon dioxide sensor for occupied spaces. Provides a linear output to the zone controller so fresh-air delivery tracks actual occupancy instead of a fixed schedule.",
       "status": "active",
       "isFeatured": true,
@@ -96,15 +100,15 @@
       "specs": [
         {
           "label": "Measurement",
-          "value": "NDIR, 0 – 2000 ppm"
+          "value": "NDIR, 0 \u2013 2000 ppm"
         },
         {
           "label": "Accuracy",
-          "value": "±30 ppm ±3 % of reading"
+          "value": "\u00b130 ppm \u00b13 % of reading"
         },
         {
           "label": "Output",
-          "value": "0 – 10 V / 4 – 20 mA / bus"
+          "value": "0 \u2013 10 V / 4 \u2013 20 mA / bus"
         },
         {
           "label": "Supply",
@@ -137,12 +141,12 @@
     {
       "id": "prod-2",
       "slug": "co2-sensor-duct",
-      "name": "CO₂ Sensor — Duct Mount",
+      "name": "CO\u2082 Sensor \u2014 Duct Mount",
       "category": "sensors",
       "brandId": "brand-1",
-      "brandName": "SmokeDefense",
+      "brandName": "Override-R",
       "glyph": "sensor",
-      "short": "In-duct CO₂ measurement for air handling units.",
+      "short": "In-duct CO\u2082 measurement for air handling units.",
       "description": "Duct-mounted NDIR sensor with sampling probe, used on return and mixed-air ducts to control fresh-air intake at the air handling unit.",
       "status": "active",
       "isFeatured": true,
@@ -151,7 +155,7 @@
       "specs": [
         {
           "label": "Measurement",
-          "value": "NDIR, 0 – 2000 ppm"
+          "value": "NDIR, 0 \u2013 2000 ppm"
         },
         {
           "label": "Probe length",
@@ -159,7 +163,7 @@
         },
         {
           "label": "Output",
-          "value": "0 – 10 V / 4 – 20 mA"
+          "value": "0 \u2013 10 V / 4 \u2013 20 mA"
         },
         {
           "label": "Supply",
@@ -191,10 +195,10 @@
     {
       "id": "prod-3",
       "slug": "co-sensor-carpark",
-      "name": "CO Sensor — Car Park",
+      "name": "CO Sensor \u2014 Car Park",
       "category": "sensors",
       "brandId": "brand-1",
-      "brandName": "SmokeDefense",
+      "brandName": "Override-R",
       "glyph": "sensor",
       "short": "Electrochemical carbon monoxide sensor for enclosed parking.",
       "description": "Carbon monoxide sensor designed for basement and enclosed car parks. Drives staged jet fan and exhaust fan operation, and raises an alarm when concentrations remain above the configured threshold.",
@@ -205,11 +209,11 @@
       "specs": [
         {
           "label": "Measurement",
-          "value": "Electrochemical, 0 – 300 ppm"
+          "value": "Electrochemical, 0 \u2013 300 ppm"
         },
         {
           "label": "Output",
-          "value": "0 – 10 V / 4 – 20 mA / relay"
+          "value": "0 \u2013 10 V / 4 \u2013 20 mA / relay"
         },
         {
           "label": "Supply",
@@ -247,7 +251,7 @@
       "name": "Differential Pressure Sensor",
       "category": "sensors",
       "brandId": "brand-1",
-      "brandName": "SmokeDefense",
+      "brandName": "Override-R",
       "glyph": "sensor",
       "short": "Pressure difference measurement for pressurization control.",
       "description": "Differential pressure transmitter measuring across stair and lobby doors, and across filters and fans. The primary feedback element in a pressurization control loop.",
@@ -258,15 +262,15 @@
       "specs": [
         {
           "label": "Range",
-          "value": "0 – 100 / 0 – 500 Pa selectable"
+          "value": "0 \u2013 100 / 0 \u2013 500 Pa selectable"
         },
         {
           "label": "Accuracy",
-          "value": "±1 % of full scale"
+          "value": "\u00b11 % of full scale"
         },
         {
           "label": "Output",
-          "value": "0 – 10 V / 4 – 20 mA"
+          "value": "0 \u2013 10 V / 4 \u2013 20 mA"
         },
         {
           "label": "Supply",
@@ -300,7 +304,7 @@
       "name": "Duct Temperature & Humidity Sensor",
       "category": "sensors",
       "brandId": "brand-1",
-      "brandName": "SmokeDefense",
+      "brandName": "Override-R",
       "glyph": "sensor",
       "short": "Combined in-duct temperature and humidity measurement.",
       "description": "Combined temperature and relative humidity sensor for supply, return and fresh-air ducts, providing the measured values used by ventilation and air handling control loops.",
@@ -311,15 +315,15 @@
       "specs": [
         {
           "label": "Temperature",
-          "value": "-20 – +80 °C, ±0.3 °C"
+          "value": "-20 \u2013 +80 \u00b0C, \u00b10.3 \u00b0C"
         },
         {
           "label": "Humidity",
-          "value": "0 – 100 % RH, ±2 % RH"
+          "value": "0 \u2013 100 % RH, \u00b12 % RH"
         },
         {
           "label": "Output",
-          "value": "0 – 10 V / 4 – 20 mA"
+          "value": "0 \u2013 10 V / 4 \u2013 20 mA"
         },
         {
           "label": "Probe length",
@@ -368,15 +372,15 @@
         },
         {
           "label": "Control",
-          "value": "On/off, 3-point, 0 – 10 V modulating"
+          "value": "On/off, 3-point, 0 \u2013 10 V modulating"
         },
         {
           "label": "Running time",
-          "value": "90 – 150 s, 90°"
+          "value": "90 \u2013 150 s, 90\u00b0"
         },
         {
           "label": "Feedback",
-          "value": "0 – 10 V position signal"
+          "value": "0 \u2013 10 V position signal"
         },
         {
           "label": "Supply",
@@ -434,11 +438,11 @@
       "specs": [
         {
           "label": "Force",
-          "value": "500 – 1000 N"
+          "value": "500 \u2013 1000 N"
         },
         {
           "label": "Control",
-          "value": "On/off, 3-point, 0 – 10 V modulating"
+          "value": "On/off, 3-point, 0 \u2013 10 V modulating"
         },
         {
           "label": "Stroke",
@@ -446,7 +450,7 @@
         },
         {
           "label": "Feedback",
-          "value": "0 – 10 V position signal"
+          "value": "0 \u2013 10 V position signal"
         },
         {
           "label": "Supply",
@@ -489,10 +493,10 @@
     {
       "id": "prod-8",
       "slug": "window-actuator-chain-drive",
-      "name": "Window Actuator — Chain Drive",
+      "name": "Window Actuator \u2014 Chain Drive",
       "category": "actuators",
       "brandId": "brand-1",
-      "brandName": "SmokeDefense",
+      "brandName": "Override-R",
       "glyph": "window",
       "short": "Chain drive for natural ventilation and smoke-vent windows.",
       "description": "Chain-drive window actuator for automatic opening vents. Used for natural ventilation under the building automation schedule and for smoke-vent opening on a fire signal.",
@@ -524,7 +528,7 @@
       ],
       "applications": [
         "Atrium vents",
-        "Façade windows",
+        "Fa\u00e7ade windows",
         "Smoke vents",
         "Natural ventilation"
       ],
@@ -544,10 +548,10 @@
     {
       "id": "prod-9",
       "slug": "fs-damper-actuator-spring-return",
-      "name": "F/S Damper Actuator — Spring Return",
+      "name": "F/S Damper Actuator \u2014 Spring Return",
       "category": "actuators",
       "brandId": "brand-1",
-      "brandName": "SmokeDefense",
+      "brandName": "Override-R",
       "glyph": "actuator",
       "short": "Spring-return actuation for fire and smoke dampers.",
       "description": "Spring-return actuator for fire and smoke dampers. On loss of power or on a fire signal the spring drives the damper to its safe position, with auxiliary switches confirming the achieved position.",
@@ -566,11 +570,11 @@
         },
         {
           "label": "Thermal release",
-          "value": "72 °C / 95 °C options"
+          "value": "72 \u00b0C / 95 \u00b0C options"
         },
         {
           "label": "Auxiliary switches",
-          "value": "2 × SPDT end switches"
+          "value": "2 \u00d7 SPDT end switches"
         },
         {
           "label": "Supply",
@@ -630,7 +634,7 @@
       "name": "Fire Damper",
       "category": "dampers",
       "brandId": "brand-1",
-      "brandName": "SmokeDefense",
+      "brandName": "Override-R",
       "glyph": "damper",
       "short": "Rated closure of duct penetrations through fire compartments.",
       "description": "Fire damper installed where ductwork penetrates fire-resisting construction. Closes on thermal release or on command, maintaining the fire resistance of the compartment wall or floor.",
@@ -653,7 +657,7 @@
         },
         {
           "label": "Sizes",
-          "value": "200 × 200 to 1200 × 800 mm"
+          "value": "200 \u00d7 200 to 1200 \u00d7 800 mm"
         },
         {
           "label": "Feedback",
@@ -683,7 +687,7 @@
       "name": "Smoke Damper",
       "category": "dampers",
       "brandId": "brand-1",
-      "brandName": "SmokeDefense",
+      "brandName": "Override-R",
       "glyph": "damper",
       "short": "Low-leakage damper for smoke isolation and extract control.",
       "description": "Motorised low-leakage smoke damper used to isolate or direct smoke within a duct network, driven from the fire alarm cause-and-effect matrix with position supervision.",
@@ -702,7 +706,7 @@
         },
         {
           "label": "Sizes",
-          "value": "200 × 200 to 1500 × 1000 mm"
+          "value": "200 \u00d7 200 to 1500 \u00d7 1000 mm"
         },
         {
           "label": "Feedback",
@@ -736,7 +740,7 @@
       "name": "Fire & Smoke Combination Damper",
       "category": "dampers",
       "brandId": "brand-1",
-      "brandName": "SmokeDefense",
+      "brandName": "Override-R",
       "glyph": "damper",
       "short": "Single assembly providing fire closure and smoke isolation.",
       "description": "Combination fire/smoke damper providing both rated fire closure and low-leakage smoke isolation in a single assembly, with supervised actuation and position feedback to the controller.",
@@ -791,7 +795,7 @@
       "name": "Pressure Relief Damper",
       "category": "dampers",
       "brandId": "brand-1",
-      "brandName": "SmokeDefense",
+      "brandName": "Override-R",
       "glyph": "damper",
       "short": "Holds shaft pressure within the permitted band.",
       "description": "Barometric or motorised relief damper used on pressurization systems to discharge excess air, keeping the shaft pressure inside the design band and door-opening forces within limits.",
@@ -806,11 +810,11 @@
         },
         {
           "label": "Set pressure",
-          "value": "Adjustable 25 – 100 Pa"
+          "value": "Adjustable 25 \u2013 100 Pa"
         },
         {
           "label": "Sizes",
-          "value": "400 × 400 to 1200 × 1200 mm"
+          "value": "400 \u00d7 400 to 1200 \u00d7 1200 mm"
         },
         {
           "label": "Material",
@@ -843,7 +847,7 @@
       "name": "Gateway Controller",
       "category": "controllers",
       "brandId": "brand-1",
-      "brandName": "SmokeDefense",
+      "brandName": "Override-R",
       "glyph": "gateway",
       "short": "Protocol translation between field devices and the platform.",
       "description": "Gateway controller aggregating sensors, actuators and field controllers onto the building automation platform, translating between field buses, IP500 wireless and standard building protocols.",
@@ -897,7 +901,7 @@
       "name": "Edge Controller",
       "category": "controllers",
       "brandId": "brand-1",
-      "brandName": "SmokeDefense",
+      "brandName": "Override-R",
       "glyph": "controller",
       "short": "Building-level sequencing, buffering and analytics.",
       "description": "Edge controller executing cross-zone sequences locally, buffering trend and event data through network outages, and providing a secure uplink to the supervisory platform.",
@@ -916,7 +920,7 @@
         },
         {
           "label": "Interfaces",
-          "value": "2 × Ethernet, RS-485, USB"
+          "value": "2 \u00d7 Ethernet, RS-485, USB"
         },
         {
           "label": "Security",
@@ -950,10 +954,10 @@
       "name": "IP500 Node",
       "category": "controllers",
       "brandId": "brand-1",
-      "brandName": "SmokeDefense",
+      "brandName": "Override-R",
       "glyph": "gateway",
       "short": "Wireless mesh node for field device connectivity.",
-      "description": "IP500 wireless mesh node connecting field devices where cabling is impractical — particularly in retrofit work — with self-healing routing and encrypted transport.",
+      "description": "IP500 wireless mesh node connecting field devices where cabling is impractical \u2014 particularly in retrofit work \u2014 with self-healing routing and encrypted transport.",
       "status": "active",
       "isFeatured": false,
       "stock": 25,
@@ -1003,7 +1007,7 @@
       "name": "Field Controller",
       "category": "controllers",
       "brandId": "brand-1",
-      "brandName": "SmokeDefense",
+      "brandName": "Override-R",
       "glyph": "controller",
       "short": "Zone-level control logic with local I/O.",
       "description": "Programmable field controller executing zone ventilation, pressurization or damper logic on local I/O, so control continues even if the upstream network is unavailable.",
@@ -1057,10 +1061,10 @@
       "name": "Jet Fan Controller",
       "category": "controllers",
       "brandId": "brand-1",
-      "brandName": "SmokeDefense",
+      "brandName": "Override-R",
       "glyph": "fan",
       "short": "Staged and reversible control of car park induction fans.",
-      "description": "Dedicated controller for car park jet fans, staging and reversing induction fans by zone in response to the CO/CO₂ sensor grid, with fan status and fault monitoring.",
+      "description": "Dedicated controller for car park jet fans, staging and reversing induction fans by zone in response to the CO/CO\u2082 sensor grid, with fan status and fault monitoring.",
       "status": "active",
       "isFeatured": false,
       "stock": 25,
@@ -1109,7 +1113,7 @@
       "name": "Damper Monitoring Module",
       "category": "field-devices",
       "brandId": "brand-1",
-      "brandName": "SmokeDefense",
+      "brandName": "Override-R",
       "glyph": "controller",
       "short": "Addresses dampers for position feedback and cycle testing.",
       "description": "Monitoring module that gives each fire or smoke damper an address, reporting position, stroke time and fault state, and executing scheduled cycle tests without manual attendance.",
@@ -1163,10 +1167,10 @@
       "name": "Air Quality Display Panel",
       "category": "field-devices",
       "brandId": "brand-1",
-      "brandName": "SmokeDefense",
+      "brandName": "Override-R",
       "glyph": "sensor",
       "short": "Local display of zone air quality and system status.",
-      "description": "Wall-mounted display showing live CO, CO₂ and system status for a zone, giving facilities staff a local readout without opening the supervisory platform.",
+      "description": "Wall-mounted display showing live CO, CO\u2082 and system status for a zone, giving facilities staff a local readout without opening the supervisory platform.",
       "status": "active",
       "isFeatured": false,
       "stock": 25,
@@ -1217,7 +1221,7 @@
       "name": "Supervised Power Supply Unit",
       "category": "field-devices",
       "brandId": "brand-1",
-      "brandName": "SmokeDefense",
+      "brandName": "Override-R",
       "glyph": "controller",
       "short": "Monitored 24 V supply for field devices and controllers.",
       "description": "DIN-rail power supply with supervision and optional battery backup for controllers, sensors and actuators, reporting supply and battery faults to the automation platform.",
@@ -1268,9 +1272,9 @@
   "users": [
     {
       "id": "user-admin-1",
-      "email": "admin@smokedefense.com",
+      "email": "admin@override-r.com",
       "name": "System Administrator",
-      "passwordHash": "624260402ef30d62af0c931972d6b2eb40001e106bb7fd79fdcc653f79e5ebdc",
+      "passwordHash": "22aaab4054701c236b8df57e27ebe491228f5de3e2d480dffdbdaec60eebb026",
       "createdAt": "2026-09-14T06:49:30.287Z"
     }
   ]

@@ -120,7 +120,7 @@ export function InventoryView({ initialItems }: InventoryViewProps) {
                     <div className="font-sans font-semibold text-slate-200">{item.name}</div>
                     <div className="text-[10px] text-slate-500">{item.slug}</div>
                   </td>
-                  <td className="py-3 px-4 text-slate-400">{item.brandName || "SmokeDefense"}</td>
+                  <td className="py-3 px-4 text-slate-400">{item.brandName || "Override-R"}</td>
                   <td className="py-3 px-4">
                     {item.stockStatus === "out_of_stock" && (
                       <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-rose-500/10 text-rose-400 border border-rose-500/20">

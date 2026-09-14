@@ -23,7 +23,7 @@ export default async function AdminSettingsPage() {
           <div className="space-y-2 text-xs font-mono text-slate-300">
             <div className="flex justify-between py-1.5 border-b border-slate-800">
               <span className="text-slate-500">Storage Engine:</span>
-              <span>JSON File Persistence Engine (`data/smokedefense.json`)</span>
+              <span>JSON File Persistence Engine (`data/override-r.json`)</span>
             </div>
             <div className="flex justify-between py-1.5 border-b border-slate-800">
               <span className="text-slate-500">Public Catalogue Integration:</span>

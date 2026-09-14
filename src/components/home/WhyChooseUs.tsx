@@ -29,7 +29,7 @@ export function WhyChooseUs() {
   return (
     <section className="border-t border-line bg-canvas px-6 py-24 md:px-12 lg:px-20">
       <div className="mx-auto max-w-7xl">
-        <SectionHeader eyebrow="// Why SmokDefense" title="Engineered to stay working." />
+        <SectionHeader eyebrow="// Why Override-R" title="Engineered to stay working." />
 
         <div className="mt-10 grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
           {REASONS.map((reason) => (

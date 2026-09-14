@@ -16,7 +16,7 @@ interface Product {
   specs?: { label: string; value: string }[];
 }
 
-const data = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data/smokedefense.json"), "utf-8"));
+const data = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data/override-r.json"), "utf-8"));
 const products: Product[] = data.products;
 
 // Official URL mapping for specific products where known or given in manualReviewUrl

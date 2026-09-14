@@ -4,8 +4,8 @@
  */
 
 export const SITE = {
-  name: "SmokDefense",
-  wordmark: { lead: "SMOK", accent: "DEFENSE" },
+  name: "Override-R",
+  wordmark: { lead: "OVERRIDE", accent: "-R" },
   tagline: "Intelligent Building Systems",
   description:
     "Intelligent ventilation, pressurization, fire & smoke control, sensors, actuators, controllers and building automation systems.",
@@ -14,9 +14,9 @@ export const SITE = {
 export const CONTACT = {
   phone: "+91 90000 00000",
   phoneHref: "tel:+919000000000",
-  email: "info@smokdefense.com",
-  emailHref: "mailto:info@smokdefense.com",
-  address: ["SmokDefense Building Systems", "Unit 04, Technology Park", "Bengaluru 560100, India"],
+  email: "info@override-r.com",
+  emailHref: "mailto:info@override-r.com",
+  address: ["Override-R Building Systems", "Unit 04, Technology Park", "Bengaluru 560100, India"],
   hours: "Mon – Sat / 09:00 – 18:00 IST",
 };
 

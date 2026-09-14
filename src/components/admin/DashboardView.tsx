@@ -135,7 +135,7 @@ export function DashboardView({ stats }: DashboardViewProps) {
                       <div className="text-[10px] text-slate-500 font-mono">{product.slug}</div>
                     </td>
                     <td className="py-3 px-3 text-slate-400 capitalize">{product.category}</td>
-                    <td className="py-3 px-3 text-slate-400">{product.brandName || "SmokeDefense"}</td>
+                    <td className="py-3 px-3 text-slate-400">{product.brandName || "Override-R"}</td>
                     <td className="py-3 px-3">
                       <span
                         className={`inline-flex px-2 py-0.5 rounded text-[10px] font-bold ${

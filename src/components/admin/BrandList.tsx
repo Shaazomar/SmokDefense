@@ -118,7 +118,7 @@ export function BrandList({ initialBrands }: BrandListProps) {
             Brand Management
           </h2>
           <p className="text-xs font-mono text-slate-400 mt-0.5">
-            Manage SmokeDefense products and third-party manufacturers (Belimo, Siemens, Schneider, Honeywell, etc.).
+            Manage Override-R products and third-party manufacturers (Belimo, Siemens, Schneider, Honeywell, etc.).
           </p>
         </div>
         <button
@@ -246,7 +246,7 @@ export function BrandList({ initialBrands }: BrandListProps) {
                   onChange={(e) => setFormData({ ...formData, isOwnBrand: e.target.checked })}
                   className="h-4 w-4 rounded border-slate-700 bg-slate-900 text-amber-500 focus:ring-0"
                 />
-                In-House SmokeDefense Brand
+                In-House Override-R Brand
               </label>
             </div>
 

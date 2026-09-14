@@ -39,7 +39,7 @@ export function ProductForm({ initialProduct, categories, brands, isEdit = false
       slug: "",
       category: categories[0]?.slug || "sensors",
       brandId: brands[0]?.id || "brand-1",
-      brandName: brands[0]?.name || "SmokeDefense",
+      brandName: brands[0]?.name || "Override-R",
       glyph: "sensor",
       short: "",
       description: "",

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-SmokeDefense Product Image Importer — Direct URL Strategy
+Override-R Product Image Importer — Direct URL Strategy
 Uses known official product page URLs to extract and download images.
 """
 
@@ -16,7 +16,7 @@ import ssl
 from pathlib import Path
 
 BASE_DIR = Path(__file__).parent.parent
-DB_FILE  = BASE_DIR / "data" / "smokedefense.json"
+DB_FILE  = BASE_DIR / "data" / "override-r.json"
 IMG_DIR  = BASE_DIR / "public" / "product-images"
 IMG_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -323,7 +323,7 @@ DIRECT_IMAGES: dict[str, list[str]] = {
 
 def main():
     print("=" * 65)
-    print("SmokeDefense Product Image Importer — Direct URL Strategy")
+    print("Override-R Product Image Importer — Direct URL Strategy")
     print("=" * 65)
 
     db_data = json.loads(DB_FILE.read_text())
@@ -335,7 +335,7 @@ def main():
         pid   = prod["id"]
         name  = prod["name"]
         slug  = prod["slug"]
-        brand = prod.get("brandName", "SmokeDefense")
+        brand = prod.get("brandName", "Override-R")
         model = prod.get("modelNumber", "")
 
         # Strip unwanted existing images

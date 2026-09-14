@@ -24,7 +24,7 @@ interface AdminLayoutProps {
   userName?: string;
 }
 
-export function AdminLayout({ children, userEmail = "admin@smokedefense.com", userName = "Admin" }: AdminLayoutProps) {
+export function AdminLayout({ children, userEmail = "admin@override-r.com", userName = "Admin" }: AdminLayoutProps) {
   const pathname = usePathname();
   const router = useRouter();
   const [isLoggingOut, setIsLoggingOut] = useState(false);
@@ -74,7 +74,7 @@ export function AdminLayout({ children, userEmail = "admin@smokedefense.com", us
               </div>
               <div>
                 <span className="font-display font-bold uppercase tracking-wider text-sm text-white block leading-tight">
-                  SmokeDefense
+                  Override-R
                 </span>
                 <span className="font-mono text-[10px] uppercase tracking-widest text-amber-400/80 block">
                   Admin Console

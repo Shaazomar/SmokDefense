@@ -1,5 +1,5 @@
-export const ADMIN_COOKIE_NAME = "sd_admin_session";
-const SESSION_SECRET = "smokedefense_super_secret_session_token_2026";
+export const ADMIN_COOKIE_NAME = "or_admin_session";
+const SESSION_SECRET = "override_r_super_secret_session_token_2026";
 
 function simpleHash(str: string): string {
   let hash = 0;

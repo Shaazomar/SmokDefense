@@ -66,7 +66,7 @@ export interface DbBrand {
   allowedDomains?: string[]; // e.g. ["belimo.com", "belimo.us", "belimo.eu"]
   logoUrl?: string;
   description?: string;
-  isOwnBrand: boolean; // true for SmokeDefense, false for Belimo/Siemens/etc.
+  isOwnBrand: boolean; // true for Override-R, false for Belimo/Siemens/etc.
   status: "active" | "disabled";
   createdAt: string;
   updatedAt: string;
