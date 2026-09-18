@@ -13,6 +13,12 @@ import { SITE } from "@/lib/data/site";
  * Four 1672x941 (16:9) plates read as one narrative: detection → networked
  * infrastructure → building-wide response → predictive intelligence. The stage
  * frame matches the source ratio exactly, so nothing is cropped.
+ *
+ * These are WebP derivatives of the uploaded PNGs — identical pixels and
+ * dimensions, 8.3 MB down to 0.7 MB in total. The original PNGs are kept
+ * untouched at the `public/` root. They are served as-is (`unoptimized`)
+ * rather than through the image optimizer, which is what was failing on the
+ * deployment while the already-cached logo kept working.
  * ------------------------------------------------------------------------- */
 
 interface Scene {
@@ -27,27 +33,27 @@ interface Scene {
 const SCENES: Scene[] = [
   {
     id: "detection",
-    src: "/file_0000000035348208b88ed4b237e7da88.png",
+    src: "/hero/scene-01-detection.webp",
     alt: "CCTV and ceiling detectors picking up smoke from a switchgear fire in a plant room",
     caption: "AI-powered CCTV smoke detection",
     alert: true,
   },
   {
     id: "infrastructure",
-    src: "/file_0000000071f48208a96847201e671922.png",
+    src: "/hero/scene-02-infrastructure.webp",
     alt: "Networked cameras and detectors covering an office floor and its corridor",
     caption: "Connected sensors & infrastructure",
   },
   {
     id: "command",
-    src: "/file_00000000cd7c8211824799326e74d376.png",
+    src: "/hero/scene-03-monitoring.webp",
     alt: "Cutaway of a multi-storey building showing a fire floor and occupants evacuating",
     caption: "Centralised building-wide monitoring",
     alert: true,
   },
   {
     id: "intelligence",
-    src: "/file_00000000874081f49e3da7984c9a42d9.png",
+    src: "/hero/scene-04-intelligence.webp",
     alt: "Engineer reviewing predictive equipment health across an industrial facility",
     caption: "Predictive safety intelligence",
   },
@@ -279,6 +285,7 @@ export function OverrideHero() {
                         src={item.src}
                         alt={item.alt}
                         fill
+                        unoptimized
                         priority={position === 0}
                         sizes="(max-width: 1024px) 100vw, 55vw"
                         className="object-cover object-center"
@@ -348,7 +355,7 @@ export function OverrideHero() {
       </div>
 
       {/* Scroll cue */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-6 flex flex-col items-center gap-2.5">
+      <div className="pointer-events-none absolute inset-x-0 bottom-6 hidden flex-col items-center gap-2.5 lg:flex">
         <span className="font-mono text-[9px] uppercase tracking-[0.35em] text-white/30">Scroll</span>
         <span className="relative block h-9 w-px overflow-hidden bg-white/12">
           <motion.span
