@@ -20,13 +20,19 @@ export function Nav() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // The homepage opens on the dark OverrideR hero; the header rides over it
+  // inverted and returns to the standard light treatment once scrolled.
+  const onDark = pathname === "/" && !scrolled && !menuOpen;
+
   return (
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
         scrolled || menuOpen
           ? "border-b border-line bg-white/92 backdrop-blur-md"
-          : "border-b border-transparent bg-canvas/60 backdrop-blur-xs",
+          : onDark
+            ? "border-b border-white/10 bg-transparent"
+            : "border-b border-transparent bg-canvas/60 backdrop-blur-xs",
       )}
     >
       <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-6 px-6 py-4 md:px-10">
@@ -49,13 +55,22 @@ export function Nav() {
               className={cn(
                 "relative py-1 transition-colors",
                 isActive(pathname, link.href)
-                  ? "font-bold text-ink"
-                  : "text-ink-soft hover:text-ink",
+                  ? onDark
+                    ? "font-bold text-white"
+                    : "font-bold text-ink"
+                  : onDark
+                    ? "text-white/60 hover:text-white"
+                    : "text-ink-soft hover:text-ink",
               )}
             >
               {link.label}
               {isActive(pathname, link.href) && (
-                <span className="absolute inset-x-0 -bottom-0.5 h-px bg-accent" />
+                <span
+                  className={cn(
+                    "absolute inset-x-0 -bottom-0.5 h-px",
+                    onDark ? "bg-[#3DD9EB]" : "bg-accent",
+                  )}
+                />
               )}
             </Link>
           ))}
@@ -70,7 +85,12 @@ export function Nav() {
             onClick={() => setMenuOpen((open) => !open)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-ink lg:hidden"
+            className={cn(
+              "flex h-9 w-9 items-center justify-center rounded-full border transition-colors lg:hidden",
+              onDark
+                ? "border-white/25 text-white hover:border-white"
+                : "border-line text-ink hover:border-ink",
+            )}
           >
             {menuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
