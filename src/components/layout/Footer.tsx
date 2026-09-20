@@ -29,13 +29,13 @@ export function Footer() {
         <div className="mt-10 grid grid-cols-1 gap-10 border-b border-slate-200 pb-12 sm:grid-cols-2 lg:grid-cols-6">
           {/* Brand & Contact Info Column */}
           <div className="sm:col-span-2">
-            <Link href="/" className="inline-flex items-center">
+            <Link href="/" className="inline-flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded">
               <Image
                 src="/logo.png"
                 alt={SITE.name}
                 width={2172}
                 height={724}
-                className="h-7 w-auto"
+                className="h-7 sm:h-8 w-auto max-w-[160px] object-contain"
               />
             </Link>
             <p className="mt-3.5 max-w-sm font-sans text-xs leading-relaxed text-slate-600">

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
@@ -67,19 +68,20 @@ export function AdminLayout({ children, userEmail = "admin@override-r.com", user
       <aside className="w-64 shrink-0 border-r border-slate-800 bg-[#12151a] flex flex-col justify-between">
         <div>
           {/* Logo & Brand Header */}
-          <div className="p-6 border-b border-slate-800 flex items-center justify-between">
-            <Link href="/admin" className="flex items-center gap-3">
-              <div className="h-9 w-9 rounded bg-amber-500/10 border border-amber-500/30 flex items-center justify-center font-mono font-bold text-amber-400 text-sm">
-                SD
+          <div className="p-5 border-b border-slate-800 flex items-center justify-between">
+            <Link href="/admin" className="flex flex-col gap-1.5">
+              <div className="bg-white rounded px-2.5 py-1 inline-flex items-center w-fit shadow-xs">
+                <Image
+                  src="/logo.png"
+                  alt="Override-R"
+                  width={2172}
+                  height={724}
+                  className="h-5 w-auto object-contain"
+                />
               </div>
-              <div>
-                <span className="font-display font-bold uppercase tracking-wider text-sm text-white block leading-tight">
-                  Override-R
-                </span>
-                <span className="font-mono text-[10px] uppercase tracking-widest text-amber-400/80 block">
-                  Admin Console
-                </span>
-              </div>
+              <span className="font-mono text-[10px] uppercase tracking-widest text-amber-400/90 font-semibold">
+                Admin Console
+              </span>
             </Link>
           </div>
 

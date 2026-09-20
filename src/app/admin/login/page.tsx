@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Lock, Mail, ArrowRight, ShieldCheck } from "lucide-react";
 
@@ -41,14 +42,18 @@ export default function AdminLoginPage() {
     <div className="min-h-screen bg-[#0d0f12] flex items-center justify-center p-4 font-sans text-slate-100">
       <div className="max-w-md w-full bg-[#12151a] border border-slate-800 rounded-xl p-8 shadow-2xl space-y-6">
         {/* BRAND HEADER */}
-        <div className="text-center space-y-2">
-          <div className="mx-auto h-12 w-12 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center font-mono font-bold text-amber-400 text-lg">
-            SD
+        <div className="text-center space-y-3">
+          <div className="mx-auto bg-white rounded-lg px-4 py-2 inline-flex items-center justify-center shadow-md">
+            <Image
+              src="/logo.png"
+              alt="Override-R"
+              width={2172}
+              height={724}
+              priority
+              className="h-7 w-auto object-contain"
+            />
           </div>
-          <h1 className="font-display font-bold uppercase tracking-wider text-xl text-white">
-            Override-R
-          </h1>
-          <p className="text-xs font-mono uppercase tracking-widest text-amber-400/80">
+          <p className="text-xs font-mono uppercase tracking-widest text-amber-400/90 font-semibold">
             Protected Admin Portal
           </p>
         </div>
