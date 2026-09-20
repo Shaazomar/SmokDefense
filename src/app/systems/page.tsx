@@ -1,67 +1,79 @@
 import type { Metadata } from "next";
-import { PageHeader } from "@/components/ui/PageHeader";
-import { SectionHeader } from "@/components/ui/SectionHeader";
+import { SystemsHero } from "@/components/systems/SystemsHero";
 import { SystemsExplorer } from "@/components/systems/SystemsExplorer";
 import { ArchitectureDiagram } from "@/components/systems/ArchitectureDiagram";
+import { SystemsGrid } from "@/components/systems/SystemsGrid";
 import { FieldDeviceGrid } from "@/components/systems/FieldDeviceGrid";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ClosingCTA } from "@/components/home/ClosingCTA";
-import { CallForDemo } from "@/components/demo/CallForDemo";
-import { SYSTEMS } from "@/lib/data/systems";
 
 export const metadata: Metadata = {
-  title: "Systems",
+  title: "Systems — Override-R Building Automation & Fire Safety",
   description:
-    "Ventilation, car park ventilation, CO₂ monitoring and controls, pressurization, fire & smoke dampers, actuators and field devices — engineered as one automation architecture.",
+    "Ventilation, car park ventilation, CO₂ monitoring and controls, pressurization, fire & smoke dampers, actuators and field devices — engineered as one unified control architecture.",
 };
 
 export default function SystemsPage() {
   return (
     <main className="bg-canvas">
-      <PageHeader
-        eyebrow="Systems"
-        title="Seven systems. One control architecture."
-        lead="Each system is engineered around the same layered architecture — field devices, controllers, edge compute and the automation platform — so they integrate instead of competing for the same equipment."
-        crumbs={[{ label: "Systems" }]}
-        actions={<CallForDemo source="Systems Page" />}
-        meta={
-          <div className="flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-wider text-ink-faint lg:justify-end">
-            {SYSTEMS.map((system) => (
-              <span key={system.slug} className="border border-line px-2 py-1">
-                {system.number} {system.short}
-              </span>
-            ))}
-          </div>
-        }
-      />
+      {/* 1. Systems Hero with Split Layout & Architectural Cutaway Visual */}
+      <SystemsHero />
 
-      <section className="px-6 py-16 md:px-12 lg:px-20">
+      {/* 2. Interactive Systems Overview (Sidebar Navigation + Selected System Details) */}
+      <section className="border-b border-line bg-white px-6 py-16 md:px-12 lg:px-20">
         <div className="mx-auto max-w-7xl">
-          <SystemsExplorer />
+          <SectionHeader
+            eyebrow="// Systems Explorer"
+            title="Engineered for Unified Operation."
+            lead="Select any system below to inspect its operational sequence, key components and integration capabilities."
+          />
+          <div className="mt-10">
+            <SystemsExplorer />
+          </div>
         </div>
       </section>
 
-      <section id="architecture" className="scroll-mt-24 border-t border-line bg-white px-6 py-20 md:px-12 lg:px-20">
+      {/* 3. How the Layers Connect (5-Tier Horizontal Architecture Flow) */}
+      <section id="architecture" className="scroll-mt-24 border-b border-line bg-gradient-to-b from-canvas via-white to-canvas px-6 py-20 md:px-12 lg:px-20">
         <div className="mx-auto max-w-7xl">
           <SectionHeader
-            eyebrow="// Systems Architecture"
-            title="How the layers connect."
+            eyebrow="// How It Works"
+            title="How the Layers Connect."
             lead="Measurement at the bottom, equipment at the top, and control that keeps working when the layer above it is unavailable."
           />
           <ArchitectureDiagram />
         </div>
       </section>
 
-      <section id="field-devices" className="scroll-mt-24 border-t border-line bg-canvas px-6 py-20 md:px-12 lg:px-20">
+      {/* 4. Complete Systems Portfolio Grid */}
+      <section className="border-b border-line bg-white px-6 py-20 md:px-12 lg:px-20">
         <div className="mx-auto max-w-7xl">
           <SectionHeader
-            eyebrow="// Field Devices"
-            title="The device layer."
-            lead="Filter by device family. Devices we stock as catalogue items link through to their product page."
+            eyebrow="// Complete Portfolio"
+            title="Seven Integrated Systems."
+            lead="Explore specifications, device schedules and integration protocols for each system."
           />
-          <FieldDeviceGrid />
+          <div className="mt-10">
+            <SystemsGrid />
+          </div>
         </div>
       </section>
 
+      {/* 5. Field Devices Layer */}
+      <section id="field-devices" className="scroll-mt-24 border-b border-line bg-canvas px-6 py-20 md:px-12 lg:px-20">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeader
+            eyebrow="// Field Devices"
+            title="The Hardware Layer."
+            lead="Filter by device family. Stocked catalogue items link directly through to their product specification."
+          />
+          <div className="mt-10">
+            <FieldDeviceGrid />
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Closing Call to Action */}
       <ClosingCTA
         source="Systems Page"
         title="Specifying a system? Let's review it together."

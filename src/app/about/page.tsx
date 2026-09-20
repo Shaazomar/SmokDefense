@@ -49,13 +49,13 @@ const APPROACH = [
 
 const INDUSTRIES = [
   { label: "Hospitals", image: "/images/image_clean_room_1776602497882.png" },
-  { label: "Commercial Buildings", image: "/images/image_datacenter_1776602542119.png" },
-  { label: "Residential Buildings", image: "/images/image_passive_fire_1776602447129.png" },
-  { label: "Shopping Malls", image: "/images/image_active_fire_1776602431065.png" },
+  { label: "Commercial Buildings", image: "/images/systems-hero-architecture.jpg" },
+  { label: "Residential Buildings", image: "/images/system-04-pressurization.jpg" },
+  { label: "Shopping Malls", image: "/images/system-01-ventilation.jpg" },
   { label: "Airports", image: "/images/image_public_sector_1776603419378.png" },
   { label: "Industrial Facilities", image: "/images/image_warehouse_1776602527449.png" },
-  { label: "Parking Facilities", image: "/images/image_maintenance_1776602512508.png" },
-  { label: "Infrastructure Projects", image: "/images/image_cfd_model_1776602481280.png" },
+  { label: "Parking Facilities", image: "/images/system-02-carpark.jpg" },
+  { label: "Infrastructure Projects", image: "/images/system-05-fs-dampers.jpg" },
 ];
 
 export default function AboutPage() {

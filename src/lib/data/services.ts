@@ -1,8 +1,13 @@
-/** Service catalogue rendered as cards + expandable detail on /services. */
+/** 
+ * Seven-stage engineering lifecycle rendered across /services.
+ * Strictly adheres to the Override-R engineering workflow:
+ * 01 ENGINEER -> 02 CONTROL ARCHITECTURE -> 03 INTEGRATE -> 04 INSTALL -> 05 COMMISSION -> 06 VALIDATE -> 07 MAINTAIN
+ */
 
 export interface ServiceRecord {
   slug: string;
   number: string;
+  stageName: string;
   title: string;
   summary: string;
   items: string[];
@@ -11,105 +16,150 @@ export interface ServiceRecord {
 
 export const SERVICES: ServiceRecord[] = [
   {
-    slug: "system-design",
+    slug: "engineer",
     number: "01",
-    title: "System Design",
+    stageName: "ENGINEER",
+    title: "Smoke-Management System Design & Engineering",
     summary:
-      "Ventilation, pressurization and fire/smoke control designed against the building geometry, occupancy and the applicable code — with the automation architecture defined at the same time, not afterwards.",
+      "Comprehensive smoke-management engineering, computational fluid dynamics (CFD) airflow modeling, and zone boundary design in accordance with NFPA 92 and applicable building codes.",
     items: [
-      "Ventilation system design",
-      "Car park ventilation design",
-      "Pressurization system design",
-      "Fire/smoke control design",
-      "Building automation design",
+      "Smoke extraction volume & velocity calculations",
+      "Stairway and hoistway pressurization design",
+      "CFD smoke migration & tenability simulations",
+      "Atrium smoke clearance & make-up air sizing",
+      "Building geometry & fire compartmentation analysis",
     ],
     deliverables: [
-      "Airflow and pressure calculations",
-      "Equipment and device schedules",
-      "Control philosophy and cause-and-effect matrix",
-      "Schematics and points list",
+      "Airflow, pressure & fan duty calculations",
+      "CFD velocity & temperature distribution reports",
+      "Mechanical smoke-control schematic drawings",
+      "Equipment sizing and specification schedules",
     ],
   },
   {
-    slug: "engineering-integration",
+    slug: "control-architecture",
     number: "02",
-    title: "Engineering & Integration",
+    stageName: "CONTROL ARCHITECTURE",
+    title: "Fireman Override / FSCS Control Architecture",
     summary:
-      "Controllers programmed, sensors and actuators integrated, and the whole field layer brought onto the building automation platform through gateways and standard building protocols.",
+      "Engineering the Firefighters' Smoke Control Station (FSCS) and hardwired priority interlocks, guaranteeing deterministic firefighter manual command over all automated building systems.",
     items: [
-      "System integration",
-      "Controller programming",
-      "Sensor integration",
-      "Actuator integration",
-      "BMS integration",
-      "Gateway integration",
+      "Firefighters' Smoke Control Station (FSCS) engineering",
+      "Architectural floor-by-floor mimic layout design",
+      "Deterministic hardwired priority override logic",
+      "Supervised LED status verification matrix",
+      "Dual-redundant 24V DC / battery backup architecture",
     ],
     deliverables: [
-      "Controller application software",
-      "Protocol and point mapping",
-      "Graphics and dashboard configuration",
-      "Integration test records",
+      "FSCS panel wiring diagrams & faceplate engineering",
+      "Hardware interlocking & priority ladder schematics",
+      "Cause-and-effect control logic specifications",
+      "Fail-safe power failure position tables",
     ],
   },
   {
-    slug: "installation-commissioning",
+    slug: "integrate",
     number: "03",
-    title: "Installation & Commissioning",
+    stageName: "INTEGRATE",
+    title: "Fans, Dampers, Actuators, Fire Alarm & BMS Integration",
     summary:
-      "Field devices and controllers installed to the schedule, then commissioned point by point until every loop, interlock and alarm behaves as the design intended.",
+      "Unified integration of mechanical equipment, fire alarm control panels (FACP), BMS supervisory platforms, and field sensors over BACnet, Modbus, and IP500 wireless protocols.",
     items: [
-      "Field device installation",
-      "Controller installation",
-      "System commissioning",
-      "Testing",
-      "Calibration",
+      "Fire Alarm Control Panel (FACP) supervised relay links",
+      "BMS supervisory gateway integration (BACnet/IP, Modbus)",
+      "Belimo actuator signal wiring & feedback loops",
+      "IP500 sub-GHz wireless sensor mesh network deployment",
+      "Exhaust fan starter panel & VFD drive coordination",
     ],
     deliverables: [
-      "Installation and cable records",
-      "Point-to-point verification sheets",
-      "Commissioning report",
-      "Operator handover and training",
+      "Protocol interface & point mapping schedules",
+      "Supervised input/output termination drawings",
+      "Gateway configuration & object addressing files",
+      "Cross-system integration test protocols",
     ],
   },
   {
-    slug: "testing-validation",
+    slug: "install",
     number: "04",
-    title: "Testing & Validation",
+    stageName: "INSTALL",
+    title: "Physical Installation & System Integration",
     summary:
-      "Measured proof that the installed system performs: sensor accuracy, damper operation, pressure differentials and ventilation rates verified and documented against the design figures.",
+      "Turnkey mechanical mounting, fire-rated cabling, sensor positioning, and control panel installation executed by certified life-safety technicians.",
     items: [
-      "Sensor testing",
-      "Damper testing",
-      "Pressurization testing",
-      "Ventilation testing",
-      "Control-system validation",
+      "Fireman Override Panel (FSCS) enclosure mounting",
+      "Belimo motorized fire/smoke damper actuator fitment",
+      "Differential pressure sensor & sampling tube installation",
+      "Fire-rated cabling, conduit runs & junction boxes",
+      "Field controller and gateway panel terminations",
     ],
     deliverables: [
-      "Measured performance results",
-      "Damper stroke and end-switch records",
-      "Pressure differential test sheets",
-      "Validation certificate pack",
+      "Physical installation & cable schedule records",
+      "Terminal connection & wiring continuity logs",
+      "Equipment mounting inspection sign-offs",
+      "As-built layout and termination markups",
     ],
   },
   {
-    slug: "amc-maintenance",
+    slug: "commission",
     number: "05",
-    title: "AMC / Maintenance",
+    stageName: "COMMISSION",
+    title: "Point-by-Point Functional Testing & Commissioning",
     summary:
-      "Planned maintenance contracts that keep the system in the condition it was handed over in — scheduled inspection, calibration, fault attendance and a managed upgrade path.",
+      "Methodical point-by-point functional commissioning, loop calibration, and electrical verification of every sensor, actuator end-switch, fan starter, and controller loop.",
     items: [
-      "Preventive maintenance",
-      "System inspection",
-      "Troubleshooting",
-      "Calibration",
-      "Replacement of field devices",
-      "System upgrades",
+      "Actuator stroke time and end-switch calibration",
+      "Differential pressure sensor zero & span calibration",
+      "Electrical loop resistance & Fluke multimeter verification",
+      "Fan VFD speed ramp and airflow proof confirmation",
+      "Zone controller PID tuning for pressure stability",
     ],
     deliverables: [
-      "Planned maintenance schedule",
-      "Inspection and calibration records",
-      "Fault response and resolution log",
-      "Spares and obsolescence plan",
+      "Point-to-point electrical test records",
+      "Damper travel & timing verification logs",
+      "Sensor calibration certs with baseline readings",
+      "Functional commissioning signed test sheets",
+    ],
+  },
+  {
+    slug: "validate",
+    number: "06",
+    stageName: "VALIDATE",
+    title: "Sequence Verification, System Response & Firefighter Operation",
+    summary:
+      "Rigorous end-to-end cause-and-effect validation: initiating simulated fire alarms, measuring stair differential pressures, and verifying immediate manual firefighter override response.",
+    items: [
+      "Full cause-and-effect alarm matrix live execution",
+      "Stairway door-opening force and differential pressure testing",
+      "FSCS positive manual override emergency response testing",
+      "Make-up air damper and smoke exhaust synchronisation",
+      "Power failure fail-safe positioning verification",
+    ],
+    deliverables: [
+      "Comprehensive system validation certificate pack",
+      "Differential pressure vs door-opening force log sheets",
+      "Firefighter manual override response time audits",
+      "Authority Having Jurisdiction (AHJ) compliance pack",
+    ],
+  },
+  {
+    slug: "maintain",
+    number: "07",
+    stageName: "MAINTAIN",
+    title: "Inspection, Servicing, Troubleshooting & Lifecycle AMC Support",
+    summary:
+      "Comprehensive annual maintenance contracts (AMC), scheduled damper cycle exercises, sensor recalibration, emergency troubleshooting, and obsolescence management.",
+    items: [
+      "Periodic automated damper exercise & stroke monitoring",
+      "Annual differential pressure & gas sensor recalibration",
+      "FSCS panel inspection, switch testing & LED audit",
+      "Emergency fault attendance & corrective troubleshooting",
+      "Firmware updates, component spares & lifecycle planning",
+    ],
+    deliverables: [
+      "Annual preventive maintenance schedule & log",
+      "Periodic inspection and recalibration certificates",
+      "Emergency service response logs",
+      "Spares inventory and obsolescence roadmaps",
     ],
   },
 ];

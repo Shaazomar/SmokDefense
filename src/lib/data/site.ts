@@ -1,6 +1,5 @@
 /**
  * Single source of truth for company identity, navigation and contact details.
- * Replace the CONTACT block with live company details before launch.
  */
 
 export const SITE = {
@@ -12,11 +11,16 @@ export const SITE = {
 };
 
 export const CONTACT = {
-  phone: "+91 90000 00000",
-  phoneHref: "tel:+919000000000",
+  phone: "+91 90355 44406",
+  phoneHref: "tel:+919035544406",
   email: "info@override-r.com",
   emailHref: "mailto:info@override-r.com",
-  address: ["Override-R Building Systems", "Unit 04, Technology Park", "Bengaluru 560100, India"],
+  headOfficeLabel: "INDIA — HEAD OFFICE",
+  address: [
+    "#163 C, 3rd Cross Rd, near Mantralaya Apartments,",
+    "3rd Phase, J. P. Nagar,",
+    "Bengaluru, Karnataka 560078",
+  ],
   hours: "Mon – Sat / 09:00 – 18:00 IST",
 };
 

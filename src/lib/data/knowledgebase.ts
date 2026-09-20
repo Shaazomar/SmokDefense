@@ -35,6 +35,98 @@ export const KB_CATEGORIES: KbCategory[] = [
 
 export const KB_ARTICLES: KbArticle[] = [
   {
+    slug: "what-is-smoke-management",
+    title: "What is Smoke Management?",
+    category: "system-design-guides",
+    description:
+      "Engineering principles behind smoke movement control, protected egress paths, and regulatory design provisions under IBC Section 909 and NFPA 92.",
+    date: "2026-09-18",
+    readTime: "9 min",
+    sections: [
+      {
+        heading: "The Engineering Objective",
+        body: "Smoke management systems are designed to control the movement of smoke and hot gases produced during a fire. The primary objectives are to maintain tenable environments along designated escape routes, compartmentalize fire zones, and provide clear visibility and access for firefighting personnel. Requirements depend strictly on the building type, configuration, occupancy, applicable local building code, and the authority having jurisdiction (AHJ).",
+      },
+      {
+        heading: "Mechanical vs. Natural Smoke Control",
+        body: "Depending on building geometry, smoke management can be achieved via mechanical extraction, pressure differential methods (such as stair pressurization), or natural buoyancy-driven smoke vents (AOVs). In high-rise buildings and covered atriums, mechanical extraction fans rated for high temperature (F300/F400) extract smoke while dedicated make-up air dampers supply fresh replacement air to prevent dangerous depressurization.",
+      },
+      {
+        heading: "Regulatory Framework: IBC 909 and NFPA 92",
+        body: "Where mandated by building codes, IBC Section 909 outlines requirements for smoke-control systems, including design criteria, testing, and power redundancy. NFPA 92 provides comprehensive engineering standards for smoke containment barriers, exhaust calculations, and verification testing.",
+      },
+    ],
+    related: ["what-is-a-firefighters-smoke-control-station", "automated-vs-manual-smoke-control"],
+  },
+  {
+    slug: "what-is-a-firefighters-smoke-control-station",
+    title: "What is a Firefighters' Smoke Control Station (FSCS)?",
+    category: "technical-guides",
+    description:
+      "The designated control point for emergency responders: graphical monitoring, positive manual override switches, and deterministic life-safety priority.",
+    date: "2026-09-15",
+    readTime: "8 min",
+    sections: [
+      {
+        heading: "Definition & Purpose",
+        body: "Under NFPA 92, a Firefighters' Smoke Control Station (FSCS) is a designated physical panel located in the Fire Command Center (FCC) or main entrance. It provides graphical monitoring and positive manual override capability over all building smoke-control equipment for fire-department tactical use.",
+      },
+      {
+        heading: "True Status Monitoring & End-Switch Feedback",
+        body: "Unlike standard user interfaces, an FSCS requires direct, verified feedback. Damper open/closed indications and fan running states must be derived from mechanical end switches and current/differential pressure sensors, rather than commanded outputs, ensuring firefighters see the true physical state of the building.",
+      },
+      {
+        heading: "Manual Override Hierarchy",
+        body: "During an emergency, automated sequences initiate response. However, firefighting tactics often require adjusting airflow — such as clearing smoke from a tactical stairwell or isolating a compromised sector. The FSCS switches possess deterministic, hardwired priority over all automated BMS sequences.",
+      },
+    ],
+    related: ["what-is-smoke-management", "automated-vs-manual-smoke-control"],
+  },
+  {
+    slug: "automated-vs-manual-smoke-control",
+    title: "Automated vs. Manual Smoke Control in Life Safety",
+    category: "system-design-guides",
+    description:
+      "Understanding why automated sequence initiation must be paired with human override command during building emergencies.",
+    date: "2026-09-10",
+    readTime: "7 min",
+    sections: [
+      {
+        heading: "The Role of Automated Response",
+        body: "When smoke detectors or sprinkler flow switches trigger an alarm, there is zero time for manual coordination. Dedicated field controllers instantly execute pre-programmed cause-and-effect sequences: closing compartment dampers, starting stairwell pressurization fans, and opening atrium exhaust louvres within seconds.",
+      },
+      {
+        heading: "Why Human Firefighter Override is Essential",
+        body: "Building fires are dynamic. As fire spreads, doors are propped open by evacuees, or unexpected air pathways develop, automated algorithms cannot visually assess conditions. The Firefighters' Smoke Control Station provides the critical human bridge, allowing fire officers to reverse fan directions or manually pressurize alternate escape shafts as the incident evolves.",
+      },
+    ],
+    related: ["what-is-a-firefighters-smoke-control-station", "what-is-smoke-management"],
+  },
+  {
+    slug: "how-ip500-works-in-smart-buildings",
+    title: "How IP500 Works: The Open Standard for Building IoT",
+    category: "product-guides",
+    description:
+      "Technical deep dive into sub-GHz 868 MHz wireless mesh, IPv6 / 6LoWPAN protocols, BACnet integration, and the CNX100 module.",
+    date: "2026-09-05",
+    readTime: "10 min",
+    sections: [
+      {
+        heading: "Sub-GHz RF vs. 2.4 GHz in Commercial Buildings",
+        body: "Commercial structures contain heavy reinforced concrete, metal risers, and high interference in the 2.4 GHz band (Wi-Fi/Bluetooth). IP500 operates in the sub-GHz spectrum (868 MHz in Europe / 915 MHz in North America), providing vastly superior building penetration and link budget over long distances.",
+      },
+      {
+        heading: "Dual-Channel Self-Healing Mesh",
+        body: "IP500 utilizes IEEE 802.15.4 and IPv6/6LoWPAN to establish a multi-hop wireless mesh. If an RF path is blocked, packets automatically re-route through adjacent nodes, ensuring high reliability suitable for life-safety telemetry, smoke detectors, and damper monitoring.",
+      },
+      {
+        heading: "Hardware Implementation: The CNX100 Module",
+        body: "The CNX100 module is an official IP500® 868 MHz wireless radio module featuring native IP500 stack support, hardware AES-128 encryption, UART interfaces, and direct BACnet object mapping for building automation systems.",
+      },
+    ],
+    related: ["what-is-smoke-management"],
+  },
+  {
     slug: "how-car-park-ventilation-control-works",
     title: "How Car Park Ventilation Control Works",
     category: "technical-guides",

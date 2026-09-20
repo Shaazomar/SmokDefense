@@ -25,11 +25,11 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Override-R — Intelligent Building Systems & Ventilation Technology",
+    default: "Override-R — Fire, Smoke & Ventilation Engineering Systems",
     template: "%s — Override-R",
   },
   description:
-    "Intelligent ventilation, car park ventilation, CO₂ monitoring, pressurization, fire & smoke dampers, actuators, controllers and building automation systems.",
+    "Engineered ventilation systems, car park ventilation, CO₂ monitoring & controls, stairway pressurization, motorized fire & smoke dampers, actuators, and emergency smoke extraction systems.",
   icons: {
     icon: "/icon.png",
   },
@@ -41,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col justify-between bg-canvas text-ink">
+      <body className="flex min-h-full flex-col justify-between bg-white text-slate-900">
         <SmoothScrollProvider>
           <DemoProvider>
             <Nav />
