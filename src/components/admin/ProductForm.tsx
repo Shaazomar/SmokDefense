@@ -16,6 +16,10 @@ import {
   Search,
   CheckCircle2,
   Sparkles,
+  Star,
+  AlertCircle,
+  Loader2,
+  Check,
 } from "lucide-react";
 import type { DbProduct, DbCategory, DbBrand, GlyphKind } from "@/lib/db/types";
 import { ImageImportModal } from "./ImageImportModal";
@@ -75,6 +79,12 @@ export function ProductForm({ initialProduct, categories, brands, isEdit = false
 
   const [isSaving, setIsSaving] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+  const [uploadState, setUploadState] = useState<{
+    status: "idle" | "selected" | "uploading" | "success" | "error";
+    filename?: string;
+    previewUrl?: string;
+    error?: string;
+  }>({ status: "idle" });
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
 
@@ -111,31 +121,116 @@ export function ProductForm({ initialProduct, categories, brands, isEdit = false
     }));
   };
 
-  // Image Upload Handler
+  // Image Upload Handler — Cloudinary integrated
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+
+    // Show selected state with preview
+    const previewUrl = URL.createObjectURL(file);
+    setUploadState({ status: "selected", filename: file.name, previewUrl });
+
+    // Validate client-side (server also validates)
+    const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+    if (!allowedTypes.includes(file.type)) {
+      setUploadState({ status: "error", filename: file.name, error: "Invalid file type. Use JPG, PNG, or WebP." });
+      return;
+    }
+    if (file.size > 10 * 1024 * 1024) {
+      setUploadState({ status: "error", filename: file.name, error: "File too large. Maximum 10 MB." });
+      return;
+    }
+
     setIsUploading(true);
+    setUploadState({ status: "uploading", filename: file.name, previewUrl });
+
     try {
       const data = new FormData();
       data.append("file", file);
+
+      // Use product-specific folder if slug exists
+      const folder = formData.slug
+        ? `override-r/products/${formData.slug}`
+        : "override-r/products";
+      data.append("folder", folder);
+
       const res = await fetch("/api/admin/upload", {
         method: "POST",
         body: data,
       });
+
       if (res.ok) {
-        const { url } = await res.json();
+        const result = await res.json();
+        const imageUrl = result.url;
+        const publicId = result.publicId || undefined;
+
+        // Build imageDetail entry
+        const newImageDetail = {
+          id: `img-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+          productId: initialProduct?.id || "",
+          url: imageUrl,
+          cloudinaryPublicId: publicId,
+          altText: `${formData.name || "Product"} image`,
+          width: result.width,
+          height: result.height,
+          isPrimary: !(formData.images && formData.images.length > 0),
+          importMethod: publicId ? "cloudinary_upload" as const : "manual_upload" as const,
+          createdAt: new Date().toISOString(),
+        };
+
         setFormData((prev) => ({
           ...prev,
-          mainImage: prev.mainImage ? prev.mainImage : url,
-          images: [...(prev.images || []), url],
+          mainImage: prev.mainImage ? prev.mainImage : imageUrl,
+          images: [...(prev.images || []), imageUrl],
+          imageDetails: [...(prev.imageDetails || []), newImageDetail],
         }));
+
+        setUploadState({ status: "success", filename: file.name, previewUrl });
+
+        // Reset upload state after a moment
+        setTimeout(() => setUploadState({ status: "idle" }), 3000);
+      } else {
+        const err = await res.json();
+        setUploadState({ status: "error", filename: file.name, error: err.error || "Upload failed" });
       }
     } catch {
-      setErrorMsg("Failed to upload image.");
+      setUploadState({ status: "error", filename: file.name, error: "Network error — try again" });
     } finally {
       setIsUploading(false);
+      // Reset file input
+      e.target.value = "";
     }
+  };
+
+  // Set an image as primary
+  const handleSetPrimary = (imgUrl: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      mainImage: imgUrl,
+      imageDetails: (prev.imageDetails || []).map((d) => ({
+        ...d,
+        isPrimary: d.url === imgUrl,
+      })),
+    }));
+  };
+
+  // Remove an image from the gallery
+  const handleRemoveImage = (index: number) => {
+    const imgUrl = formData.images?.[index];
+    setFormData((prev) => {
+      const newImages = (prev.images || []).filter((_, idx) => idx !== index);
+      const newDetails = (prev.imageDetails || []).filter((d) => d.url !== imgUrl);
+      const newMainImage =
+        prev.mainImage === imgUrl
+          ? newImages[0] || ""
+          : prev.mainImage;
+      return {
+        ...prev,
+        images: newImages,
+        imageDetails: newDetails,
+        mainImage: newMainImage,
+      };
+    });
   };
 
   // Document Add Handler
@@ -240,11 +335,15 @@ export function ProductForm({ initialProduct, categories, brands, isEdit = false
           </button>
           <button
             type="submit"
-            disabled={isSaving}
-            className="px-5 py-2 text-xs font-mono font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 rounded transition-colors flex items-center gap-1.5 uppercase tracking-wider shadow-sm"
+            disabled={isSaving || isUploading}
+            className={`px-5 py-2 text-xs font-mono font-bold rounded transition-colors flex items-center gap-1.5 uppercase tracking-wider shadow-sm ${
+              isUploading
+                ? "bg-slate-600 text-slate-400 cursor-not-allowed"
+                : "bg-amber-500 hover:bg-amber-400 text-slate-950"
+            }`}
           >
             <Save className="h-4 w-4" />
-            {isSaving ? "Saving..." : isEdit ? "Update Product" : "Save Product"}
+            {isUploading ? "Upload in progress…" : isSaving ? "Saving..." : isEdit ? "Update Product" : "Save Product"}
           </button>
         </div>
       </div>
@@ -633,26 +732,80 @@ export function ProductForm({ initialProduct, categories, brands, isEdit = false
               )}
             </div>
 
-            <div>
-              <label className="block text-xs font-mono text-slate-300 uppercase tracking-wider mb-2">
+            {/* Upload Section */}
+            <div className="space-y-3">
+              <label className="block text-xs font-mono text-slate-300 uppercase tracking-wider">
                 Upload New Image File
               </label>
               <div className="flex items-center gap-4">
-                <label className="cursor-pointer bg-slate-900 border border-slate-800 hover:border-amber-500/40 text-slate-300 px-4 py-2 rounded-md text-xs font-mono flex items-center gap-2 transition-colors">
-                  <Upload className="h-4 w-4 text-amber-400" />
-                  {isUploading ? "Uploading..." : "Choose Local File & Upload"}
+                <label className={`cursor-pointer border rounded-md px-4 py-2 text-xs font-mono flex items-center gap-2 transition-colors ${
+                  isUploading
+                    ? "bg-slate-800 border-slate-700 text-slate-500 cursor-not-allowed"
+                    : "bg-slate-900 border-slate-800 hover:border-amber-500/40 text-slate-300"
+                }`}>
+                  {isUploading ? (
+                    <Loader2 className="h-4 w-4 text-amber-400 animate-spin" />
+                  ) : (
+                    <Upload className="h-4 w-4 text-amber-400" />
+                  )}
+                  {isUploading ? "Uploading…" : "Choose Image File"}
                   <input
                     type="file"
-                    accept="image/*"
+                    accept=".jpg,.jpeg,.png,.webp"
                     onChange={handleImageUpload}
                     disabled={isUploading}
                     className="hidden"
                   />
                 </label>
                 <span className="text-[11px] font-mono text-slate-500">
-                  PNG, JPG, SVG, WebP supported
+                  JPG, PNG, WebP — max 10 MB
                 </span>
               </div>
+
+              {/* Upload State Feedback */}
+              {uploadState.status !== "idle" && (
+                <div className={`flex items-center gap-3 p-3 rounded-md border text-xs font-mono ${
+                  uploadState.status === "selected"
+                    ? "bg-blue-500/5 border-blue-500/20 text-blue-400"
+                    : uploadState.status === "uploading"
+                    ? "bg-amber-500/5 border-amber-500/20 text-amber-400"
+                    : uploadState.status === "success"
+                    ? "bg-emerald-500/5 border-emerald-500/20 text-emerald-400"
+                    : "bg-rose-500/5 border-rose-500/20 text-rose-400"
+                }`}>
+                  {uploadState.previewUrl && (
+                    <img
+                      src={uploadState.previewUrl}
+                      alt="Preview"
+                      className="h-12 w-12 rounded object-cover border border-slate-700 shrink-0"
+                    />
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <div className="truncate font-medium">{uploadState.filename}</div>
+                    <div className="text-[11px] mt-0.5">
+                      {uploadState.status === "selected" && "Ready to upload"}
+                      {uploadState.status === "uploading" && (
+                        <span className="flex items-center gap-1.5">
+                          <Loader2 className="h-3 w-3 animate-spin" />
+                          Uploading to Cloudinary…
+                        </span>
+                      )}
+                      {uploadState.status === "success" && (
+                        <span className="flex items-center gap-1">
+                          <Check className="h-3 w-3" />
+                          Uploaded successfully
+                        </span>
+                      )}
+                      {uploadState.status === "error" && (
+                        <span className="flex items-center gap-1">
+                          <AlertCircle className="h-3 w-3" />
+                          {uploadState.error || "Failed — try again"}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Main Image Path */}
@@ -664,35 +817,63 @@ export function ProductForm({ initialProduct, categories, brands, isEdit = false
                 type="text"
                 value={formData.mainImage || ""}
                 onChange={(e) => setFormData({ ...formData, mainImage: e.target.value })}
-                placeholder="/uploads/my-product.png or https://..."
+                placeholder="Cloudinary URL or /uploads/my-product.png"
                 className="w-full bg-slate-900 border border-slate-800 rounded-md px-3.5 py-2 text-xs text-slate-100 font-mono focus:outline-none focus:border-amber-500/50"
               />
+              {formData.mainImage && (
+                <div className="mt-2 rounded-md border border-slate-800 bg-slate-900 p-2 inline-block">
+                  <img
+                    src={formData.mainImage}
+                    alt="Primary product image"
+                    className="h-20 max-w-[160px] object-contain"
+                  />
+                </div>
+              )}
             </div>
 
             {/* Gallery Preview */}
             {(formData.images || []).length > 0 && (
               <div>
                 <label className="block text-xs font-mono text-slate-300 uppercase tracking-wider mb-2">
-                  Image Gallery
+                  Image Gallery ({(formData.images || []).length} image{(formData.images || []).length !== 1 ? "s" : ""})
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                  {(formData.images || []).map((img, i) => (
-                    <div key={i} className="relative group border border-slate-800 rounded-md overflow-hidden bg-slate-900 p-2">
-                      <img src={img} alt={`Product ${i}`} className="h-24 w-full object-contain" />
-                      <button
-                        type="button"
-                        onClick={() =>
-                          setFormData((prev) => ({
-                            ...prev,
-                            images: (prev.images || []).filter((_, idx) => idx !== i),
-                          }))
-                        }
-                        className="absolute top-1 right-1 p-1 bg-rose-500 text-slate-950 rounded opacity-0 group-hover:opacity-100 transition-opacity"
-                      >
-                        <Trash2 className="h-3.5 w-3.5" />
-                      </button>
-                    </div>
-                  ))}
+                  {(formData.images || []).map((img, i) => {
+                    const isPrimary = formData.mainImage === img;
+                    return (
+                      <div key={i} className={`relative group rounded-md overflow-hidden bg-slate-900 p-2 border ${
+                        isPrimary ? "border-amber-500/50 ring-1 ring-amber-500/20" : "border-slate-800"
+                      }`}>
+                        <img src={img} alt={`Product ${i + 1}`} className="h-24 w-full object-contain" />
+                        {isPrimary && (
+                          <div className="absolute top-1.5 left-1.5 flex items-center gap-1 bg-amber-500/90 text-slate-950 rounded px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider">
+                            <Star className="h-2.5 w-2.5" fill="currentColor" />
+                            Primary
+                          </div>
+                        )}
+                        <div className="absolute inset-x-0 bottom-0 flex items-center justify-center gap-1 p-1.5 bg-gradient-to-t from-slate-950/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                          {!isPrimary && (
+                            <button
+                              type="button"
+                              onClick={() => handleSetPrimary(img)}
+                              title="Set as primary image"
+                              className="p-1 bg-amber-500 text-slate-950 rounded text-[10px] font-bold hover:bg-amber-400 transition-colors"
+                            >
+                              <Star className="h-3 w-3" />
+                            </button>
+                          )}
+                          <button
+                            type="button"
+                            onClick={() => handleRemoveImage(i)}
+                            title="Remove image"
+                            className="p-1 bg-rose-500 text-slate-950 rounded hover:bg-rose-400 transition-colors"
+                          >
+                            <Trash2 className="h-3 w-3" />
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             )}

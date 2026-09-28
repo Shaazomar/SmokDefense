@@ -17,6 +17,7 @@ import {
   ExternalLink,
   ChevronRight,
   User,
+  Rocket,
 } from "lucide-react";
 
 interface AdminLayoutProps {
@@ -36,6 +37,7 @@ export function AdminLayout({ children, userEmail = "admin@override-r.com", user
     { label: "Categories", href: "/admin/categories", icon: Layers },
     { label: "Brands", href: "/admin/brands", icon: Tag },
     { label: "Inventory", href: "/admin/inventory", icon: Boxes },
+    { label: "Startup Drive", href: "/admin/startup-drive", icon: Rocket },
     { label: "Settings", href: "/admin/settings", icon: Settings },
   ];
 
@@ -58,6 +60,7 @@ export function AdminLayout({ children, userEmail = "admin@override-r.com", user
     if (pathname.startsWith("/admin/categories")) return "Product Categories";
     if (pathname.startsWith("/admin/brands")) return "Brand Management";
     if (pathname.startsWith("/admin/inventory")) return "Inventory Management";
+    if (pathname.startsWith("/admin/startup-drive")) return "Startup Drive Applications";
     if (pathname.startsWith("/admin/settings")) return "Admin Settings";
     return "Admin Panel";
   };

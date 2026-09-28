@@ -21,14 +21,21 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
 
     lenis.on("scroll", ScrollTrigger.update);
 
-    // Lenis measures scroll height on mount, but the hero's WebGL scene (and
-    // the ScrollTrigger pin/spacer it creates) loads asynchronously via
-    // next/dynamic, well after that. ResizeObserver on documentElement
-    // doesn't catch overflow-driven scrollHeight changes, so without this
-    // Lenis is permanently stuck thinking the page has nothing to scroll.
+    // Lenis measures scroll height on mount, but content can grow afterwards —
+    // the hero's WebGL scene (and the ScrollTrigger pin/spacer it creates)
+    // loads asynchronously via next/dynamic, and other pages resize as async
+    // content loads or client-side state (e.g. a multi-step form) changes
+    // layout height. ResizeObserver on documentElement doesn't catch
+    // overflow-driven scrollHeight changes, so without an explicit resize
+    // Lenis is permanently stuck thinking the page ends where it did at mount.
     const handleRefresh = () => lenis.resize();
     ScrollTrigger.addEventListener("refresh", handleRefresh);
     ScrollTrigger.refresh();
+
+    // Catch every other height change (any page, any dynamic content) by
+    // observing the document body directly.
+    const bodyResizeObserver = new ResizeObserver(() => lenis.resize());
+    bodyResizeObserver.observe(document.body);
 
     const tick = (time: number) => lenis.raf(time * 1000);
     gsap.ticker.add(tick);
@@ -62,6 +69,7 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
       lenis.destroy();
       ScrollTrigger.removeEventListener("refresh", handleRefresh);
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      bodyResizeObserver.disconnect();
       window.removeEventListener("pointermove", handlePointerMove);
     };
   }, [reducedMotion]);

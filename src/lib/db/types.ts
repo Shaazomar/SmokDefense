@@ -34,7 +34,8 @@ export interface ProductDocument {
 export interface DbProductImage {
   id: string;
   productId: string;
-  url: string; // Local storage path /uploads/... or external URL
+  url: string; // Local storage path /uploads/... or Cloudinary secure URL
+  cloudinaryPublicId?: string; // Cloudinary public ID for cleanup operations
   sourceUrl?: string; // Original URL on manufacturer site
   sourceDomain?: string; // e.g. belimo.com
   altText?: string;
@@ -42,7 +43,7 @@ export interface DbProductImage {
   height?: number;
   isPrimary: boolean;
   confidenceScore?: number; // 0 to 100
-  importMethod?: "manual_upload" | "official_import" | "url_paste";
+  importMethod?: "manual_upload" | "official_import" | "url_paste" | "cloudinary_upload";
   createdAt: string;
 }
 

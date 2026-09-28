@@ -46,6 +46,7 @@ export const FOOTER_COLUMNS: { title: string; links: { href: string; label: stri
       { href: "/about", label: "About" },
       { href: "/services", label: "Services" },
       { href: "/contact", label: "Contact" },
+      { href: "/startup-drive", label: "Startup Drive →" },
     ],
   },
   {

@@ -3,13 +3,11 @@ import path from "node:path";
 import { PRODUCTS, SHOP_CATEGORIES } from "@/lib/data/shop";
 import type { DbData, DbProduct, DbCategory, DbBrand, DbUser, DashboardStats, DbProductImage } from "./types";
 
-const DATA_DIR = path.join(process.cwd(), "data");
-const DB_FILE = path.join(DATA_DIR, "override-r.json");
+import crypto from "node:crypto";
+import os from "node:os";
 
 export const DEFAULT_ADMIN_EMAIL = "admin@override-r.com";
 export const DEFAULT_ADMIN_PASS = "admin123";
-
-import crypto from "node:crypto";
 
 export function hashPassword(password: string): string {
   return crypto.createHash("sha256").update(password + "override_r_salt_2026").digest("hex");
@@ -77,7 +75,6 @@ function getInitialSeedData(): DbData {
     const isBelimo = prod.name.toLowerCase().includes("belimo");
     const brand = isBelimo ? brands[1] : brands[0];
 
-    // Infer model numbers for seed items
     let modelNumber = "";
     if (prod.slug === "belimo-rotary-damper-actuator") modelNumber = "LMV-D3-MP";
     else if (prod.slug === "belimo-control-valve-actuator") modelNumber = "LR24A-SR";
@@ -120,28 +117,44 @@ function getInitialSeedData(): DbData {
   };
 }
 
+let memoryDb: DbData | null = null;
+
+const DATA_DIR = path.join(process.cwd(), "data");
+const DB_FILE = path.join(DATA_DIR, "override-r.json");
+const TMP_DIR = path.join(os.tmpdir(), "override-r-db");
+const TMP_DB_FILE = path.join(TMP_DIR, "override-r.json");
+
 function ensureDataFile(): DbData {
+  if (memoryDb) {
+    return memoryDb;
+  }
+
   try {
-    if (!fs.existsSync(DATA_DIR)) {
-      fs.mkdirSync(DATA_DIR, { recursive: true });
+    if (fs.existsSync(DB_FILE)) {
+      const content = fs.readFileSync(DB_FILE, "utf-8");
+      memoryDb = JSON.parse(content) as DbData;
+      return memoryDb;
     }
 
-    if (!fs.existsSync(DB_FILE)) {
-      const initialData = getInitialSeedData();
-      fs.writeFileSync(DB_FILE, JSON.stringify(initialData, null, 2), "utf-8");
-      return initialData;
+    if (fs.existsSync(TMP_DB_FILE)) {
+      const content = fs.readFileSync(TMP_DB_FILE, "utf-8");
+      memoryDb = JSON.parse(content) as DbData;
+      return memoryDb;
     }
 
-    const content = fs.readFileSync(DB_FILE, "utf-8");
-    const data = JSON.parse(content) as DbData;
-    return data;
+    memoryDb = getInitialSeedData();
+    saveDataFile(memoryDb);
+    return memoryDb;
   } catch (error) {
     console.error("Error reading db file, returning seed data:", error);
-    return getInitialSeedData();
+    memoryDb = getInitialSeedData();
+    return memoryDb;
   }
 }
 
 function saveDataFile(data: DbData): void {
+  memoryDb = data;
+
   try {
     if (!fs.existsSync(DATA_DIR)) {
       fs.mkdirSync(DATA_DIR, { recursive: true });
@@ -149,9 +162,20 @@ function saveDataFile(data: DbData): void {
     const tempFile = `${DB_FILE}.tmp`;
     fs.writeFileSync(tempFile, JSON.stringify(data, null, 2), "utf-8");
     fs.renameSync(tempFile, DB_FILE);
+    return;
+  } catch {
+    // Primary path read-only (e.g. Vercel serverless) — try /tmp
+  }
+
+  try {
+    if (!fs.existsSync(TMP_DIR)) {
+      fs.mkdirSync(TMP_DIR, { recursive: true });
+    }
+    const tempFile = `${TMP_DB_FILE}.tmp`;
+    fs.writeFileSync(tempFile, JSON.stringify(data, null, 2), "utf-8");
+    fs.renameSync(tempFile, TMP_DB_FILE);
   } catch (error) {
-    console.error("Failed to save database file:", error);
-    throw new Error("Database write error");
+    console.warn("Could not persist database to disk/tmp, using memory cache:", error);
   }
 }
 
